@@ -21,20 +21,22 @@ namespace ProgramTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var frm = new EditPreset();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
+            //var frm = new EditPreset();
+            //frm.Location = this.Location;
+            //frm.StartPosition = FormStartPosition.Manual;
+            //frm.FormClosing += delegate { this.Show(); };
+            //frm.Show();
+            this.Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            var frm = new EditPreset();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
+            //var frm = new EditPreset();
+            //frm.Location = this.Location;
+            //frm.StartPosition = FormStartPosition.Manual;
+            //frm.FormClosing += delegate { this.Show(); };
+            //frm.Show();
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)

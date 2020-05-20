@@ -33,21 +33,22 @@ namespace ProgramTest
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void CreatePreset_Click(object sender, EventArgs e)
         {
-            
+            this.Close();
         }
 
         private void Dismiss_Click(object sender, EventArgs e)
         {
-            var frm = new MainMenu();
-            frm.Location = this.Location;
-            frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
-            frm.Show();
+            //var frm = new MainMenu();
+            //frm.Location = this.Location;
+            //frm.StartPosition = FormStartPosition.Manual;
+            //frm.FormClosing += delegate { this.Show(); };
+            //frm.Show();
+            this.Close();
         }
 
         private void EditPreset_Load(object sender, EventArgs e)
