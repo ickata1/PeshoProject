@@ -97,5 +97,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WindowsBGChanger\WindowsBGChanger\WindowsBGChanger.csproj">
+      <Project>{8ac42396-27e9-4313-9625-94d02b62ebc9}</Project>
+      <Name>WindowsBGChanger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

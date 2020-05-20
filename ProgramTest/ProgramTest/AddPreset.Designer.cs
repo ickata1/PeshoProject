@@ -38,7 +38,7 @@
             this.BackToEdit = new System.Windows.Forms.Button();
             this.SavePreset = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.Value = new System.Windows.Forms.ListView();
+            this.FilePathTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // ProgramName
@@ -47,6 +47,7 @@
             this.ProgramName.Name = "ProgramName";
             this.ProgramName.Size = new System.Drawing.Size(100, 20);
             this.ProgramName.TabIndex = 0;
+            this.ProgramName.TextChanged += new System.EventHandler(this.ProgramName_TextChanged);
             // 
             // listBox1
             // 
@@ -100,6 +101,7 @@
             this.button1.TabIndex = 7;
             this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BackToEdit
             // 
@@ -121,21 +123,20 @@
             this.SavePreset.UseVisualStyleBackColor = true;
             this.SavePreset.Click += new System.EventHandler(this.button3_Click);
             // 
-            // Value
+            // FilePathTextBox
             // 
-            this.Value.HideSelection = false;
-            this.Value.Location = new System.Drawing.Point(12, 94);
-            this.Value.Name = "Value";
-            this.Value.Size = new System.Drawing.Size(100, 17);
-            this.Value.TabIndex = 10;
-            this.Value.UseCompatibleStateImageBehavior = false;
+            this.FilePathTextBox.Location = new System.Drawing.Point(12, 94);
+            this.FilePathTextBox.Name = "FilePathTextBox";
+            this.FilePathTextBox.Size = new System.Drawing.Size(100, 20);
+            this.FilePathTextBox.TabIndex = 10;
+            this.FilePathTextBox.TextChanged += new System.EventHandler(this.FilePathTextBox_TextChanged);
             // 
             // AddPreset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(248, 302);
-            this.Controls.Add(this.Value);
+            this.Controls.Add(this.FilePathTextBox);
             this.Controls.Add(this.SavePreset);
             this.Controls.Add(this.BackToEdit);
             this.Controls.Add(this.button1);
@@ -164,6 +165,6 @@
         private System.Windows.Forms.Button BackToEdit;
         private System.Windows.Forms.Button SavePreset;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ListView Value;
+        private System.Windows.Forms.TextBox FilePathTextBox;
     }
 }

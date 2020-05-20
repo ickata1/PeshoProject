@@ -117,6 +117,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EditPreset";
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.EditPreset_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
