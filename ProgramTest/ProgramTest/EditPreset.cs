@@ -34,7 +34,6 @@ namespace ProgramTest
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
-            this.Hide();
         }
 
         private void CreatePreset_Click(object sender, EventArgs e)
@@ -49,7 +48,11 @@ namespace ProgramTest
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
-            this.Hide();
+        }
+
+        private void EditPreset_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

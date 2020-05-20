@@ -29,7 +29,6 @@ namespace ProgramTest
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
-            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)

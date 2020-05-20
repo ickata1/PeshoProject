@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsBGChanger;
 
 namespace ProgramTest
 {
     public partial class AddPreset : Form
     {
+        private string filePath;
         public AddPreset()
         {
             InitializeComponent();
@@ -24,7 +26,6 @@ namespace ProgramTest
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
-            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -34,7 +35,22 @@ namespace ProgramTest
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.Show();
-            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            filePath = FileBrowserDialogue.GetFullFilePath();
+            FilePathTextBox.Text = filePath;
+        }
+
+        private void FilePathTextBox_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void ProgramName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
