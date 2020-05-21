@@ -35,6 +35,9 @@
             this.CreatePreset = new System.Windows.Forms.Button();
             this.Dismiss = new System.Windows.Forms.Button();
             this.AddNewPresetSetting = new System.Windows.Forms.Button();
+            this.presetSettingsGridBox = new System.Windows.Forms.DataGridView();
+            this.testButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.presetSettingsGridBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -103,11 +106,32 @@
             this.AddNewPresetSetting.UseVisualStyleBackColor = true;
             this.AddNewPresetSetting.Click += new System.EventHandler(this.AddNewPresetSetting_Click);
             // 
+            // presetSettingsGridBox
+            // 
+            this.presetSettingsGridBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.presetSettingsGridBox.Location = new System.Drawing.Point(187, 9);
+            this.presetSettingsGridBox.Name = "presetSettingsGridBox";
+            this.presetSettingsGridBox.Size = new System.Drawing.Size(222, 103);
+            this.presetSettingsGridBox.TabIndex = 7;
+            this.presetSettingsGridBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // testButton
+            // 
+            this.testButton.Location = new System.Drawing.Point(256, 145);
+            this.testButton.Name = "testButton";
+            this.testButton.Size = new System.Drawing.Size(113, 30);
+            this.testButton.TabIndex = 8;
+            this.testButton.Text = "Retarted";
+            this.testButton.UseVisualStyleBackColor = true;
+            this.testButton.Click += new System.EventHandler(this.testButton_Click);
+            // 
             // EditPreset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 175);
+            this.Controls.Add(this.testButton);
+            this.Controls.Add(this.presetSettingsGridBox);
             this.Controls.Add(this.AddNewPresetSetting);
             this.Controls.Add(this.Dismiss);
             this.Controls.Add(this.CreatePreset);
@@ -118,6 +142,7 @@
             this.Name = "EditPreset";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.EditPreset_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.presetSettingsGridBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,5 +157,7 @@
         private System.Windows.Forms.Button CreatePreset;
         private System.Windows.Forms.Button Dismiss;
         private System.Windows.Forms.Button AddNewPresetSetting;
+        private System.Windows.Forms.DataGridView presetSettingsGridBox;
+        private System.Windows.Forms.Button testButton;
     }
 }
