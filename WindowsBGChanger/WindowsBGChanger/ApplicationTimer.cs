@@ -23,7 +23,7 @@ namespace WindowsBGChanger
                 process.Exited += new EventHandler(ProcessExited);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -43,7 +43,7 @@ namespace WindowsBGChanger
                 process.Exited += new EventHandler(ProcessExited);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -62,7 +62,7 @@ namespace WindowsBGChanger
                 process.Exited += new EventHandler(ProcessExited);
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

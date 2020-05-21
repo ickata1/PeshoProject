@@ -80,6 +80,11 @@
     <Compile Include="AddPreset.Designer.cs">
       <DependentUpon>AddPreset.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005211327102_InitialCreate.cs" />
+    <Compile Include="Migrations\202005211327102_InitialCreate.designer.cs">
+      <DependentUpon>202005211327102_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddPreset.resx">
@@ -90,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditPreset.resx">
       <DependentUpon>EditPreset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005211327102_InitialCreate.resx">
+      <DependentUpon>202005211327102_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
