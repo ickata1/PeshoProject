@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Data.Repositories
 {
-    class PresetSettingRepository : CrudRepository<PresetSetting>
+    public class PresetSettingRepository : CrudRepository<PresetSetting>
     {
         public PresetSettingRepository(PresetDbContext dbContext) : base(dbContext, dbContext.PresetSettings)
         {
