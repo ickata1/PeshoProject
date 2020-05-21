@@ -12,7 +12,7 @@ namespace Data.Entities
         public string PresetSettingType { get; set; } //Background change or Open file,etc.
         public string Value { get; set; }
         public int PresetId { get; set; }
-        public virtual Preset Presets { get; set; }
+        public virtual Preset Preset { get; set; }
         //optional
         public bool isActive { get; set; }
     }
