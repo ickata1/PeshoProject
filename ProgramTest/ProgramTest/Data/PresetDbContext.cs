@@ -10,11 +10,19 @@ namespace Data
         {
 
         }
+
         public virtual DbSet<Preset> Presets { get; set; }
         public virtual DbSet<PresetSetting> PresetSettings { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Preset>().HasMany<PresetSetting>(preset => preset.PresetSettings); //Probably doe
+            //One-to-Many Relationship
+            modelBuilder.Entity<Preset>()
+                .HasMany<PresetSetting>(preset => preset.PresetSettings)
+                .WithRequired(presetSetting => presetSetting.Preset)
+                .HasForeignKey<int>(presetSetting => presetSetting.PresetId)
+                .WillCascadeOnDelete();
+
             base.OnModelCreating(modelBuilder);
         }
     }
