@@ -34,7 +34,7 @@ namespace ProgramTest
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
-            frm.ShowDialog();
+            frm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -83,7 +83,11 @@ namespace ProgramTest
 
         public void UpdateGridMainMenu()
         {
-            MainMenuDataGrid.DataSource = _presetRepository.GetOne().ToList();
+            MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
+            MainMenuDataGrid.Columns[0].Width = 25;
+            MainMenuDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            MainMenuDataGrid.Columns[3].Visible = false;
+            MainMenuDataGrid.Columns[4].Visible = false;
             MainMenuDataGrid.ReadOnly = true;
         }
 

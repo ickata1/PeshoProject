@@ -17,9 +17,14 @@ namespace Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //One-to-Many Relationship
-            modelBuilder.Entity<Preset>()
-                .HasMany<PresetSetting>(preset => preset.PresetSettings)
-                .WithRequired(presetSetting => presetSetting.Preset)
+            //modelBuilder.Entity<Preset>()
+            //    .HasMany<PresetSetting>(preset => preset.PresetSettings)
+            //    .WithRequired(presetSetting => presetSetting.Preset)
+            //    .HasForeignKey<int>(presetSetting => presetSetting.PresetId)
+            //    .WillCascadeOnDelete();
+            modelBuilder.Entity<PresetSetting>()
+                .HasRequired<Preset>(presetSetting => presetSetting.Preset)
+                .WithMany(preset => preset.PresetSettings)
                 .HasForeignKey<int>(presetSetting => presetSetting.PresetId)
                 .WillCascadeOnDelete();
             base.OnModelCreating(modelBuilder);

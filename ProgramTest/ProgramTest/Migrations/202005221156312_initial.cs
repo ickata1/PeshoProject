@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -24,7 +24,6 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
-                        Description = c.String(),
                         PresetSettingType = c.String(),
                         Value = c.String(),
                         PresetId = c.Int(nullable: false),

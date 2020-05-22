@@ -67,7 +67,6 @@
   <ItemGroup>
     <Compile Include="Data\Entities\Preset.cs" />
     <Compile Include="Data\Entities\PresetSetting.cs" />
-    <Compile Include="Data\LocalPresetDbContext.cs" />
     <Compile Include="Data\PresetDbContext.cs" />
     <Compile Include="Data\Repositories\CrudRepository.cs" />
     <Compile Include="Data\Repositories\PresetRepository.cs" />
@@ -90,13 +89,9 @@
     <Compile Include="AddPreset.Designer.cs">
       <DependentUpon>AddPreset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005211327102_InitialCreate.cs" />
-    <Compile Include="Migrations\202005211327102_InitialCreate.designer.cs">
-      <DependentUpon>202005211327102_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005220858324_initial.cs" />
-    <Compile Include="Migrations\202005220858324_initial.designer.cs">
-      <DependentUpon>202005220858324_initial.cs</DependentUpon>
+    <Compile Include="Migrations\202005221156312_initial.cs" />
+    <Compile Include="Migrations\202005221156312_initial.designer.cs">
+      <DependentUpon>202005221156312_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -110,11 +105,8 @@
     <EmbeddedResource Include="EditPreset.resx">
       <DependentUpon>EditPreset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005211327102_InitialCreate.resx">
-      <DependentUpon>202005211327102_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005220858324_initial.resx">
-      <DependentUpon>202005220858324_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005221156312_initial.resx">
+      <DependentUpon>202005221156312_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
