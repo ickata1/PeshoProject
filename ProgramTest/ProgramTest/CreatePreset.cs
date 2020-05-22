@@ -36,9 +36,11 @@ namespace ProgramTest
         private void Save_Click(object sender, EventArgs e)
         {
             Preset preset = new Preset();
+
             preset.Name = PresetName.Text;
             preset.Description = DescriptionBox.Text;
             _presetRepository.Add(preset);
+            
             this.Close();
         }
     }

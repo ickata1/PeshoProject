@@ -17,15 +17,16 @@ namespace ProgramTest
     public partial class EditPreset : Form
     {
         public List<PresetSetting> presetSettings { get; set; }
+        private Preset _currentPreset = new Preset();
         private PresetSettingRepository _presetSettingRepository;
         private PresetRepository _presetRepository;
-        private Preset _currentPreset = new Preset();
+        
         public EditPreset(Preset preset)
         {
             this._currentPreset = preset;
             _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
-
             _presetRepository = new PresetRepository(new PresetDbContext());
+            
             InitializeComponent();
         }
 
@@ -48,6 +49,7 @@ namespace ProgramTest
         private void AddNewPresetSetting_Click(object sender, EventArgs e)
         {
             var frm = new AddPreset(_currentPreset);
+            
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };

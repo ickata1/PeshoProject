@@ -16,8 +16,9 @@ namespace ProgramTest
 {
     public partial class MainMenu : Form
     {
-        private List<int> startedProcessIds = new List<int>();
+        private List<int> _startedProcessIds = new List<int>();
         private PresetRepository _presetRepository;
+        
         public MainMenu()
         {
             _presetRepository = new PresetRepository(new PresetDbContext());
@@ -48,8 +49,6 @@ namespace ProgramTest
             UpdateGridMainMenu();
         }
 
-        
-
         private void displayText_TextChanged(object sender, EventArgs e)
         {
 
@@ -64,7 +63,8 @@ namespace ProgramTest
         {
             Preset preset = GetSelectedPreset();
             List<PresetSetting> currentPresetSettings = preset.PresetSettings.ToList();
-            #region Declaration of Lists
+
+            #region Seperate Preset Settings by setting type
             List<PresetSetting> currentPresetSettingsFile = currentPresetSettings
                 .Where(type => type.PresetSettingType == "File").ToList();
             List<PresetSetting> currentPresetSettingsURL = currentPresetSettings
@@ -77,16 +77,18 @@ namespace ProgramTest
             List<string> bgPaths = new List<string>();
             #endregion
 
-            #region Preset Settings Thingy
+            #region Preset Settings' execution
+            //Files and exe's
             foreach (var presetSetting in currentPresetSettingsFile)
             {
                 filePaths.Add(presetSetting.Value);
             }
             foreach (var filePath in filePaths)
             {
-                startedProcessIds.Add(AppManager.OpenExe(filePath));
+                _startedProcessIds.Add(AppManager.OpenExe(filePath));
             }
             
+            //Links
             foreach (var presetSetting in currentPresetSettingsURL)
             {
                 urlPaths.Add(presetSetting.Value);
@@ -96,6 +98,7 @@ namespace ProgramTest
                 AppManager.OpenLink(urlPath);
             }
             
+            //Wallpaper(s)
             foreach(var presetSetting in currentPresetSettingsBG)
             {
                 bgPaths.Add(presetSetting.Value);
@@ -117,8 +120,8 @@ namespace ProgramTest
             MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
             MainMenuDataGrid.Columns[0].Width = 25;
             MainMenuDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            MainMenuDataGrid.Columns[3].Visible = false;
-            MainMenuDataGrid.Columns[4].Visible = false;
+            MainMenuDataGrid.Columns[3].Visible = false;    //Hides presetValue column
+            MainMenuDataGrid.Columns[4].Visible = false;    //Hides isActive column
             MainMenuDataGrid.ReadOnly = true;
         }
 
@@ -132,9 +135,8 @@ namespace ProgramTest
             if(MainMenuDataGrid.SelectedRows.Count == 1)
             {
                 DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
-                Preset preset = new Preset();
-                int idToBeEdited = int.Parse(row.Cells[0].Value.ToString());
-                preset = _presetRepository.GetOne(item => item.Id == idToBeEdited);
+                Preset preset = GetSelectedPreset();
+                
                 var frm = new EditPreset(preset);
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
@@ -142,25 +144,30 @@ namespace ProgramTest
                 frm.ShowDialog();
             }
         }
+
         private Preset GetSelectedPreset()
         {
             DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
             Preset preset = new Preset();
             int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
+
             preset = _presetRepository.GetOne(item => item.Id == idToBeDeleted);
+
             return preset;
         }
+
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            AppManager.CloseEverythingById(startedProcessIds); //Not Tested
+            AppManager.CloseEverythingById(_startedProcessIds);
             AppManager.CloseAllBrowsers();
-            startedProcessIds.Clear();
+            _startedProcessIds.Clear();
         }
+
         private void ForceCloseButton_Click(object sender, EventArgs e)
         {
-            AppManager.ForceCloseEverythingById(startedProcessIds); //Not Tested
+            AppManager.ForceCloseEverythingById(_startedProcessIds);
             AppManager.CloseAllBrowsers();
-            startedProcessIds.Clear();
+            _startedProcessIds.Clear();
         }
     }
 }
