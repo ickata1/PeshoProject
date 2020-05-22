@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Data\Entities\Preset.cs" />
     <Compile Include="Data\Entities\PresetSetting.cs" />
+    <Compile Include="Local Data\LocalPresetDbContext.cs" />
     <Compile Include="Data\PresetDbContext.cs" />
     <Compile Include="Data\Repositories\CrudRepository.cs" />
     <Compile Include="Data\Repositories\PresetRepository.cs" />
