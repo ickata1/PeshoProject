@@ -29,7 +29,7 @@ namespace ProgramTest
 
         private void UpdateGrid()
         {
-            presetSettingsGridBox.DataSource = _presetSettingRepository.GetOne().ToList();
+            presetSettingsGridBox.DataSource = _presetSettingRepository.GetAll().ToList();
             presetSettingsGridBox.ReadOnly = true;
         }
 
@@ -58,7 +58,6 @@ namespace ProgramTest
             Preset.Name = PresetName.Text;
             Preset.Description = presetDescription.Text;
             _presetRepository.Add(Preset);
-            MainMenu.
             this.Close();
         }
 

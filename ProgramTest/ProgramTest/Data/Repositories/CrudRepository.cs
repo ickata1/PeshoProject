@@ -16,7 +16,7 @@ namespace Data.Repositories
             _dbSet = dbSet;
         }
 
-        public IQueryable<T> GetOne()
+        public IQueryable<T> GetAll()
         {
             return _dbSet.AsQueryable(); //Returns everything from the table
         }
