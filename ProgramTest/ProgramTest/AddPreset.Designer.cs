@@ -53,7 +53,8 @@
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Items.AddRange(new object[] {
-            "File/URL",
+            "File",
+            "URL",
             "BG"});
             this.listBox1.Location = new System.Drawing.Point(12, 146);
             this.listBox1.Name = "listBox1";
@@ -125,7 +126,7 @@
             this.SavePreset.TabIndex = 9;
             this.SavePreset.Text = "Save";
             this.SavePreset.UseVisualStyleBackColor = true;
-            this.SavePreset.Click += new System.EventHandler(this.button3_Click);
+            this.SavePreset.Click += new System.EventHandler(this.SavePreset_Click);
             // 
             // FilePathTextBox
             // 

@@ -17,33 +17,19 @@ namespace ProgramTest
     public partial class AddPreset : Form
     {
         private PresetSettingRepository _presetSettingRepository;
+        private Preset _currentPreset = new Preset();
         private string filePath;
-        public AddPreset()
+        public AddPreset(Preset preset)
         {
+            _currentPreset = preset;
             _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
             InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            //var frm = new EditPreset();
-            //frm.Location = this.Location;
-            //frm.StartPosition = FormStartPosition.Manual;
-            //frm.FormClosing += delegate { this.Show(); };
-            //frm.Show();
+        { 
             this.Close();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            PresetSetting singlePreset = new PresetSetting();
-            singlePreset.Name = ProgramName.Text;
-            singlePreset.Value = FilePathTextBox.Text;
-            singlePreset.PresetSettingType = listBox1.Text;
-            _presetSettingRepository.Add(singlePreset);
-            this.Close();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             filePath = FileBrowserDialogue.GetFullFilePath();
@@ -63,6 +49,18 @@ namespace ProgramTest
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SavePreset_Click(object sender, EventArgs e)
+        {
+            PresetSetting singlePresetSetting = new PresetSetting();
+            singlePresetSetting.Name = ProgramName.Text;
+            singlePresetSetting.Value = FilePathTextBox.Text;
+            singlePresetSetting.PresetSettingType = listBox1.Text;
+            singlePresetSetting.PresetId = _currentPreset.Id;
+            singlePresetSetting.Preset = _currentPreset;
+            _presetSettingRepository.Add(singlePresetSetting);
+            this.Close();
         }
     }
 }
