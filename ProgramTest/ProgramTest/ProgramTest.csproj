@@ -45,6 +45,15 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.112.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\WindowsBGChanger\packages\System.Data.SQLite.Core.1.0.112.2\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.112.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\WindowsBGChanger\packages\System.Data.SQLite.EF6.1.0.112.2\lib\net40\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.112.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\..\WindowsBGChanger\packages\System.Data.SQLite.Linq.1.0.112.2\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Data\Entities\Preset.cs" />
     <Compile Include="Data\Entities\PresetSetting.cs" />
+    <Compile Include="Data\LocalPresetDbContext.cs" />
     <Compile Include="Data\PresetDbContext.cs" />
     <Compile Include="Data\Repositories\CrudRepository.cs" />
     <Compile Include="Data\Repositories\PresetRepository.cs" />
@@ -109,6 +119,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <Content Include="PresetDb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,6 +148,8 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\..\WindowsBGChanger\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\WindowsBGChanger\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets'))" />
   </Target>
   <Import Project="..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\..\WindowsBGChanger\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets" Condition="Exists('..\..\WindowsBGChanger\packages\System.Data.SQLite.Core.1.0.112.2\build\net40\System.Data.SQLite.Core.targets')" />
 </Project>
