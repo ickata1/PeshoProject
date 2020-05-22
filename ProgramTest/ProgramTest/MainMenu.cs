@@ -1,4 +1,6 @@
-﻿using Data.Entities;
+﻿using Data;
+using Data.Entities;
+using Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +16,16 @@ namespace ProgramTest
 {
     public partial class MainMenu : Form
     {
+        private PresetRepository _presetRepository;
         public MainMenu()
         {
+            _presetRepository = new PresetRepository(new PresetDbContext());
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            UpdateGridMainMenu();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -35,7 +39,15 @@ namespace ProgramTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if (MainMenuDataGrid.SelectedRows.Count == 1)
+            {
+                DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
+                Preset preset = new Preset();
+                int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
+                preset = _presetRepository.GetOne(item => item.Id == idToBeDeleted);
+                _presetRepository.Remove(preset);
+            }
+            UpdateGridMainMenu();
         }
 
         private void displayText_TextChanged(object sender, EventArgs e)
@@ -62,6 +74,27 @@ namespace ProgramTest
             {
                 AppManager.OpenExe(filePath);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            UpdateGridMainMenu();
+        }
+
+        public void UpdateGridMainMenu()
+        {
+            MainMenuDataGrid.DataSource = _presetRepository.GetOne().ToList();
+            MainMenuDataGrid.ReadOnly = true;
+        }
+
+        private void MainMenuDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void EditPreset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
