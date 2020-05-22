@@ -47,7 +47,7 @@ namespace ProgramTest
 
         private void AddNewPresetSetting_Click(object sender, EventArgs e)
         {
-            var frm = new AddPreset();
+            var frm = new AddPreset(_currentPreset);
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
