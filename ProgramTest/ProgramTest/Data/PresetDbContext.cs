@@ -22,6 +22,7 @@ namespace Data
                 .WithRequired(presetSetting => presetSetting.Preset)
                 .HasForeignKey<int>(presetSetting => presetSetting.PresetId)
                 .WillCascadeOnDelete();
+
             base.OnModelCreating(modelBuilder);
         }
     }

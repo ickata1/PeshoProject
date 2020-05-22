@@ -13,9 +13,10 @@ namespace Data.Repositories
 
         }
 
+        //Returns all PresetSetting entities with the given id
         public IQueryable<PresetSetting> GetPresetSettings(int presetSettingId)
         {
-            return this.GetAll(item => item.PresetId == presetSettingId);      //Returns all PresetSetting entities with this id
+            return this.GetAll(item => item.PresetId == presetSettingId);      
         }
     }
 }
