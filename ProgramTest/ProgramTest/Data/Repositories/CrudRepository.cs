@@ -10,7 +10,6 @@ namespace Data.Repositories
     {
         private readonly PresetDbContext _dbContext;
         private readonly DbSet<T> _dbSet;
-
         public CrudRepository(PresetDbContext dbContext, DbSet<T> dbSet)
         {
             _dbContext = dbContext;

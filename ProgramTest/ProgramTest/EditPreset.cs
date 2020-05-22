@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using Data.Repositories;
+using Data;
 
 namespace ProgramTest
 {
     public partial class EditPreset : Form
     {
+        public List<PresetSetting> presetSettings { get; set; }
+        private PresetSettingRepository _presetSettingRepository;
         public EditPreset()
         {
+            _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
+            
             InitializeComponent();
+        }
+
+        private void UpdateGrid()
+        {
+            presetSettingsGridBox.DataSource = _presetSettingRepository.GetAll().ToList();
+            presetSettingsGridBox.ReadOnly = true;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -54,6 +68,16 @@ namespace ProgramTest
         private void EditPreset_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void testButton_Click(object sender, EventArgs e)
+        {
+            UpdateGrid();
         }
     }
 }

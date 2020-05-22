@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Data;
+using Data.Entities;
+using Data.Repositories;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +16,11 @@ namespace ProgramTest
 {
     public partial class AddPreset : Form
     {
+        private PresetSettingRepository _presetSettingRepository;
         private string filePath;
         public AddPreset()
         {
+            _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
             InitializeComponent();
         }
 
@@ -31,11 +36,11 @@ namespace ProgramTest
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //var frm = new EditPreset();
-            //frm.Location = this.Location;
-            //frm.StartPosition = FormStartPosition.Manual;
-            //frm.FormClosing += delegate { this.Show(); };
-            //frm.Show();
+            PresetSetting singlePreset = new PresetSetting();
+            singlePreset.Name = ProgramName.Text;
+            singlePreset.Value = FilePathTextBox.Text;
+            singlePreset.PresetSettingType = listBox1.Text;
+            _presetSettingRepository.Add(singlePreset);
             this.Close();
         }
 
@@ -51,6 +56,11 @@ namespace ProgramTest
         }
 
         private void ProgramName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

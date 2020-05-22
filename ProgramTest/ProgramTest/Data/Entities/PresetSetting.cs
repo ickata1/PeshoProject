@@ -8,7 +8,6 @@ namespace Data.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }     //Optional: make it set a default value if left empty
         public string PresetSettingType { get; set; } //Background change or Open file,etc.
         public string Value { get; set; }
         public int PresetId { get; set; }

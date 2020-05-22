@@ -33,6 +33,7 @@
             this.Presets = new System.Windows.Forms.ListBox();
             this.EditPreset = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.runPreset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -73,11 +74,22 @@
             this.EditPreset.Text = "Edit";
             this.EditPreset.UseVisualStyleBackColor = true;
             // 
+            // runPreset
+            // 
+            this.runPreset.Location = new System.Drawing.Point(22, 181);
+            this.runPreset.Name = "runPreset";
+            this.runPreset.Size = new System.Drawing.Size(132, 45);
+            this.runPreset.TabIndex = 4;
+            this.runPreset.Text = "Run";
+            this.runPreset.UseVisualStyleBackColor = true;
+            this.runPreset.Click += new System.EventHandler(this.runPreset_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 303);
+            this.Controls.Add(this.runPreset);
             this.Controls.Add(this.EditPreset);
             this.Controls.Add(this.Presets);
             this.Controls.Add(this.button2);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.ListBox Presets;
         private System.Windows.Forms.Button EditPreset;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button runPreset;
     }
 }
 
