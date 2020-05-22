@@ -19,8 +19,10 @@ namespace ProgramTest
         public List<PresetSetting> presetSettings { get; set; }
         private PresetSettingRepository _presetSettingRepository;
         private PresetRepository _presetRepository;
-        public EditPreset()
+        private Preset _currentPreset = new Preset();
+        public EditPreset(Preset preset)
         {
+            this._currentPreset = preset;
             _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
 
             _presetRepository = new PresetRepository(new PresetDbContext());
@@ -29,7 +31,7 @@ namespace ProgramTest
 
         private void UpdateGrid()
         {
-            presetSettingsGridBox.DataSource = _presetSettingRepository.GetAll().ToList();
+            presetSettingsGridBox.DataSource = _currentPreset.PresetSettings.ToList();
             presetSettingsGridBox.ReadOnly = true;
         }
 
@@ -54,10 +56,9 @@ namespace ProgramTest
 
         private void CreatePreset_Click(object sender, EventArgs e)
         {
-            Preset Preset = new Preset();
-            Preset.Name = PresetName.Text;
-            Preset.Description = presetDescription.Text;
-            _presetRepository.Add(Preset);
+            _currentPreset.Name = PresetName.Text;
+            _currentPreset.Description = presetDescription.Text;
+            _presetRepository.Update(_currentPreset);
             this.Close();
         }
 
@@ -68,7 +69,8 @@ namespace ProgramTest
 
         private void EditPreset_Load(object sender, EventArgs e)
         {
-
+            PresetName.Text = _currentPreset.Name;
+            presetDescription.Text = _currentPreset.Description;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

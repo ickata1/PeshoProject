@@ -30,7 +30,7 @@ namespace ProgramTest
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var frm = new EditPreset();
+            var frm = new CreatePreset();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
@@ -98,7 +98,18 @@ namespace ProgramTest
 
         private void EditPreset_Click(object sender, EventArgs e)
         {
-
+            if(MainMenuDataGrid.SelectedRows.Count == 1)
+            {
+                DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
+                Preset preset = new Preset();
+                int idToBeEdited = int.Parse(row.Cells[0].Value.ToString());
+                preset = _presetRepository.GetOne(item => item.Id == idToBeEdited);
+                var frm = new EditPreset(preset);
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.Show(); };
+                frm.ShowDialog();
+            }
         }
     }
 }
