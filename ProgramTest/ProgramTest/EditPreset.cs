@@ -58,7 +58,6 @@ namespace ProgramTest
             Preset.Name = PresetName.Text;
             Preset.Description = presetDescription.Text;
             _presetRepository.Add(Preset);
-            MainMenu.
             this.Close();
         }
 
