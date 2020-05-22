@@ -102,7 +102,6 @@
             this.Controls.Add(this.PresetName);
             this.Controls.Add(this.Description);
             this.Controls.Add(this.Name);
-            this.Name = "CreatePreset";
             this.Text = "CreatePreset";
             this.ResumeLayout(false);
             this.PerformLayout();
