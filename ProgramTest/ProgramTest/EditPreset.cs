@@ -18,16 +18,18 @@ namespace ProgramTest
     {
         public List<PresetSetting> presetSettings { get; set; }
         private PresetSettingRepository _presetSettingRepository;
+        private PresetRepository _presetRepository;
         public EditPreset()
         {
             _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
-            
+
+            _presetRepository = new PresetRepository(new PresetDbContext());
             InitializeComponent();
         }
 
         private void UpdateGrid()
         {
-            presetSettingsGridBox.DataSource = _presetSettingRepository.GetAll().ToList();
+            presetSettingsGridBox.DataSource = _presetSettingRepository.GetOne().ToList();
             presetSettingsGridBox.ReadOnly = true;
         }
 
@@ -52,16 +54,15 @@ namespace ProgramTest
 
         private void CreatePreset_Click(object sender, EventArgs e)
         {
+            Preset Preset = new Preset();
+            Preset.Name = PresetName.Text;
+            Preset.Description = presetDescription.Text;
+            _presetRepository.Add(Preset);
             this.Close();
         }
 
         private void Dismiss_Click(object sender, EventArgs e)
         {
-            //var frm = new MainMenu();
-            //frm.Location = this.Location;
-            //frm.StartPosition = FormStartPosition.Manual;
-            //frm.FormClosing += delegate { this.Show(); };
-            //frm.Show();
             this.Close();
         }
 

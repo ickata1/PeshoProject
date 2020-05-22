@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.PresetName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.presetDescription = new System.Windows.Forms.TextBox();
             this.CreatePreset = new System.Windows.Forms.Button();
             this.Dismiss = new System.Windows.Forms.Button();
             this.AddNewPresetSetting = new System.Windows.Forms.Button();
@@ -51,12 +51,12 @@
             this.label1.Text = "Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // PresetName
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(123, 20);
-            this.textBox1.TabIndex = 1;
+            this.PresetName.Location = new System.Drawing.Point(16, 32);
+            this.PresetName.Name = "PresetName";
+            this.PresetName.Size = new System.Drawing.Size(123, 20);
+            this.PresetName.TabIndex = 1;
             // 
             // label2
             // 
@@ -69,12 +69,12 @@
             this.label2.Text = "Description";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox2
+            // presetDescription
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 78);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(165, 20);
-            this.textBox2.TabIndex = 3;
+            this.presetDescription.Location = new System.Drawing.Point(16, 78);
+            this.presetDescription.Name = "presetDescription";
+            this.presetDescription.Size = new System.Drawing.Size(165, 20);
+            this.presetDescription.TabIndex = 3;
             // 
             // CreatePreset
             // 
@@ -102,7 +102,7 @@
             this.AddNewPresetSetting.Name = "AddNewPresetSetting";
             this.AddNewPresetSetting.Size = new System.Drawing.Size(113, 30);
             this.AddNewPresetSetting.TabIndex = 6;
-            this.AddNewPresetSetting.Text = "Add";
+            this.AddNewPresetSetting.Text = "AddPresetSetting";
             this.AddNewPresetSetting.UseVisualStyleBackColor = true;
             this.AddNewPresetSetting.Click += new System.EventHandler(this.AddNewPresetSetting_Click);
             // 
@@ -121,7 +121,7 @@
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(113, 30);
             this.testButton.TabIndex = 8;
-            this.testButton.Text = "Retarted";
+            this.testButton.Text = "Update Grid";
             this.testButton.UseVisualStyleBackColor = true;
             this.testButton.Click += new System.EventHandler(this.testButton_Click);
             // 
@@ -135,9 +135,9 @@
             this.Controls.Add(this.AddNewPresetSetting);
             this.Controls.Add(this.Dismiss);
             this.Controls.Add(this.CreatePreset);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.presetDescription);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PresetName);
             this.Controls.Add(this.label1);
             this.Name = "EditPreset";
             this.Text = "Form2";
@@ -151,9 +151,9 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PresetName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox presetDescription;
         private System.Windows.Forms.Button CreatePreset;
         private System.Windows.Forms.Button Dismiss;
         private System.Windows.Forms.Button AddNewPresetSetting;
