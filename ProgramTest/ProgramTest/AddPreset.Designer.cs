@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.ProgramName = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.PresetTypeBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,29 +43,30 @@
             // 
             // ProgramName
             // 
-            this.ProgramName.Location = new System.Drawing.Point(12, 36);
+            this.ProgramName.Location = new System.Drawing.Point(12, 28);
             this.ProgramName.Name = "ProgramName";
             this.ProgramName.Size = new System.Drawing.Size(100, 20);
             this.ProgramName.TabIndex = 0;
             this.ProgramName.TextChanged += new System.EventHandler(this.ProgramName_TextChanged);
             // 
-            // listBox1
+            // PresetTypeBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Items.AddRange(new object[] {
+            this.PresetTypeBox.AccessibleName = "PresetTypeBox";
+            this.PresetTypeBox.FormattingEnabled = true;
+            this.PresetTypeBox.Items.AddRange(new object[] {
             "File",
             "URL",
             "BG"});
-            this.listBox1.Location = new System.Drawing.Point(12, 146);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(100, 17);
-            this.listBox1.TabIndex = 2;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.PresetTypeBox.Location = new System.Drawing.Point(12, 146);
+            this.PresetTypeBox.Name = "PresetTypeBox";
+            this.PresetTypeBox.Size = new System.Drawing.Size(100, 43);
+            this.PresetTypeBox.TabIndex = 2;
+            this.PresetTypeBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 3;
@@ -110,7 +111,7 @@
             // 
             // BackToEdit
             // 
-            this.BackToEdit.Location = new System.Drawing.Point(12, 190);
+            this.BackToEdit.Location = new System.Drawing.Point(12, 195);
             this.BackToEdit.Name = "BackToEdit";
             this.BackToEdit.Size = new System.Drawing.Size(75, 23);
             this.BackToEdit.TabIndex = 8;
@@ -120,7 +121,7 @@
             // 
             // SavePreset
             // 
-            this.SavePreset.Location = new System.Drawing.Point(93, 190);
+            this.SavePreset.Location = new System.Drawing.Point(93, 195);
             this.SavePreset.Name = "SavePreset";
             this.SavePreset.Size = new System.Drawing.Size(75, 23);
             this.SavePreset.TabIndex = 9;
@@ -140,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 302);
+            this.ClientSize = new System.Drawing.Size(203, 234);
             this.Controls.Add(this.FilePathTextBox);
             this.Controls.Add(this.SavePreset);
             this.Controls.Add(this.BackToEdit);
@@ -149,7 +150,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.PresetTypeBox);
             this.Controls.Add(this.ProgramName);
             this.Name = "AddPreset";
             this.Text = "Form3";
@@ -161,7 +162,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox ProgramName;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox PresetTypeBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

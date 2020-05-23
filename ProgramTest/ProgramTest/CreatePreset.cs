@@ -19,7 +19,7 @@ namespace ProgramTest
         private PresetRepository _presetRepository;
         public CreatePreset()
         {
-            _presetRepository = new PresetRepository(new PresetDbContext());
+            _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
         }
 
