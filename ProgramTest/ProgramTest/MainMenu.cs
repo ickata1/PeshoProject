@@ -85,6 +85,7 @@ namespace ProgramTest
             }
             foreach (var filePath in filePaths)
             {
+                //TODO... Check if there is space available
                 _startedProcessIds.Add(AppManager.OpenExe(filePath));
             }
             
