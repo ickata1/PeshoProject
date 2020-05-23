@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Microsoft.VisualBasic.Devices;
 
 namespace WindowsBGChanger
 {
@@ -21,7 +22,7 @@ namespace WindowsBGChanger
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns>
-        /// Returns true or false whether the process finishes successfully or not respectively.
+        /// Returns the opened process id
         /// </returns>
         public static int OpenExe(string filePath)
         {
@@ -52,7 +53,7 @@ namespace WindowsBGChanger
         /// </summary>
         /// <param name="url"></param>
         /// <returns>
-        /// Returns true or false whether the process finishes successfully or not respectively.
+        /// 
         /// </returns>
         public static void OpenLink(string url)
         {
@@ -322,7 +323,7 @@ namespace WindowsBGChanger
             
         }
 
-        //WORKS
+        //Remove
         public static void CloseEverythingOpened()
         {
             try
@@ -349,7 +350,7 @@ namespace WindowsBGChanger
             }
         }
 
-        //Throws an exception about Access denied, yet still closes all instances.
+        //Remove
         public static void ForceCloseEverythingOpened()
         {
             try
@@ -375,7 +376,55 @@ namespace WindowsBGChanger
             }
         }
 
+        //Returns the amount of memory a process is using in bytes
+        public static long GetProcessMemoryUsage(int processId)
+        {
+            try
+            {
+                Process process = Process.GetProcessById(processId);
+                return process.PrivateMemorySize64;
+            }
+            catch (ArgumentException)
+            {
+                //No such process is running
+                return -1;
+            }
+        }
 
+        //Returns the available system memory in percentage
+        public static double GetCurrentMemoryUsage()
+        {
+            ulong totalMemory = new ComputerInfo().TotalPhysicalMemory;
+            ulong availableMemory = new ComputerInfo().AvailablePhysicalMemory;
+            ulong usedMemory = totalMemory - availableMemory;
+
+            ulong maxAllowedMemory = (totalMemory * 95) / 100;      //Calculates 95% of the TOTAL available memory (RAM) to be used
+            double memoryUsagePercent = usedMemory / totalMemory * 100;      //Calculates the percentage of memory used
+
+            return memoryUsagePercent;
+        }
+
+        /// <summary>
+        /// Checks whether the used memory amount exceeds a given threshold percentage
+        /// </summary>
+        /// <param name="thresholdPercentage">Maximum percentage of used memory</param>
+        /// <returns></returns>
+        public static bool MemoryExceedsThresholdPercentage(double thresholdPercentage)
+        {
+            double totalMemory = new ComputerInfo().TotalPhysicalMemory;
+            double availableMemory = new ComputerInfo().AvailablePhysicalMemory;
+            double usedMemory = totalMemory - availableMemory;
+            double usedMemoryPercentage = usedMemory / totalMemory * 100;
+
+            if (usedMemoryPercentage > thresholdPercentage)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         #region Debugging Methods
         //Method to get all running processes at the moment
