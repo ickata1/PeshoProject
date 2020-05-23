@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +9,22 @@ namespace ProgramTest
 {
     static class Program
     {
+        private static PresetDbContext dbContext;
+
+        public static PresetDbContext DbContext
+        {
+            get 
+            {
+                if(dbContext == null)
+                {
+                    dbContext = new PresetDbContext();
+                }
+                return dbContext; 
+            }
+            
+        }
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

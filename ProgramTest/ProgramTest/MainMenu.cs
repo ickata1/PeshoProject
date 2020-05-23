@@ -21,7 +21,7 @@ namespace ProgramTest
         
         public MainMenu()
         {
-            _presetRepository = new PresetRepository(new PresetDbContext());
+            _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
         }
 
@@ -41,7 +41,7 @@ namespace ProgramTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MainMenuDataGrid.SelectedRows.Count == 1)
+            if (MainMenuDataGrid.SelectedRows.Count == 1) //Delete Fucnition
             {
                 Preset preset = GetSelectedPreset();
                 _presetRepository.Remove(preset);
@@ -118,7 +118,8 @@ namespace ProgramTest
         public void UpdateGridMainMenu()
         {
             MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
-            MainMenuDataGrid.Columns[0].Width = 25;
+            MainMenuDataGrid.Columns[0].Visible = false;
+            //MainMenuDataGrid.Columns[0].Width = 25;
             MainMenuDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             MainMenuDataGrid.Columns[3].Visible = false;    //Hides presetValue column
             MainMenuDataGrid.Columns[4].Visible = false;    //Hides isActive column

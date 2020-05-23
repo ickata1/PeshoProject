@@ -23,7 +23,7 @@ namespace ProgramTest
         public AddPreset(Preset preset)
         {
             _currentPreset = preset;
-            _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
+            _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
             InitializeComponent();
         }
 
@@ -59,7 +59,7 @@ namespace ProgramTest
 
             presetSetting.Name = ProgramName.Text;
             presetSetting.Value = FilePathTextBox.Text;
-            presetSetting.PresetSettingType = listBox1.Text;
+            presetSetting.PresetSettingType = PresetTypeBox.Text;
             presetSetting.PresetId = _currentPreset.Id;
             presetSetting.Preset = _currentPreset;
 

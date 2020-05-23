@@ -24,15 +24,20 @@ namespace ProgramTest
         public EditPreset(Preset preset)
         {
             this._currentPreset = preset;
-            _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
-            _presetRepository = new PresetRepository(new PresetDbContext());
-            
+            _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
+            _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
+            UpdateGrid();
         }
 
         private void UpdateGrid()
         {
+            
             presetSettingsGridBox.DataSource = _currentPreset.PresetSettings.ToList();
+            presetSettingsGridBox.Columns[0].Visible = false;
+            presetSettingsGridBox.Columns[4].Visible = false;
+            presetSettingsGridBox.Columns[5].Visible = false;
+            presetSettingsGridBox.Columns[6].Visible = false;
             presetSettingsGridBox.ReadOnly = true;
         }
 
@@ -82,6 +87,27 @@ namespace ProgramTest
 
         private void testButton_Click(object sender, EventArgs e)
         {
+            UpdateGrid();
+        }
+
+        private PresetSetting GetSelectedPreset()
+        {
+            DataGridViewRow row = this.presetSettingsGridBox.SelectedRows[0];
+            PresetSetting presetSetting = new PresetSetting();
+            int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
+
+            presetSetting = _presetSettingRepository.GetOne(item => item.Id == idToBeDeleted);
+
+            return presetSetting;
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (presetSettingsGridBox.SelectedRows.Count == 1) 
+            {
+                PresetSetting preset = GetSelectedPreset();
+                _presetSettingRepository.Remove(preset);
+            }
             UpdateGrid();
         }
     }
