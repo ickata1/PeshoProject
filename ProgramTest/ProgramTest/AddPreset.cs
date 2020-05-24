@@ -19,7 +19,7 @@ namespace ProgramTest
         private PresetSettingRepository _presetSettingRepository;
         private Preset _currentPreset = new Preset();
         private string _filePath;
-        
+
         public AddPreset(Preset preset)
         {
             _currentPreset = preset;
@@ -28,7 +28,7 @@ namespace ProgramTest
         }
 
         private void button2_Click(object sender, EventArgs e)
-        { 
+        {
             this.Close();
         }
 
@@ -40,31 +40,31 @@ namespace ProgramTest
 
         private void FilePathTextBox_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void ProgramName_TextChanged(object sender, EventArgs e)
         {
 
         }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void SavePreset_Click(object sender, EventArgs e)
         {
-            PresetSetting presetSetting = new PresetSetting();
+            if (System.IO.File.Exists(FilePathTextBox.Text))
+            {
+                PresetSetting presetSetting = new PresetSetting();
+                presetSetting.Name = ProgramName.Text;
+                presetSetting.Value = FilePathTextBox.Text;
+                presetSetting.PresetSettingType = presetType.Text;
+                presetSetting.PresetId = _currentPreset.Id;
+                presetSetting.Preset = _currentPreset;
+                _presetSettingRepository.Add(presetSetting);
+                this.Close();
+            }
+            else
+            {
+                FilePathTextBox.Clear();
+            }
 
-            presetSetting.Name = ProgramName.Text;
-            presetSetting.Value = FilePathTextBox.Text;
-            presetSetting.PresetSettingType = PresetTypeBox.Text;
-            presetSetting.PresetId = _currentPreset.Id;
-            presetSetting.Preset = _currentPreset;
-
-            _presetSettingRepository.Add(presetSetting);
-            this.Close();
         }
     }
 }

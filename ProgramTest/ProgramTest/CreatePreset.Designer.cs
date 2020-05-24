@@ -40,9 +40,10 @@
             // 
             this.Name.AutoSize = true;
             this.Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Name.Location = new System.Drawing.Point(8, 9);
+            this.Name.Location = new System.Drawing.Point(11, 11);
+            this.Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(51, 20);
+            this.Name.Size = new System.Drawing.Size(64, 25);
             this.Name.TabIndex = 0;
             this.Name.Text = "Name";
             this.Name.Click += new System.EventHandler(this.label1_Click);
@@ -51,31 +52,38 @@
             // 
             this.Description.AutoSize = true;
             this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Description.Location = new System.Drawing.Point(8, 55);
+            this.Description.Location = new System.Drawing.Point(11, 68);
+            this.Description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(89, 20);
+            this.Description.Size = new System.Drawing.Size(109, 25);
             this.Description.TabIndex = 1;
             this.Description.Text = "Description";
             // 
             // PresetName
             // 
-            this.PresetName.Location = new System.Drawing.Point(12, 32);
+            this.PresetName.Location = new System.Drawing.Point(16, 39);
+            this.PresetName.Margin = new System.Windows.Forms.Padding(4);
+            this.PresetName.MaxLength = 15;
             this.PresetName.Name = "PresetName";
-            this.PresetName.Size = new System.Drawing.Size(132, 20);
+            this.PresetName.Size = new System.Drawing.Size(175, 22);
             this.PresetName.TabIndex = 2;
             // 
             // DescriptionBox
             // 
-            this.DescriptionBox.Location = new System.Drawing.Point(12, 78);
+            this.DescriptionBox.Location = new System.Drawing.Point(16, 96);
+            this.DescriptionBox.Margin = new System.Windows.Forms.Padding(4);
+            this.DescriptionBox.MaxLength = 100;
             this.DescriptionBox.Name = "DescriptionBox";
-            this.DescriptionBox.Size = new System.Drawing.Size(173, 20);
+            this.DescriptionBox.Size = new System.Drawing.Size(229, 22);
             this.DescriptionBox.TabIndex = 3;
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(12, 111);
+            this.Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Save.Location = new System.Drawing.Point(16, 137);
+            this.Save.Margin = new System.Windows.Forms.Padding(4);
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(88, 37);
+            this.Save.Size = new System.Drawing.Size(117, 46);
             this.Save.TabIndex = 4;
             this.Save.Text = "Create";
             this.Save.UseVisualStyleBackColor = true;
@@ -83,9 +91,11 @@
             // 
             // Back
             // 
-            this.Back.Location = new System.Drawing.Point(106, 111);
+            this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Back.Location = new System.Drawing.Point(141, 137);
+            this.Back.Margin = new System.Windows.Forms.Padding(4);
             this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(87, 37);
+            this.Back.Size = new System.Drawing.Size(116, 46);
             this.Back.TabIndex = 5;
             this.Back.Text = "Back";
             this.Back.UseVisualStyleBackColor = true;
@@ -93,15 +103,22 @@
             // 
             // CreatePreset
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 217);
+            this.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.ClientSize = new System.Drawing.Size(417, 208);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.DescriptionBox);
             this.Controls.Add(this.PresetName);
             this.Controls.Add(this.Description);
             this.Controls.Add(this.Name);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreatePreset";
             this.ResumeLayout(false);
             this.PerformLayout();

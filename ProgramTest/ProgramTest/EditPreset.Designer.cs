@@ -45,43 +45,49 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.Size = new System.Drawing.Size(64, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // PresetName
             // 
-            this.PresetName.Location = new System.Drawing.Point(16, 32);
+            this.PresetName.Location = new System.Drawing.Point(21, 39);
+            this.PresetName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PresetName.Name = "PresetName";
-            this.PresetName.Size = new System.Drawing.Size(123, 20);
+            this.PresetName.Size = new System.Drawing.Size(163, 22);
             this.PresetName.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(12, 55);
+            this.label2.Location = new System.Drawing.Point(16, 68);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 20);
+            this.label2.Size = new System.Drawing.Size(109, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Description";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // presetDescription
             // 
-            this.presetDescription.Location = new System.Drawing.Point(16, 78);
+            this.presetDescription.Location = new System.Drawing.Point(21, 96);
+            this.presetDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.presetDescription.Name = "presetDescription";
-            this.presetDescription.Size = new System.Drawing.Size(165, 20);
+            this.presetDescription.Size = new System.Drawing.Size(163, 22);
             this.presetDescription.TabIndex = 3;
             // 
             // CreatePreset
             // 
-            this.CreatePreset.Location = new System.Drawing.Point(16, 120);
+            this.CreatePreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreatePreset.Location = new System.Drawing.Point(307, 312);
+            this.CreatePreset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CreatePreset.Name = "CreatePreset";
-            this.CreatePreset.Size = new System.Drawing.Size(114, 30);
+            this.CreatePreset.Size = new System.Drawing.Size(152, 37);
             this.CreatePreset.TabIndex = 4;
             this.CreatePreset.Text = "Save";
             this.CreatePreset.UseVisualStyleBackColor = true;
@@ -89,9 +95,11 @@
             // 
             // Dismiss
             // 
-            this.Dismiss.Location = new System.Drawing.Point(12, 285);
+            this.Dismiss.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Dismiss.Location = new System.Drawing.Point(476, 312);
+            this.Dismiss.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Dismiss.Name = "Dismiss";
-            this.Dismiss.Size = new System.Drawing.Size(114, 30);
+            this.Dismiss.Size = new System.Drawing.Size(152, 37);
             this.Dismiss.TabIndex = 5;
             this.Dismiss.Text = "Back";
             this.Dismiss.UseVisualStyleBackColor = true;
@@ -99,9 +107,11 @@
             // 
             // AddNewPresetSetting
             // 
-            this.AddNewPresetSetting.Location = new System.Drawing.Point(17, 156);
+            this.AddNewPresetSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddNewPresetSetting.Location = new System.Drawing.Point(21, 137);
+            this.AddNewPresetSetting.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddNewPresetSetting.Name = "AddNewPresetSetting";
-            this.AddNewPresetSetting.Size = new System.Drawing.Size(113, 30);
+            this.AddNewPresetSetting.Size = new System.Drawing.Size(163, 37);
             this.AddNewPresetSetting.TabIndex = 6;
             this.AddNewPresetSetting.Text = "AddPresetSetting";
             this.AddNewPresetSetting.UseVisualStyleBackColor = true;
@@ -109,18 +119,23 @@
             // 
             // presetSettingsGridBox
             // 
+            this.presetSettingsGridBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.presetSettingsGridBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.presetSettingsGridBox.Location = new System.Drawing.Point(187, 9);
+            this.presetSettingsGridBox.Location = new System.Drawing.Point(205, 39);
+            this.presetSettingsGridBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.presetSettingsGridBox.Name = "presetSettingsGridBox";
-            this.presetSettingsGridBox.Size = new System.Drawing.Size(292, 267);
+            this.presetSettingsGridBox.RowHeadersWidth = 51;
+            this.presetSettingsGridBox.Size = new System.Drawing.Size(423, 246);
             this.presetSettingsGridBox.TabIndex = 7;
             this.presetSettingsGridBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(187, 282);
+            this.testButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.testButton.Location = new System.Drawing.Point(21, 248);
+            this.testButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(89, 22);
+            this.testButton.Size = new System.Drawing.Size(163, 37);
             this.testButton.TabIndex = 8;
             this.testButton.Text = "Refresh";
             this.testButton.UseVisualStyleBackColor = true;
@@ -128,9 +143,11 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(17, 192);
+            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteButton.Location = new System.Drawing.Point(21, 192);
+            this.DeleteButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(114, 35);
+            this.DeleteButton.Size = new System.Drawing.Size(163, 36);
             this.DeleteButton.TabIndex = 9;
             this.DeleteButton.Text = "Delete Preset Setting";
             this.DeleteButton.UseVisualStyleBackColor = true;
@@ -138,9 +155,10 @@
             // 
             // EditPreset
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 327);
+            this.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.ClientSize = new System.Drawing.Size(641, 362);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.presetSettingsGridBox);
@@ -151,6 +169,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.PresetName);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EditPreset";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.EditPreset_Load);
