@@ -37,6 +37,7 @@
             this.AddNewPresetSetting = new System.Windows.Forms.Button();
             this.presetSettingsGridBox = new System.Windows.Forms.DataGridView();
             this.testButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.presetSettingsGridBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +79,7 @@
             // 
             // CreatePreset
             // 
-            this.CreatePreset.Location = new System.Drawing.Point(16, 118);
+            this.CreatePreset.Location = new System.Drawing.Point(16, 120);
             this.CreatePreset.Name = "CreatePreset";
             this.CreatePreset.Size = new System.Drawing.Size(114, 30);
             this.CreatePreset.TabIndex = 4;
@@ -88,7 +89,7 @@
             // 
             // Dismiss
             // 
-            this.Dismiss.Location = new System.Drawing.Point(136, 118);
+            this.Dismiss.Location = new System.Drawing.Point(12, 285);
             this.Dismiss.Name = "Dismiss";
             this.Dismiss.Size = new System.Drawing.Size(114, 30);
             this.Dismiss.TabIndex = 5;
@@ -98,7 +99,7 @@
             // 
             // AddNewPresetSetting
             // 
-            this.AddNewPresetSetting.Location = new System.Drawing.Point(256, 118);
+            this.AddNewPresetSetting.Location = new System.Drawing.Point(17, 156);
             this.AddNewPresetSetting.Name = "AddNewPresetSetting";
             this.AddNewPresetSetting.Size = new System.Drawing.Size(113, 30);
             this.AddNewPresetSetting.TabIndex = 6;
@@ -111,25 +112,36 @@
             this.presetSettingsGridBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.presetSettingsGridBox.Location = new System.Drawing.Point(187, 9);
             this.presetSettingsGridBox.Name = "presetSettingsGridBox";
-            this.presetSettingsGridBox.Size = new System.Drawing.Size(222, 103);
+            this.presetSettingsGridBox.Size = new System.Drawing.Size(292, 267);
             this.presetSettingsGridBox.TabIndex = 7;
             this.presetSettingsGridBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // testButton
             // 
-            this.testButton.Location = new System.Drawing.Point(256, 145);
+            this.testButton.Location = new System.Drawing.Point(187, 282);
             this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(113, 30);
+            this.testButton.Size = new System.Drawing.Size(89, 22);
             this.testButton.TabIndex = 8;
-            this.testButton.Text = "Update Grid";
+            this.testButton.Text = "Refresh";
             this.testButton.UseVisualStyleBackColor = true;
             this.testButton.Click += new System.EventHandler(this.testButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(17, 192);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(114, 35);
+            this.DeleteButton.TabIndex = 9;
+            this.DeleteButton.Text = "Delete Preset Setting";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // EditPreset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 175);
+            this.ClientSize = new System.Drawing.Size(491, 327);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.presetSettingsGridBox);
             this.Controls.Add(this.AddNewPresetSetting);
@@ -159,5 +171,6 @@
         private System.Windows.Forms.Button AddNewPresetSetting;
         private System.Windows.Forms.DataGridView presetSettingsGridBox;
         private System.Windows.Forms.Button testButton;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }

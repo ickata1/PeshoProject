@@ -17,19 +17,27 @@ namespace ProgramTest
     public partial class EditPreset : Form
     {
         public List<PresetSetting> presetSettings { get; set; }
+        private Preset _currentPreset = new Preset();
         private PresetSettingRepository _presetSettingRepository;
         private PresetRepository _presetRepository;
-        public EditPreset()
+        
+        public EditPreset(Preset preset)
         {
-            _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
-
-            _presetRepository = new PresetRepository(new PresetDbContext());
+            this._currentPreset = preset;
+            _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
+            _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
+            UpdateGrid();
         }
 
         private void UpdateGrid()
         {
-            presetSettingsGridBox.DataSource = _presetSettingRepository.GetOne().ToList();
+            
+            presetSettingsGridBox.DataSource = _currentPreset.PresetSettings.ToList();
+            presetSettingsGridBox.Columns[0].Visible = false;
+            presetSettingsGridBox.Columns[4].Visible = false;
+            presetSettingsGridBox.Columns[5].Visible = false;
+            presetSettingsGridBox.Columns[6].Visible = false;
             presetSettingsGridBox.ReadOnly = true;
         }
 
@@ -45,7 +53,8 @@ namespace ProgramTest
 
         private void AddNewPresetSetting_Click(object sender, EventArgs e)
         {
-            var frm = new AddPreset();
+            var frm = new AddPreset(_currentPreset);
+            
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
@@ -54,10 +63,9 @@ namespace ProgramTest
 
         private void CreatePreset_Click(object sender, EventArgs e)
         {
-            Preset Preset = new Preset();
-            Preset.Name = PresetName.Text;
-            Preset.Description = presetDescription.Text;
-            _presetRepository.Add(Preset);
+            _currentPreset.Name = PresetName.Text;
+            _currentPreset.Description = presetDescription.Text;
+            _presetRepository.Update(_currentPreset);
             this.Close();
         }
 
@@ -68,7 +76,8 @@ namespace ProgramTest
 
         private void EditPreset_Load(object sender, EventArgs e)
         {
-
+            PresetName.Text = _currentPreset.Name;
+            presetDescription.Text = _currentPreset.Description;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -78,6 +87,27 @@ namespace ProgramTest
 
         private void testButton_Click(object sender, EventArgs e)
         {
+            UpdateGrid();
+        }
+
+        private PresetSetting GetSelectedPreset()
+        {
+            DataGridViewRow row = this.presetSettingsGridBox.SelectedRows[0];
+            PresetSetting presetSetting = new PresetSetting();
+            int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
+
+            presetSetting = _presetSettingRepository.GetOne(item => item.Id == idToBeDeleted);
+
+            return presetSetting;
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            if (presetSettingsGridBox.SelectedRows.Count == 1) 
+            {
+                PresetSetting preset = GetSelectedPreset();
+                _presetSettingRepository.Remove(preset);
+            }
             UpdateGrid();
         }
     }

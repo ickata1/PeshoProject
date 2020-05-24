@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreatePreset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatePreset.Designer.cs">
+      <DependentUpon>CreatePreset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\Entities\Preset.cs" />
     <Compile Include="Data\Entities\PresetSetting.cs" />
     <Compile Include="Local Data\LocalPresetDbContext.cs" />
@@ -106,6 +112,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddPreset.resx">
       <DependentUpon>AddPreset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreatePreset.resx">
+      <DependentUpon>CreatePreset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

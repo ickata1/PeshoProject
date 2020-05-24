@@ -17,37 +17,25 @@ namespace ProgramTest
     public partial class AddPreset : Form
     {
         private PresetSettingRepository _presetSettingRepository;
-        private string filePath;
-        public AddPreset()
+        private Preset _currentPreset = new Preset();
+        private string _filePath;
+        
+        public AddPreset(Preset preset)
         {
-            _presetSettingRepository = new PresetSettingRepository(new PresetDbContext());
+            _currentPreset = preset;
+            _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
             InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            //var frm = new EditPreset();
-            //frm.Location = this.Location;
-            //frm.StartPosition = FormStartPosition.Manual;
-            //frm.FormClosing += delegate { this.Show(); };
-            //frm.Show();
-            this.Close();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            PresetSetting singlePreset = new PresetSetting();
-            singlePreset.Name = ProgramName.Text;
-            singlePreset.Value = FilePathTextBox.Text;
-            singlePreset.PresetSettingType = listBox1.Text;
-            _presetSettingRepository.Add(singlePreset);
+        { 
             this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            filePath = FileBrowserDialogue.GetFullFilePath();
-            FilePathTextBox.Text = filePath;
+            _filePath = FileBrowserDialogue.GetFullFilePath();
+            FilePathTextBox.Text = _filePath;
         }
 
         private void FilePathTextBox_TextChanged(object sender, EventArgs e)
@@ -63,6 +51,20 @@ namespace ProgramTest
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void SavePreset_Click(object sender, EventArgs e)
+        {
+            PresetSetting presetSetting = new PresetSetting();
+
+            presetSetting.Name = ProgramName.Text;
+            presetSetting.Value = FilePathTextBox.Text;
+            presetSetting.PresetSettingType = PresetTypeBox.Text;
+            presetSetting.PresetId = _currentPreset.Id;
+            presetSetting.Preset = _currentPreset;
+
+            _presetSettingRepository.Add(presetSetting);
+            this.Close();
         }
     }
 }

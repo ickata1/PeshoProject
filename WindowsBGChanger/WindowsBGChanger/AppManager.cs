@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace WindowsBGChanger
 {
@@ -22,7 +23,7 @@ namespace WindowsBGChanger
         /// <returns>
         /// Returns true or false whether the process finishes successfully or not respectively.
         /// </returns>
-        public static void OpenExe(string filePath)
+        public static int OpenExe(string filePath)
         {
             try
             {
@@ -32,10 +33,7 @@ namespace WindowsBGChanger
                     myProcess.Start();
 
                     //Adds process' id to a list to kill *SPECIFIC* process instanses
-                    processIds.Add(myProcess.Id);
-
-                    //Adds process' name to a list to kill *ALL* instanses of the process
-                    processNames.Add(myProcess.ProcessName);
+                    return myProcess.Id;
 
                     //Saves process in a list
                     //openProcesses.Add(myProcess);
@@ -45,6 +43,7 @@ namespace WindowsBGChanger
             {
                 Console.WriteLine(e.Message);
             }
+            return 0;
         }
 
         //WORKS
@@ -270,6 +269,57 @@ namespace WindowsBGChanger
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public static void CloseEverythingById(List<int> processIdsToClose)
+        {
+            try
+            {
+                List<Process> processesToKill = new List<Process>();
+
+                foreach (var processId in processIdsToClose)
+                {
+                    processesToKill.Add(Process.GetProcessById(processId));
+                }
+
+                //Closes all open processes
+                foreach (var process in processesToKill)
+                {
+                    process.CloseMainWindow();
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+           
+
+        }
+
+        public static void ForceCloseEverythingById(List<int> processIdsToClose)
+        {
+            try
+            {
+                List<Process> processesToKill = new List<Process>();
+
+                foreach (var processId in processIdsToClose)
+                {
+                    processesToKill.Add(Process.GetProcessById(processId));
+                }
+
+                //Closes all open processes
+                foreach (var process in processesToKill)
+                {
+                    process.Kill();
+                }
+            }
+            catch (Exception)
+            {
+
+                
+            }
+            
         }
 
         //WORKS
