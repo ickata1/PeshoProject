@@ -1,5 +1,4 @@
 using Data;
-using Local_Data;
 using Data.Entities;
 using Data.Repositories;
 using System;
@@ -43,32 +42,18 @@ namespace ProgramTest
 
     static class Program
     {
-        private static PresetDbContext dbContext;
-
-        public static PresetDbContext DbContext
-        {
-            get 
-            {
-                if(dbContext == null)
-                {
-                    dbContext = new PresetDbContext();
-                }
-                return dbContext; 
-            }
-            
-        }
       
-       private static LocalPresetDbContext localDbContext;
+       private static PresetDbContext dbContext;
   
-        public static LocalPresetDbContext LocalDbContext
+        public static PresetDbContext DbContext
         {
             get
             {
-                if (localDbContext == null)
+                if (dbContext == null)
                 {
-                    localDbContext = new LocalPresetDbContext();
+                    dbContext = new PresetDbContext();
                 }
-                return localDbContext;
+                return dbContext;
             }
 
         }

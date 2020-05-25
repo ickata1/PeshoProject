@@ -1,7 +1,5 @@
-﻿using Data;
-using Data.Entities;
+﻿using Data.Entities;
 using Data.Repositories;
-using Local = Local_Data.Repo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsBGChanger;
-using Local_Data;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Diagnostics;
 
@@ -22,15 +19,11 @@ namespace ProgramTest
     {
 
         private List<int> _startedProcessIds = new List<int>();
-        private PresetRepository _presetRepository;
-        private Local.PresetRepository _localPresetRepository;
-        private bool _useServerDb = false;
-        
+        private PresetRepository _presetRepository;        
         private bool isCollapsedPreset = true;
         private bool isCollapsedClose = true;
         public MainMenu()
         {
-            _localPresetRepository = new Local.PresetRepository(Program.LocalDbContext);
             _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
         }
@@ -39,7 +32,6 @@ namespace ProgramTest
         {
             UpdateGridMainMenu();
             MainMenuDataGrid.Columns[1].Width = 100;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,18 +49,8 @@ namespace ProgramTest
             if (rows.Count >= 1)                          
             {
                 List<Preset> presets = GetSelectedPresets();
-                if (_useServerDb)
-                {
-                    foreach (var preset in presets)
-                    {
-                        _presetRepository.Remove(preset);
-                    }
-                    //_presetRepository.RemoveRange(presets); TO DO: Add RemoveRange
-                }
-                else
-                {
-                    _localPresetRepository.RemoveRange(presets);
-                }
+                
+                    _presetRepository.RemoveRange(presets);                
             }
             UpdateGridMainMenu();
         }
@@ -145,14 +127,7 @@ namespace ProgramTest
 
         public void UpdateGridMainMenu()
         {
-            if (_useServerDb)
-            {
-                MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
-            }
-            else
-            {
-                MainMenuDataGrid.DataSource = _localPresetRepository.GetAll().ToList();
-            }
+            MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
             MainMenuDataGrid.Columns[0].Visible = false;
             //MainMenuDataGrid.Columns[0].Width = 25;
             MainMenuDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -185,15 +160,9 @@ namespace ProgramTest
         {
             DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
             Preset preset = new Preset();
-            int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
-            if (_useServerDb)
-            {
-                preset = _presetRepository.GetById(idToBeDeleted);
-            }
-            else
-            {
-                preset = _localPresetRepository.GetById(idToBeDeleted);
-            }
+            int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());                      
+            preset = _presetRepository.GetById(idToBeDeleted);
+            
             return preset;
         }
         
@@ -206,20 +175,11 @@ namespace ProgramTest
                 idsToBeDeleted[i] = int.Parse(rows[i].Cells[0].Value.ToString());
             }
             List<Preset> presets = new List<Preset>();
-            if (_useServerDb)
+            foreach (var id in idsToBeDeleted)
             {
-                foreach (var id in idsToBeDeleted)
-                {
-                    presets.Add(_presetRepository.GetById(id));
-                }
+                presets.Add(_presetRepository.GetById(id));
             }
-            else
-            {
-                foreach (var id in idsToBeDeleted)
-                {
-                    presets.Add(_localPresetRepository.GetById(id));
-                }
-            }
+            
             return presets;
         }
 
