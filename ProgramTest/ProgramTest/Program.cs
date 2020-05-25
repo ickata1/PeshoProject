@@ -1,4 +1,5 @@
 ﻿using Data;
+using Local_Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,20 @@ namespace ProgramTest
             
         }
 
+        private static LocalPresetDbContext localDbContext;
 
+        public static LocalPresetDbContext LocalDbContext
+        {
+            get
+            {
+                if (localDbContext == null)
+                {
+                    localDbContext = new LocalPresetDbContext();
+                }
+                return localDbContext;
+            }
+
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

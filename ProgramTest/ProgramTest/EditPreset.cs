@@ -10,7 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Data.Repositories;
+using Local = Local_Data.Repo;
 using Data;
+using Local_Data;
 
 namespace ProgramTest
 {
@@ -20,19 +22,25 @@ namespace ProgramTest
         private Preset _currentPreset = new Preset();
         private PresetSettingRepository _presetSettingRepository;
         private PresetRepository _presetRepository;
-        
+        private LocalPresetDbContext _localDbContext;
+        private Local.PresetSettingRepository _localPresetSettingRepository;
+        private Local.PresetRepository _localPresetRepository;
+        private bool _useServerDb = false;
+
         public EditPreset(Preset preset)
         {
             this._currentPreset = preset;
             _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
             _presetRepository = new PresetRepository(Program.DbContext);
+            _localDbContext = new LocalPresetDbContext();
+            _localPresetRepository = new Local.PresetRepository(Program.LocalDbContext);
+            _localPresetSettingRepository = new Local.PresetSettingRepository(Program.LocalDbContext);
             InitializeComponent();
             UpdateGrid();
         }
 
         private void UpdateGrid()
         {
-            
             presetSettingsGridBox.DataSource = _currentPreset.PresetSettings.ToList();
             presetSettingsGridBox.Columns[0].Visible = false;
             presetSettingsGridBox.Columns[4].Visible = false;
@@ -65,7 +73,14 @@ namespace ProgramTest
         {
             _currentPreset.Name = PresetName.Text;
             _currentPreset.Description = presetDescription.Text;
-            _presetRepository.Update(_currentPreset);
+            if (_useServerDb)
+            {
+                _presetRepository.Update(_currentPreset);
+            }
+            else
+            {
+                _localPresetRepository.Update(_currentPreset);
+            }
             this.Close();
         }
 
@@ -94,10 +109,15 @@ namespace ProgramTest
         {
             DataGridViewRow row = this.presetSettingsGridBox.SelectedRows[0];
             PresetSetting presetSetting = new PresetSetting();
-            int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
-
-            presetSetting = _presetSettingRepository.GetOne(item => item.Id == idToBeDeleted);
-
+            int id = int.Parse(row.Cells[0].Value.ToString());
+            if (_useServerDb)
+            {
+                presetSetting = _presetSettingRepository.GetById(id);
+            }
+            else
+            {
+                presetSetting = _localPresetSettingRepository.GetById(id);
+            }
             return presetSetting;
         }
 
@@ -106,7 +126,14 @@ namespace ProgramTest
             if (presetSettingsGridBox.SelectedRows.Count == 1) 
             {
                 PresetSetting preset = GetSelectedPreset();
-                _presetSettingRepository.Remove(preset);
+                if (_useServerDb)
+                {
+                    _presetSettingRepository.Remove(preset);
+                }
+                else
+                {
+                    _localPresetSettingRepository.Remove(preset);
+                }
             }
             UpdateGrid();
         }
