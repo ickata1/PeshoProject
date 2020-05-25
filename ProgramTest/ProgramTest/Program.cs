@@ -1,4 +1,5 @@
-﻿using Data;
+using Data;
+using Local_Data;
 using Data.Entities;
 using Data.Repositories;
 using System;
@@ -55,6 +56,21 @@ namespace ProgramTest
                 return dbContext; 
             }
             
+        }
+      
+       private static LocalPresetDbContext localDbContext;
+  
+        public static LocalPresetDbContext LocalDbContext
+        {
+            get
+            {
+                if (localDbContext == null)
+                {
+                    localDbContext = new LocalPresetDbContext();
+                }
+                return localDbContext;
+            }
+
         }
 
         /*public static string ConvertToJson(IQueryable<Preset> presets) 
@@ -233,7 +249,6 @@ namespace ProgramTest
                 #endregion
             }
         }
-
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

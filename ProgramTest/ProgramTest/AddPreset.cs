@@ -1,6 +1,7 @@
 ﻿using Data;
 using Data.Entities;
 using Data.Repositories;
+using Local = Local_Data.Repo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +12,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsBGChanger;
+using System.Drawing.Printing;
 
 namespace ProgramTest
 {
     public partial class AddPreset : Form
     {
         private PresetSettingRepository _presetSettingRepository;
+        private Local.PresetSettingRepository _localPresetSettingRepository;
+        private bool _useServerDb = false;
         private Preset _currentPreset = new Preset();
         private string _filePath;
 
@@ -24,6 +28,7 @@ namespace ProgramTest
         {
             _currentPreset = preset;
             _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
+            _localPresetSettingRepository = new Local.PresetSettingRepository(Program.LocalDbContext);
             InitializeComponent();
         }
 
@@ -57,7 +62,14 @@ namespace ProgramTest
                 presetSetting.PresetSettingType = presetType.Text;
                 presetSetting.PresetId = _currentPreset.Id;
                 presetSetting.Preset = _currentPreset;
-                _presetSettingRepository.Add(presetSetting);
+                if (_useServerDb)
+                {
+                    _presetSettingRepository.Add(presetSetting);
+                }
+                else
+                {
+                    _localPresetSettingRepository.Add(presetSetting);
+                }
                 this.Close();
             }
             else

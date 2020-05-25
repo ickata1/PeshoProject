@@ -85,6 +85,9 @@
     <Compile Include="Data\Repositories\CrudRepository.cs" />
     <Compile Include="Data\Repositories\PresetRepository.cs" />
     <Compile Include="Data\Repositories\PresetSettingRepository.cs" />
+    <Compile Include="Local Data\Repo\CrudRepository.cs" />
+    <Compile Include="Local Data\Repo\PresetRepository.cs" />
+    <Compile Include="Local Data\Repo\PresetSettingRepository.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +170,7 @@
       <Name>WindowsBGChanger</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

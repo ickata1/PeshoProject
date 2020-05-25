@@ -1,6 +1,7 @@
 ﻿using Data;
 using Data.Entities;
 using Data.Repositories;
+using Local = Local_Data.Repo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsBGChanger;
+using Local_Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+using System.Diagnostics;
 
 namespace ProgramTest
 {
@@ -19,13 +23,16 @@ namespace ProgramTest
 
         private List<int> _startedProcessIds = new List<int>();
         private PresetRepository _presetRepository;
+        private Local.PresetRepository _localPresetRepository;
+        private bool _useServerDb = false;
+        
         private bool isCollapsedPreset = true;
         private bool isCollapsedClose = true;
         public MainMenu()
         {
+            _localPresetRepository = new Local.PresetRepository(Program.LocalDbContext);
             _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,10 +53,22 @@ namespace ProgramTest
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (MainMenuDataGrid.SelectedRows.Count == 1) //Delete Fucnition
+            DataGridViewSelectedRowCollection rows = MainMenuDataGrid.SelectedRows;
+            if (rows.Count >= 1)                          
             {
-                Preset preset = GetSelectedPreset();
-                _presetRepository.Remove(preset);
+                List<Preset> presets = GetSelectedPresets();
+                if (_useServerDb)
+                {
+                    foreach (var preset in presets)
+                    {
+                        _presetRepository.Remove(preset);
+                    }
+                    //_presetRepository.RemoveRange(presets); TO DO: Add RemoveRange
+                }
+                else
+                {
+                    _localPresetRepository.RemoveRange(presets);
+                }
             }
             UpdateGridMainMenu();
         }
@@ -66,54 +85,57 @@ namespace ProgramTest
 
         private void runPreset_Click(object sender, EventArgs e)
         {
-            Preset preset = GetSelectedPreset();
-            List<PresetSetting> currentPresetSettings = preset.PresetSettings.ToList();
+            if (MainMenuDataGrid.SelectedRows.Count == 1)
+            {
+                Preset preset = GetSelectedPreset();
+                List<PresetSetting> currentPresetSettings = preset.PresetSettings.ToList();
 
-            #region Seperate Preset Settings by setting type
-            List<PresetSetting> currentPresetSettingsFile = currentPresetSettings
-                .Where(type => type.PresetSettingType == "File").ToList();
-            List<PresetSetting> currentPresetSettingsURL = currentPresetSettings
-                .Where(type => type.PresetSettingType == "URL").ToList();
-            List<PresetSetting> currentPresetSettingsBG = currentPresetSettings
-                .Where(type => type.PresetSettingType == "BG").ToList();
+                #region Seperate Preset Settings by setting type
+                List<PresetSetting> currentPresetSettingsFile = currentPresetSettings
+                    .Where(type => type.PresetSettingType == "File").ToList();
+                List<PresetSetting> currentPresetSettingsURL = currentPresetSettings
+                    .Where(type => type.PresetSettingType == "URL").ToList();
+                List<PresetSetting> currentPresetSettingsBG = currentPresetSettings
+                    .Where(type => type.PresetSettingType == "BG").ToList();
 
-            List<string> filePaths = new List<string>();
-            List<string> urlPaths = new List<string>();
-            List<string> bgPaths = new List<string>();
-            #endregion
+                List<string> filePaths = new List<string>();
+                List<string> urlPaths = new List<string>();
+                List<string> bgPaths = new List<string>();
+                #endregion
 
-            #region Preset Settings' execution
-            //Files and exe's
-            foreach (var presetSetting in currentPresetSettingsFile)
-            {
-                filePaths.Add(presetSetting.Value);
-            }
-            foreach (var filePath in filePaths)
-            {
-                //TODO... Check if there is space available
-                _startedProcessIds.Add(AppManager.OpenExe(filePath));
-            }
+                #region Preset Settings' execution
+                //Files and exe's
+                foreach (var presetSetting in currentPresetSettingsFile)
+                {
+                    filePaths.Add(presetSetting.Value);
+                }
+                foreach (var filePath in filePaths)
+                {
+                    //TODO... Check if there is space available
+                    _startedProcessIds.Add(AppManager.OpenExe(filePath));
+                }
 
-            //Links
-            foreach (var presetSetting in currentPresetSettingsURL)
-            {
-                urlPaths.Add(presetSetting.Value);
-            }
-            foreach (var urlPath in urlPaths)
-            {
-                AppManager.OpenLink(urlPath);
-            }
+                //Links
+                foreach (var presetSetting in currentPresetSettingsURL)
+                {
+                    urlPaths.Add(presetSetting.Value);
+                }
+                foreach (var urlPath in urlPaths)
+                {
+                    AppManager.OpenLink(urlPath);
+                }
 
-            //Wallpaper(s)
-            foreach (var presetSetting in currentPresetSettingsBG)
-            {
-                bgPaths.Add(presetSetting.Value);
+                //Wallpaper(s)
+                foreach (var presetSetting in currentPresetSettingsBG)
+                {
+                    bgPaths.Add(presetSetting.Value);
+                }
+                foreach (var bgPath in bgPaths)
+                {
+                    WindowsWallpaper.SetWallpaper(bgPath);
+                }
+                #endregion
             }
-            foreach (var bgPath in bgPaths)
-            {
-                WindowsWallpaper.SetWallpaper(bgPath);
-            }
-            #endregion
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -123,7 +145,14 @@ namespace ProgramTest
 
         public void UpdateGridMainMenu()
         {
-            MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
+            if (_useServerDb)
+            {
+                MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
+            }
+            else
+            {
+                MainMenuDataGrid.DataSource = _localPresetRepository.GetAll().ToList();
+            }
             MainMenuDataGrid.Columns[0].Visible = false;
             //MainMenuDataGrid.Columns[0].Width = 25;
             MainMenuDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -157,10 +186,41 @@ namespace ProgramTest
             DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
             Preset preset = new Preset();
             int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
-
-            preset = _presetRepository.GetOne(item => item.Id == idToBeDeleted);
-
+            if (_useServerDb)
+            {
+                preset = _presetRepository.GetById(idToBeDeleted);
+            }
+            else
+            {
+                preset = _localPresetRepository.GetById(idToBeDeleted);
+            }
             return preset;
+        }
+        
+        private List<Preset> GetSelectedPresets()
+        {
+            DataGridViewSelectedRowCollection rows = MainMenuDataGrid.SelectedRows;
+            int[] idsToBeDeleted = new int[rows.Count];
+            for (int i = 0; i < rows.Count; i++)
+            {
+                idsToBeDeleted[i] = int.Parse(rows[i].Cells[0].Value.ToString());
+            }
+            List<Preset> presets = new List<Preset>();
+            if (_useServerDb)
+            {
+                foreach (var id in idsToBeDeleted)
+                {
+                    presets.Add(_presetRepository.GetById(id));
+                }
+            }
+            else
+            {
+                foreach (var id in idsToBeDeleted)
+                {
+                    presets.Add(_localPresetRepository.GetById(id));
+                }
+            }
+            return presets;
         }
 
         private void CloseButton_Click(object sender, EventArgs e)

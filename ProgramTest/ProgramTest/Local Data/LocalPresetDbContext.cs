@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramTest.Local_Data
+namespace Local_Data
 {
-    class LocalPresetDbContext : DbContext
+    public class LocalPresetDbContext : DbContext
     {
         public LocalPresetDbContext() : base("name=LocalPresetDb")
         {
