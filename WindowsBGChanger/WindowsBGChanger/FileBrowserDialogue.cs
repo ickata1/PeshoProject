@@ -9,6 +9,7 @@ namespace WindowsBGChanger
 {
     public static class FileBrowserDialogue
     {
+        private static string folderPath;
         private static string filePath;
         private static string[] filePaths;
         private static string friendlyFilePath;
@@ -94,5 +95,24 @@ namespace WindowsBGChanger
             return friendlyFilePath.Substring(0, friendlyFilePath.IndexOf("."));
         }
 
+        public static string GetFolderPath()
+        {
+            using (FolderBrowserDialog folderBrowser = new FolderBrowserDialog())
+            {
+                folderBrowser.RootFolder = Environment.SpecialFolder.MyComputer;
+                folderBrowser.ShowNewFolderButton = true;
+
+                if (folderBrowser.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of the folder
+                    folderPath = folderBrowser.SelectedPath;
+                }
+            }
+
+            return folderPath;
+        }
+
     }
+
+
 }

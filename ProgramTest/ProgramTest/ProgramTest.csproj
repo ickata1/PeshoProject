@@ -54,6 +54,7 @@
     <Reference Include="System.Data.SQLite.Linq, Version=1.0.112.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\..\WindowsBGChanger\packages\System.Data.SQLite.Linq.1.0.112.2\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,6 +74,12 @@
     </Compile>
     <Compile Include="Data\Entities\Preset.cs" />
     <Compile Include="Data\Entities\PresetSetting.cs" />
+    <Compile Include="ImportPreset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportPreset.Designer.cs">
+      <DependentUpon>ImportPreset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Local Data\LocalPresetDbContext.cs" />
     <Compile Include="Data\PresetDbContext.cs" />
     <Compile Include="Data\Repositories\CrudRepository.cs" />
@@ -112,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePreset.resx">
       <DependentUpon>CreatePreset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportPreset.resx">
+      <DependentUpon>ImportPreset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

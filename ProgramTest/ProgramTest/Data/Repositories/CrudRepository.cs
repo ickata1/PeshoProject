@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-
 namespace Data.Repositories
 {
     public abstract class CrudRepository<T> where T:class
@@ -16,6 +15,7 @@ namespace Data.Repositories
             _dbContext = dbContext;
             _dbSet = dbSet;
         }
+
 
         //Returns everything from the table
         public IQueryable<T> GetAll()
