@@ -71,10 +71,12 @@
     </Compile>
     <Compile Include="Data\Entities\Preset.cs" />
     <Compile Include="Data\Entities\PresetSetting.cs" />
+    <Compile Include="Data\Entities\Setting.cs" />
     <Compile Include="Data\PresetDbContext.cs" />
     <Compile Include="Data\Repositories\CrudRepository.cs" />
     <Compile Include="Data\Repositories\PresetRepository.cs" />
     <Compile Include="Data\Repositories\PresetSettingRepository.cs" />
+    <Compile Include="Data\Repositories\SettingRepository.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
