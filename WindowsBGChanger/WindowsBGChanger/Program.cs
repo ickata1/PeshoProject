@@ -20,7 +20,6 @@ namespace WindowsBGChanger
         [STAThread]
         static void Main(string[] args)
         {
-
             //MessageBox(IntPtr.Zero, "Command-line message box", "Attention!", 0);
             //string wp = @"D:\Image.jpg";
             //WindowsWallpaper.SetWallpaper(wp, "Center");
