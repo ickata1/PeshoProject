@@ -22,7 +22,6 @@ namespace ProgramTest
         private Preset _currentPreset = new Preset();
         private PresetSettingRepository _presetSettingRepository;
         private PresetRepository _presetRepository;
-        private LocalPresetDbContext _localDbContext;
         private Local.PresetSettingRepository _localPresetSettingRepository;
         private Local.PresetRepository _localPresetRepository;
         private bool _useServerDb = false;
@@ -32,7 +31,6 @@ namespace ProgramTest
             this._currentPreset = preset;
             _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
             _presetRepository = new PresetRepository(Program.DbContext);
-            _localDbContext = new LocalPresetDbContext();
             _localPresetRepository = new Local.PresetRepository(Program.LocalDbContext);
             _localPresetSettingRepository = new Local.PresetSettingRepository(Program.LocalDbContext);
             InitializeComponent();
