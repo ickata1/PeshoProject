@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using ProgramTest.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +19,7 @@ namespace Data
 
         public virtual DbSet<Preset> Presets { get; set; }
         public virtual DbSet<PresetSetting> PresetSettings { get; set; }
-
+        public virtual DbSet<Setting> Settings { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
