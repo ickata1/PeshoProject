@@ -65,7 +65,7 @@
             this.button1.Size = new System.Drawing.Size(200, 42);
             this.button1.TabIndex = 0;
             this.button1.Text = "New Preset";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -83,7 +83,7 @@
             this.button2.Size = new System.Drawing.Size(200, 47);
             this.button2.TabIndex = 1;
             this.button2.Text = "Remove Preset";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -101,7 +101,7 @@
             this.EditPreset.Size = new System.Drawing.Size(200, 50);
             this.EditPreset.TabIndex = 3;
             this.EditPreset.Text = "Edit Preset";
-            this.EditPreset.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.EditPreset.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.EditPreset.UseVisualStyleBackColor = false;
             this.EditPreset.Click += new System.EventHandler(this.EditPreset_Click);
             // 
@@ -119,7 +119,7 @@
             this.runPreset.Size = new System.Drawing.Size(200, 50);
             this.runPreset.TabIndex = 4;
             this.runPreset.Text = "Run Preset";
-            this.runPreset.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.runPreset.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.runPreset.UseVisualStyleBackColor = false;
             this.runPreset.Click += new System.EventHandler(this.runPreset_Click);
             // 
@@ -243,7 +243,7 @@
             this.presetSettingsPanel.Controls.Add(this.EditPreset);
             this.presetSettingsPanel.Controls.Add(this.button1);
             this.presetSettingsPanel.Controls.Add(this.button2);
-            this.presetSettingsPanel.Location = new System.Drawing.Point(0, 40);
+            this.presetSettingsPanel.Location = new System.Drawing.Point(0, 41);
             this.presetSettingsPanel.MaximumSize = new System.Drawing.Size(200, 225);
             this.presetSettingsPanel.MinimumSize = new System.Drawing.Size(200, 50);
             this.presetSettingsPanel.Name = "presetSettingsPanel";
@@ -292,7 +292,7 @@
             this.MinimizeBox = false;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Program";
+            this.Text = "MainMenu";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MainMenuDataGrid)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -319,7 +319,6 @@
         private System.Windows.Forms.Button presetSettingsButton;
         private System.Windows.Forms.Timer presetSettingsTimerPreset;
         private System.Windows.Forms.Timer presetSettingsTimerClose;
-
     }
 }
 
