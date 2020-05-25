@@ -1,12 +1,17 @@
 ﻿using Data.Entities;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Data
 {
     public class PresetDbContext : DbContext
     {
-        public PresetDbContext() : base("name=PresetsDb")
+        public PresetDbContext() : base("name=PresetDb")
         {
 
         }
@@ -16,6 +21,10 @@ namespace Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+
+            modelBuilder.Conventions
+            .Remove<PluralizingTableNameConvention>();
+
             //One-to-Many Relationship
             modelBuilder.Entity<Preset>()
                 .HasMany<PresetSetting>(preset => preset.PresetSettings)

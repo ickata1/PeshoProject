@@ -1,4 +1,5 @@
 ﻿using Data.Entities;
+using Data.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using Data.Repositories;
-using Local = Local_Data.Repo;
-using Data;
-using Local_Data;
 
 namespace ProgramTest
 {
@@ -22,17 +19,11 @@ namespace ProgramTest
         private Preset _currentPreset = new Preset();
         private PresetSettingRepository _presetSettingRepository;
         private PresetRepository _presetRepository;
-        private Local.PresetSettingRepository _localPresetSettingRepository;
-        private Local.PresetRepository _localPresetRepository;
-        private bool _useServerDb = false;
-
         public EditPreset(Preset preset)
         {
             this._currentPreset = preset;
-            _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
             _presetRepository = new PresetRepository(Program.DbContext);
-            _localPresetRepository = new Local.PresetRepository(Program.LocalDbContext);
-            _localPresetSettingRepository = new Local.PresetSettingRepository(Program.LocalDbContext);
+            _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
             InitializeComponent();
             UpdateGrid();
         }
@@ -70,15 +61,9 @@ namespace ProgramTest
         private void CreatePreset_Click(object sender, EventArgs e)
         {
             _currentPreset.Name = PresetName.Text;
-            _currentPreset.Description = presetDescription.Text;
-            if (_useServerDb)
-            {
-                _presetRepository.Update(_currentPreset);
-            }
-            else
-            {
-                _localPresetRepository.Update(_currentPreset);
-            }
+            _currentPreset.Description = presetDescription.Text;      
+            _presetRepository.Update(_currentPreset);
+
             this.Close();
         }
 
@@ -108,14 +93,8 @@ namespace ProgramTest
             DataGridViewRow row = this.presetSettingsGridBox.SelectedRows[0];
             PresetSetting presetSetting = new PresetSetting();
             int id = int.Parse(row.Cells[0].Value.ToString());
-            if (_useServerDb)
-            {
-                presetSetting = _presetSettingRepository.GetById(id);
-            }
-            else
-            {
-                presetSetting = _localPresetSettingRepository.GetById(id);
-            }
+            presetSetting = _presetSettingRepository.GetById(id);
+
             return presetSetting;
         }
 
@@ -124,14 +103,8 @@ namespace ProgramTest
             if (presetSettingsGridBox.SelectedRows.Count == 1) 
             {
                 PresetSetting preset = GetSelectedPreset();
-                if (_useServerDb)
-                {
-                    _presetSettingRepository.Remove(preset);
-                }
-                else
-                {
-                    _localPresetSettingRepository.Remove(preset);
-                }
+
+                _presetSettingRepository.Remove(preset);
             }
             UpdateGrid();
         }

@@ -39,9 +39,6 @@
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\..\WindowsBGChanger\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -74,20 +71,10 @@
     </Compile>
     <Compile Include="Data\Entities\Preset.cs" />
     <Compile Include="Data\Entities\PresetSetting.cs" />
-    <Compile Include="ImportPreset.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ImportPreset.Designer.cs">
-      <DependentUpon>ImportPreset.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Local Data\LocalPresetDbContext.cs" />
     <Compile Include="Data\PresetDbContext.cs" />
     <Compile Include="Data\Repositories\CrudRepository.cs" />
     <Compile Include="Data\Repositories\PresetRepository.cs" />
     <Compile Include="Data\Repositories\PresetSettingRepository.cs" />
-    <Compile Include="Local Data\Repo\CrudRepository.cs" />
-    <Compile Include="Local Data\Repo\PresetRepository.cs" />
-    <Compile Include="Local Data\Repo\PresetSettingRepository.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,15 +93,6 @@
     <Compile Include="AddPreset.Designer.cs">
       <DependentUpon>AddPreset.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202005211327102_InitialCreate.cs" />
-    <Compile Include="Migrations\202005211327102_InitialCreate.designer.cs">
-      <DependentUpon>202005211327102_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202005220858324_initial.cs" />
-    <Compile Include="Migrations\202005220858324_initial.designer.cs">
-      <DependentUpon>202005220858324_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddPreset.resx">
@@ -123,20 +101,11 @@
     <EmbeddedResource Include="CreatePreset.resx">
       <DependentUpon>CreatePreset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImportPreset.resx">
-      <DependentUpon>ImportPreset.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPreset.resx">
       <DependentUpon>EditPreset.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005211327102_InitialCreate.resx">
-      <DependentUpon>202005211327102_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202005220858324_initial.resx">
-      <DependentUpon>202005220858324_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

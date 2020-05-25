@@ -1,77 +1,102 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Data.Repositories
 {
-    public abstract class CrudRepository<T> where T:class
+    public abstract class CrudRepository<T> where T : class
     {
         private readonly PresetDbContext _dbContext;
         private readonly DbSet<T> _dbSet;
-        
         public CrudRepository(PresetDbContext dbContext, DbSet<T> dbSet)
         {
+            
             _dbContext = dbContext;
             _dbSet = dbSet;
         }
-
-
-        //Returns everything from the table
+        /// <summary>
+        /// Returns everything
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<T> GetAll()
         {
-            return _dbSet.AsQueryable(); 
+            return _dbSet.AsQueryable(); //Returns everything from the table                        
         }
-
-        //Returns everything that meets the given predicate from the table
-        public IQueryable<T> GetAll(Expression<Func<T,bool>> predicate)
+        /// <summary>
+        /// Returns everything, that meets the given predicate
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> predicate)
         {
-            return _dbSet.Where(predicate).AsQueryable(); 
+            return _dbSet.Where(predicate).AsQueryable(); //Returns everything,that meets the given predicate, from the table
         }
 
-        //Returns the element with the given id
         public T GetById(int id)
         {
-            return _dbSet.Find(id); 
+            return _dbSet.Find(id); //Returns the element, with the given id
         }
 
-        //Returns the first element from the table that meets the predicate, or null
         public T GetOne(Expression<Func<T, bool>> predicate)
         {
-            return _dbSet.FirstOrDefault(predicate); 
+            return _dbSet.FirstOrDefault(predicate); //Returns the first element from the table, that meets the predicate, or null
         }
 
-        //Returns the amount of elements from the table
         public int Count()
         {
-            return _dbSet.Count();                  
+            return _dbSet.Count();                  //Returns the amount of elements in the table
         }
 
-        //Returns the amount of elements that meet the given predicate
         public int Count(Expression<Func<T, bool>> predicate)
         {
-            return _dbSet.Where(predicate).Count(); 
+            return _dbSet.Where(predicate).Count(); //Returns the amount of elements, that meet the certain predicate
         }
 
-        //Adds the given entity to the table
         public void Add(T entity)
         {
-            _dbSet.Add(entity);                     
+            _dbSet.Add(entity);                     //Adds the given entity to the table
             _dbContext.SaveChanges();
         }
 
-        //Updates the given entity
         public void Update(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.Entry(entity).State = EntityState.Modified; //idk about this one rly gotta research
             _dbContext.SaveChanges();
         }
-
-        //Removes the given entity from the table
+        /// <summary>
+        /// Removes the given entity from the table.
+        /// </summary>
+        /// <param name="entity"></param>
         public void Remove(T entity)
         {
             _dbSet.Remove(entity);                  
-            _dbContext.SaveChanges(); 
+            _dbContext.SaveChanges();
+        }
+        /// <summary>
+        /// Removes all entities that match the given predicate.
+        /// </summary>
+        /// <param name="predicate"></param>
+        public void Remove(Expression<Func<T, bool>> predicate)
+        {
+            _dbSet.RemoveRange(_dbSet.Where(predicate));
+            _dbContext.SaveChanges();
+        }
+        public void RemoveRange(IEnumerable<T> entities) 
+        {
+            _dbSet.RemoveRange(entities);
+            _dbContext.SaveChanges();
+        }
+        public void RemoveById(params int[] ids)
+        {
+            foreach (var id in ids)
+            {
+                _dbSet.Remove(_dbSet.Find(id));        //TODO: There should be another way with remove range
+            }
+            _dbContext.SaveChanges();
         }
     }
 }

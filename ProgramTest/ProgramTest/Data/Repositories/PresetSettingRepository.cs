@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
@@ -12,11 +13,21 @@ namespace Data.Repositories
         {
 
         }
-
-        //Returns all PresetSetting entities with the given id
-        public IQueryable<PresetSetting> GetPresetSettings(int presetSettingId)
+        /// <summary>
+        /// Returns all preset settings that belong to a preset found by Id
+        /// </summary>
+        /// <param name="presetId"></param>
+        /// <returns></returns>
+        public IQueryable<PresetSetting> GetPresetSettings(int presetId)
         {
-            return this.GetAll(item => item.PresetId == presetSettingId);      
+            return this.GetAll(item => item.PresetId == presetId);     
+        }
+
+        public void Add(PresetSetting presetSetting, Preset preset)
+        {
+
+
+
         }
     }
 }
