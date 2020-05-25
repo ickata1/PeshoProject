@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramTest.Local_Data.Repo
+namespace Local_Data.Repo
 {
     public class PresetRepository : CrudRepository<Preset>
     {

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProgramTest.Local_Data.Repo
+namespace Local_Data.Repo
 {
     public abstract class CrudRepository<T> where T : class
     {
@@ -14,6 +14,7 @@ namespace ProgramTest.Local_Data.Repo
         private readonly DbSet<T> _dbSet;
         public CrudRepository(LocalPresetDbContext dbContext, DbSet<T> dbSet)
         {
+            
             _dbContext = dbContext;
             _dbSet = dbSet;
         }
@@ -23,7 +24,7 @@ namespace ProgramTest.Local_Data.Repo
         /// <returns></returns>
         public IQueryable<T> GetAll()
         {
-            return _dbSet.AsQueryable(); //Returns everything from the table
+            return _dbSet.AsQueryable(); //Returns everything from the table                        
         }
         /// <summary>
         /// Returns everything, that meets the given predicate
@@ -82,6 +83,11 @@ namespace ProgramTest.Local_Data.Repo
         public void Remove(Expression<Func<T, bool>> predicate)
         {
             _dbSet.RemoveRange(_dbSet.Where(predicate));
+            _dbContext.SaveChanges();
+        }
+        public void RemoveRange(IEnumerable<T> entities) 
+        {
+            _dbSet.RemoveRange(entities);
             _dbContext.SaveChanges();
         }
         public void RemoveById(params int[] ids)
