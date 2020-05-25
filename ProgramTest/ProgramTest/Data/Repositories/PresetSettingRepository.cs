@@ -22,12 +22,5 @@ namespace Data.Repositories
         {
             return this.GetAll(item => item.PresetId == presetId);     
         }
-
-        public void Add(PresetSetting presetSetting, Preset preset)
-        {
-
-
-
-        }
     }
 }
