@@ -54,7 +54,7 @@ namespace ProgramTest
             
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
+            frm.FormClosing += delegate { this.Show(); this.UpdateGrid();};
             frm.ShowDialog();
         }
 

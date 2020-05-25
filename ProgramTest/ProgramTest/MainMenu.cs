@@ -39,10 +39,9 @@ namespace ProgramTest
             var frm = new CreatePreset();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
+            frm.FormClosing += delegate { this.Show(); this.UpdateGridMainMenu(); };
             frm.ShowDialog();
-        }
-
+        }        
         private void button2_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection rows = MainMenuDataGrid.SelectedRows;
@@ -151,7 +150,7 @@ namespace ProgramTest
                 var frm = new EditPreset(preset);
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
-                frm.FormClosing += delegate { this.Show(); };
+                frm.FormClosing += delegate { this.Show(); this.UpdateGridMainMenu(); };
                 frm.ShowDialog();
             }
         }
