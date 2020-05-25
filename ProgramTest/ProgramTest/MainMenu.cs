@@ -16,18 +16,23 @@ namespace ProgramTest
 {
     public partial class MainMenu : Form
     {
+
         private List<int> _startedProcessIds = new List<int>();
         private PresetRepository _presetRepository;
-        
+        private bool isCollapsedPreset = true;
+        private bool isCollapsedClose = true;
         public MainMenu()
         {
             _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             UpdateGridMainMenu();
+            MainMenuDataGrid.Columns[1].Width = 100;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,7 +76,7 @@ namespace ProgramTest
                 .Where(type => type.PresetSettingType == "URL").ToList();
             List<PresetSetting> currentPresetSettingsBG = currentPresetSettings
                 .Where(type => type.PresetSettingType == "BG").ToList();
-            
+
             List<string> filePaths = new List<string>();
             List<string> urlPaths = new List<string>();
             List<string> bgPaths = new List<string>();
@@ -85,9 +90,10 @@ namespace ProgramTest
             }
             foreach (var filePath in filePaths)
             {
+                //TODO... Check if there is space available
                 _startedProcessIds.Add(AppManager.OpenExe(filePath));
             }
-            
+
             //Links
             foreach (var presetSetting in currentPresetSettingsURL)
             {
@@ -97,9 +103,9 @@ namespace ProgramTest
             {
                 AppManager.OpenLink(urlPath);
             }
-            
+
             //Wallpaper(s)
-            foreach(var presetSetting in currentPresetSettingsBG)
+            foreach (var presetSetting in currentPresetSettingsBG)
             {
                 bgPaths.Add(presetSetting.Value);
             }
@@ -133,11 +139,11 @@ namespace ProgramTest
 
         private void EditPreset_Click(object sender, EventArgs e)
         {
-            if(MainMenuDataGrid.SelectedRows.Count == 1)
+            if (MainMenuDataGrid.SelectedRows.Count == 1)
             {
                 DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
                 Preset preset = GetSelectedPreset();
-                
+
                 var frm = new EditPreset(preset);
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
@@ -169,6 +175,83 @@ namespace ProgramTest
             AppManager.ForceCloseEverythingById(_startedProcessIds);
             AppManager.CloseAllBrowsers();
             _startedProcessIds.Clear();
+        }
+
+        private void presetSettingsButton_Click(object sender, EventArgs e)
+        {
+            presetSettingsTimerPreset.Enabled = true;
+            presetSettingsTimerPreset.Start();
+        }
+
+        private void presetSettingsTimer_Tick(object sender, EventArgs e)
+        {
+            if (isCollapsedPreset)
+            {
+                presetSettingsPanel.Height += 10;
+                this.closePanel.Location = new Point(
+                this.closePanel.Location.X,
+                this.closePanel.Location.Y + 10);
+                this.UpdateGrid.Location = new Point(
+                this.UpdateGrid.Location.X,
+                this.UpdateGrid.Location.Y + 10);
+                if (presetSettingsPanel.Size == presetSettingsPanel.MaximumSize)
+                {
+                    isCollapsedPreset = false;
+                    presetSettingsTimerPreset.Stop();
+                }
+            }
+            else
+            {
+                presetSettingsPanel.Height -= 10;
+                this.closePanel.Location = new Point(
+                this.closePanel.Location.X,
+                this.closePanel.Location.Y - 10);
+                this.UpdateGrid.Location = new Point(
+                this.UpdateGrid.Location.X,
+                this.UpdateGrid.Location.Y - 10);
+                if (presetSettingsPanel.Size == presetSettingsPanel.MinimumSize)
+                {
+                    isCollapsedPreset = true;
+                    presetSettingsTimerPreset.Stop();
+                }
+            }
+
+        }
+
+        private void closeButton_Click_1(object sender, EventArgs e)
+        {
+            presetSettingsTimerClose.Enabled = true;
+            presetSettingsTimerClose.Start();
+        }
+
+        private void presetSettingsTimerClose_Tick(object sender, EventArgs e)
+        {
+            if (isCollapsedClose)
+            {
+                presetSettingsTimerClose.Start();
+                closePanel.Height += 10;
+                this.UpdateGrid.Location = new Point(
+                this.UpdateGrid.Location.X,
+                this.UpdateGrid.Location.Y + 9);
+                if (closePanel.Size == closePanel.MaximumSize)
+                {
+                    isCollapsedClose = false;
+                    presetSettingsTimerClose.Stop();
+                }
+            }
+            else
+            {
+                presetSettingsTimerClose.Start();
+                closePanel.Height -= 10;
+                this.UpdateGrid.Location = new Point(
+                this.UpdateGrid.Location.X,
+                this.UpdateGrid.Location.Y - 9);
+                if (closePanel.Size == closePanel.MinimumSize)
+                {
+                    isCollapsedClose = true;
+                    presetSettingsTimerClose.Stop();
+                }
+            }
         }
     }
 }
