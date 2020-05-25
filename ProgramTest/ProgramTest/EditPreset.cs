@@ -54,7 +54,7 @@ namespace ProgramTest
             
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
+            frm.FormClosing += delegate { this.Show(); this.UpdateGrid();};
             frm.ShowDialog();
         }
 
@@ -98,13 +98,29 @@ namespace ProgramTest
             return presetSetting;
         }
 
+        private List<PresetSetting> GetSelectedPresets()
+        {
+            DataGridViewSelectedRowCollection rows = this.presetSettingsGridBox.SelectedRows;
+            int[] ids = new int[rows.Count];
+            for (int i = 0; i < rows.Count; i++)
+            {
+                ids[i] = int.Parse(rows[i].Cells[0].Value.ToString());
+            }
+            List<PresetSetting> presetSettings = new List<PresetSetting>();
+            foreach (var id in ids)
+            {
+                presetSettings.Add(_presetSettingRepository.GetById(id));
+            }
+            return presetSettings;
+        }
+
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            if (presetSettingsGridBox.SelectedRows.Count == 1) 
+            if (presetSettingsGridBox.SelectedRows.Count >= 1) 
             {
-                PresetSetting preset = GetSelectedPreset();
+                List<PresetSetting> presetSettings = GetSelectedPresets();
 
-                _presetSettingRepository.Remove(preset);
+                _presetSettingRepository.RemoveRange(presetSettings);
             }
             UpdateGrid();
         }
