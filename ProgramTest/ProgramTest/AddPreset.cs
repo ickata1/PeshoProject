@@ -50,7 +50,18 @@ namespace ProgramTest
         }
         private void SavePreset_Click(object sender, EventArgs e)
         {
-            if (System.IO.File.Exists(FilePathTextBox.Text))
+            if (presetType.Text == "URL")
+            {
+                PresetSetting presetSetting = new PresetSetting();
+                presetSetting.Name = ProgramName.Text;
+                presetSetting.Value = FilePathTextBox.Text;
+                presetSetting.PresetSettingType = presetType.Text;
+                presetSetting.PresetId = _currentPreset.Id;
+                presetSetting.Preset = _currentPreset;
+                _presetSettingRepository.Add(presetSetting);
+                this.Close();
+            }
+            else if (System.IO.File.Exists(FilePathTextBox.Text))
             {
                 PresetSetting presetSetting = new PresetSetting();
                 presetSetting.Name = ProgramName.Text;
@@ -65,6 +76,7 @@ namespace ProgramTest
             else
             {
                 FilePathTextBox.Clear();
+                MessageBox.Show("File does not exist.");
             }
 
         }

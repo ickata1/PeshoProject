@@ -39,12 +39,15 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.closePanel = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.presetSettingsPanel = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
             this.presetSettingsButton = new System.Windows.Forms.Button();
             this.presetSettingsTimerPreset = new System.Windows.Forms.Timer(this.components);
             this.presetSettingsTimerClose = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainMenuDataGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.closePanel.SuspendLayout();
@@ -62,7 +65,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(200, 42);
+            this.button1.Size = new System.Drawing.Size(200, 45);
             this.button1.TabIndex = 0;
             this.button1.Text = "New Preset";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -80,7 +83,7 @@
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(200, 47);
+            this.button2.Size = new System.Drawing.Size(200, 50);
             this.button2.TabIndex = 1;
             this.button2.Text = "Remove Preset";
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -197,14 +200,32 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.settingsButton);
             this.panel1.Controls.Add(this.closePanel);
-            this.panel1.Controls.Add(this.UpdateGrid);
             this.panel1.Controls.Add(this.presetSettingsPanel);
+            this.panel1.Controls.Add(this.UpdateGrid);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 527);
+            this.panel1.Size = new System.Drawing.Size(200, 576);
             this.panel1.TabIndex = 10;
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.settingsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.settingsButton.Location = new System.Drawing.Point(-3, 178);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.settingsButton.Size = new System.Drawing.Size(200, 50);
+            this.settingsButton.TabIndex = 11;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // closePanel
             // 
@@ -238,17 +259,35 @@
             // 
             // presetSettingsPanel
             // 
+            this.presetSettingsPanel.Controls.Add(this.button5);
             this.presetSettingsPanel.Controls.Add(this.presetSettingsButton);
             this.presetSettingsPanel.Controls.Add(this.runPreset);
             this.presetSettingsPanel.Controls.Add(this.EditPreset);
             this.presetSettingsPanel.Controls.Add(this.button1);
             this.presetSettingsPanel.Controls.Add(this.button2);
-            this.presetSettingsPanel.Location = new System.Drawing.Point(0, 41);
-            this.presetSettingsPanel.MaximumSize = new System.Drawing.Size(200, 225);
+            this.presetSettingsPanel.Location = new System.Drawing.Point(0, 40);
+            this.presetSettingsPanel.MaximumSize = new System.Drawing.Size(200, 275);
             this.presetSettingsPanel.MinimumSize = new System.Drawing.Size(200, 50);
             this.presetSettingsPanel.Name = "presetSettingsPanel";
             this.presetSettingsPanel.Size = new System.Drawing.Size(200, 50);
             this.presetSettingsPanel.TabIndex = 11;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button5.Location = new System.Drawing.Point(0, 225);
+            this.button5.Name = "button5";
+            this.button5.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.button5.Size = new System.Drawing.Size(200, 50);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Import/Export";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.importExport_Click);
             // 
             // presetSettingsButton
             // 
@@ -278,12 +317,17 @@
             this.presetSettingsTimerClose.Interval = 10;
             this.presetSettingsTimerClose.Tick += new System.EventHandler(this.presetSettingsTimerClose_Tick);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 4000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // MainMenu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(670, 527);
+            this.ClientSize = new System.Drawing.Size(670, 576);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MainMenuDataGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -319,6 +363,9 @@
         private System.Windows.Forms.Button presetSettingsButton;
         private System.Windows.Forms.Timer presetSettingsTimerPreset;
         private System.Windows.Forms.Timer presetSettingsTimerClose;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
