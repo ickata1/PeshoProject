@@ -399,7 +399,7 @@ namespace WindowsBGChanger
             ulong usedMemory = totalMemory - availableMemory;
             double memoryUsagePercent = usedMemory / totalMemory * 100;      //Calculates the percentage of memory used
 
-            return memoryUsagePercent;
+            return Math.Round(memoryUsagePercent, 2);
         }
 
         /// <summary>
