@@ -26,6 +26,7 @@ namespace ProgramTest
         private PresetRepository _presetRepository;
         private bool isCollapsedPreset = true;
         private bool isCollapsedClose = true;
+        int border1;
         int border2And3;
         int border4And5;
         int border6;
@@ -327,7 +328,7 @@ namespace ProgramTest
             var frm = new ImportPreset();
             frm.Location = this.Location;
             frm.StartPosition = FormStartPosition.Manual;
-            frm.FormClosing += delegate { this.Show(); };
+            frm.FormClosing += delegate { this.Show(); this.UpdateGridMainMenu(); };
             frm.ShowDialog();
         }
 
