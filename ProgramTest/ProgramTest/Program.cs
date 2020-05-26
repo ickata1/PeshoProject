@@ -145,7 +145,7 @@ namespace ProgramTest
                     psNameInfo = psNameInfo.Remove(psNameInfo.Length - 1);
                     psTypeInfo = psTypeInfo.Remove(0, 21);
                     psTypeInfo = psTypeInfo.Remove(psTypeInfo.Length - 1);
-                    psValueInfo = psValueInfo.Remove(0, 10);
+                    psValueInfo = psValueInfo.Remove(0, 9);
                     psValueInfo = psValueInfo.Remove(psValueInfo.Length - 1);
                     string presetSettingName = psNameInfo;
                     string presetSettingType = psTypeInfo;

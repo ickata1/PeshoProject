@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -31,20 +32,44 @@ namespace ProgramTest
             {
                 Preset preset = GetSelectedPreset();
                 string Json = Program.ConvertToJson(preset);
-                System.IO.File.WriteAllText(_filePathExport, Json);
+                System.IO.File.WriteAllText(filePathTextBox.Text, Json);
             }
         }
 
         private void filePathButton_Click(object sender, EventArgs e)
         {
             _filePathExport = FileBrowserDialogue.GetFolderPath();
-            _filePathExport += "Export.json";
+            _filePathExport += (_filePathExport[_filePathExport.Length-1]=='\\') ? "Export.json" : "\\Export.json";
             filePathTextBox.Text = _filePathExport;
         }
 
         private void importButton_Click(object sender, EventArgs e)
         {
-            Program.ConvertFromJson(_filePathImport);
+            Preset currentPreset = Program.ConvertFromJson(_filePathImport);
+            string message = "";
+            string caption = "";
+            string newFilepath;
+            MessageBoxButtons buttons = MessageBoxButtons.OK;
+            foreach (PresetSetting presetSetting in currentPreset.PresetSettings)
+            {
+                if (presetSetting.PresetSettingType == "File" || presetSetting.PresetSettingType == "BG")
+                {
+                    if (!File.Exists(presetSetting.Value))
+                    {
+                        message = "Please select a valid filepath for " + presetSetting.Name +"!";
+                        caption = presetSetting.Name + " does not contain a valid file path!";
+                        DialogResult importRequest = MessageBox.Show(message, caption, buttons);
+                        newFilepath = FileBrowserDialogue.GetFullFilePath();
+                        presetSetting.Value = newFilepath;
+                    }
+                }
+            }
+            _presetRepository.Update(currentPreset);
+            message = "Successfully imported " + currentPreset.Name +"!";
+            caption = "Import successful!";
+            DialogResult importSuccessful = MessageBox.Show(message, caption, buttons);
+            UpdateGrid();
+
         }
 
         private void filePathImportButton_Click(object sender, EventArgs e)
