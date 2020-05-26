@@ -89,7 +89,7 @@ namespace ProgramTest
         }
         
 
-        public static void ConvertFromJson(string filePath)
+        public static Preset ConvertFromJson(string filePath)
         {
             PresetRepository presetRepository = new PresetRepository(DbContext);
             
@@ -158,8 +158,10 @@ namespace ProgramTest
                     presetSetting.Preset = preset;
                     presetSetting.PresetId = createdPresetId;
                     presetSettingRepository.Add(presetSetting);
-                }    
+                }
                 #endregion
+
+                return preset;
             }
         }
         /// <summary>

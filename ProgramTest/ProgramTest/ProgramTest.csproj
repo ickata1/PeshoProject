@@ -81,7 +81,7 @@
     <Compile Include="ImportPreset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportPreset.Designer.cs">
+    <Compile Include="ImportPreset.designer.cs">
       <DependentUpon>ImportPreset.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.cs">
