@@ -77,6 +77,12 @@
     <Compile Include="Data\Repositories\PresetRepository.cs" />
     <Compile Include="Data\Repositories\PresetSettingRepository.cs" />
     <Compile Include="Data\Repositories\SettingRepository.cs" />
+    <Compile Include="ImportPreset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportPreset.designer.cs">
+      <DependentUpon>ImportPreset.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePreset.resx">
       <DependentUpon>CreatePreset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportPreset.resx">
+      <DependentUpon>ImportPreset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
