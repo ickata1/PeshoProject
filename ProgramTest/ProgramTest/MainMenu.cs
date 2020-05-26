@@ -92,7 +92,11 @@ namespace ProgramTest
                 }
                 foreach (var filePath in filePaths)
                 {
-                    //TODO... Check if there is space available
+                    //TODO... Make a variable instead of 'magic number'
+                    if (AppManager.MemoryExceedsThresholdPercentage(95))
+                    {
+                        break;
+                    }
                     _startedProcessIds.Add(AppManager.OpenExe(filePath));
                 }
 

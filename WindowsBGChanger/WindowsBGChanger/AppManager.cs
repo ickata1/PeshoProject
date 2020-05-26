@@ -392,13 +392,11 @@ namespace WindowsBGChanger
         }
 
         //Returns the available system memory in percentage
-        public static double GetCurrentMemoryUsage()
+        public static double GetCurrentMemoryUsagePercent()
         {
             ulong totalMemory = new ComputerInfo().TotalPhysicalMemory;
             ulong availableMemory = new ComputerInfo().AvailablePhysicalMemory;
             ulong usedMemory = totalMemory - availableMemory;
-
-            ulong maxAllowedMemory = (totalMemory * 95) / 100;      //Calculates 95% of the TOTAL available memory (RAM) to be used
             double memoryUsagePercent = usedMemory / totalMemory * 100;      //Calculates the percentage of memory used
 
             return memoryUsagePercent;
@@ -411,10 +409,7 @@ namespace WindowsBGChanger
         /// <returns></returns>
         public static bool MemoryExceedsThresholdPercentage(double thresholdPercentage)
         {
-            double totalMemory = new ComputerInfo().TotalPhysicalMemory;
-            double availableMemory = new ComputerInfo().AvailablePhysicalMemory;
-            double usedMemory = totalMemory - availableMemory;
-            double usedMemoryPercentage = usedMemory / totalMemory * 100;
+            double usedMemoryPercentage = GetCurrentMemoryUsagePercent();
 
             if (usedMemoryPercentage > thresholdPercentage)
             {
