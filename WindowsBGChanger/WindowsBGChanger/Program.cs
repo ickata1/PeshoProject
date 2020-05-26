@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using AudioSwitcher.AudioApi.CoreAudio;
+using Microsoft.VisualBasic.Devices;
 
 namespace WindowsBGChanger
 {
@@ -68,7 +69,7 @@ namespace WindowsBGChanger
 
             //AppManager.CloseProcessByName("notepad");
             //AppManager.ShowAllRunningProcesses();
-
+            Console.WriteLine(new ComputerInfo().TotalPhysicalMemory);
 
 
         }

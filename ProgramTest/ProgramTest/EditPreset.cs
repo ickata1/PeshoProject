@@ -124,5 +124,10 @@ namespace ProgramTest
             }
             UpdateGrid();
         }
+
+        private void PresetName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

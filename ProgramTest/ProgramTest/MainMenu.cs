@@ -12,20 +12,39 @@ using System.Windows.Forms;
 using WindowsBGChanger;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Diagnostics;
+using Microsoft.VisualBasic.Devices;
+using ProgramTest.Data.Repositories;
+using ProgramTest.Data.Entities;
+using System.Threading;
 
 namespace ProgramTest
 {
     public partial class MainMenu : Form
     {
-
+        private SettingRepository _settingRepository;
         private List<int> _startedProcessIds = new List<int>();
-        private PresetRepository _presetRepository;        
+        private PresetRepository _presetRepository;
         private bool isCollapsedPreset = true;
         private bool isCollapsedClose = true;
+        int border1;
+        int border2And3;
+        int border4And5;
+        int border6;
+        int delay1;
+        int delay2;
+        int delay3;
         public MainMenu()
         {
+            _settingRepository = new SettingRepository(Program.DbContext);
             _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
+            border1 = _settingRepository.GetSettingByName("Ram Border 1").Value;
+            border2And3 = _settingRepository.GetSettingByName("Ram Border 2").Value;
+            border4And5 = _settingRepository.GetSettingByName("Ram Border 3").Value;
+            border6 = _settingRepository.GetSettingByName("Ram Border 4").Value;
+            delay1 = _settingRepository.GetSettingByName("Delay 1").Value;
+            delay2 = _settingRepository.GetSettingByName("Delay 2").Value;
+            delay3 = _settingRepository.GetSettingByName("Delay 3").Value;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -84,21 +103,36 @@ namespace ProgramTest
                 List<string> bgPaths = new List<string>();
                 #endregion
 
-                #region Preset Settings' execution
-                //Files and exe's
-                foreach (var presetSetting in currentPresetSettingsFile)
+            #region Preset Settings' execution
+            //Files and exe's
+            foreach (var presetSetting in currentPresetSettingsFile)
+            {
+                filePaths.Add(presetSetting.Value);     
+            }
+            foreach (var filePath in filePaths)
+            {
+                //TODO... Check if there is space available
+                double availableMemory = AppManager.GetCurrentMemoryUsagePercent();
+                if (availableMemory < border2And3)
                 {
-                    filePaths.Add(presetSetting.Value);
-                }
-                foreach (var filePath in filePaths)
-                {
-                    //TODO... Make a variable instead of 'magic number'
-                    if (AppManager.MemoryExceedsThresholdPercentage(95))
-                    {
-                        break;
-                    }
+                    Thread.Sleep(delay1 * 1000);
                     _startedProcessIds.Add(AppManager.OpenExe(filePath));
                 }
+                else if (availableMemory >= border2And3 && availableMemory < border4And5)
+                {
+                    Thread.Sleep(delay2 * 1000);
+                    _startedProcessIds.Add(AppManager.OpenExe(filePath));
+                }
+                else if (availableMemory >= border4And5 && availableMemory < border6)
+                {
+                    Thread.Sleep(delay3 * 1000);
+                    _startedProcessIds.Add(AppManager.OpenExe(filePath));
+                }
+                else if (MemoryExceedsThresholdPercentage(border6))
+                {
+                    break;
+                }
+            }
 
                 //Links
                 foreach (var presetSetting in currentPresetSettingsURL)
@@ -154,7 +188,7 @@ namespace ProgramTest
                 var frm = new EditPreset(preset);
                 frm.Location = this.Location;
                 frm.StartPosition = FormStartPosition.Manual;
-                frm.FormClosing += delegate { this.Show(); this.UpdateGridMainMenu(); };
+                frm.FormClosing += delegate { this.UpdateGridMainMenu(); };
                 frm.ShowDialog();
             }
         }
@@ -217,6 +251,9 @@ namespace ProgramTest
                 this.UpdateGrid.Location = new Point(
                 this.UpdateGrid.Location.X,
                 this.UpdateGrid.Location.Y + 10);
+                this.settingsButton.Location = new Point(
+                this.settingsButton.Location.X,
+                this.settingsButton.Location.Y + 10);
                 if (presetSettingsPanel.Size == presetSettingsPanel.MaximumSize)
                 {
                     isCollapsedPreset = false;
@@ -232,6 +269,9 @@ namespace ProgramTest
                 this.UpdateGrid.Location = new Point(
                 this.UpdateGrid.Location.X,
                 this.UpdateGrid.Location.Y - 10);
+                this.settingsButton.Location = new Point(
+                this.settingsButton.Location.X,
+                this.settingsButton.Location.Y - 10);
                 if (presetSettingsPanel.Size == presetSettingsPanel.MinimumSize)
                 {
                     isCollapsedPreset = true;
@@ -256,6 +296,9 @@ namespace ProgramTest
                 this.UpdateGrid.Location = new Point(
                 this.UpdateGrid.Location.X,
                 this.UpdateGrid.Location.Y + 9);
+                this.settingsButton.Location = new Point(
+                this.settingsButton.Location.X,
+                this.settingsButton.Location.Y + 9);
                 if (closePanel.Size == closePanel.MaximumSize)
                 {
                     isCollapsedClose = false;
@@ -269,12 +312,50 @@ namespace ProgramTest
                 this.UpdateGrid.Location = new Point(
                 this.UpdateGrid.Location.X,
                 this.UpdateGrid.Location.Y - 9);
+                this.settingsButton.Location = new Point(
+                this.settingsButton.Location.X,
+                this.settingsButton.Location.Y - 9);
                 if (closePanel.Size == closePanel.MinimumSize)
                 {
                     isCollapsedClose = true;
                     presetSettingsTimerClose.Stop();
                 }
             }
+        }
+
+        private void importExport_Click(object sender, EventArgs e)
+        {
+            var frm = new ImportPreset();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.ShowDialog();
+        }
+
+        public static bool MemoryExceedsThresholdPercentage(double thresholdPercentage)
+        {
+            double totalMemory = new ComputerInfo().TotalPhysicalMemory;
+            double availableMemory = new ComputerInfo().AvailablePhysicalMemory;
+            double usedMemory = totalMemory - availableMemory;
+            double usedMemoryPercentage = usedMemory / totalMemory * 100;
+
+            if (usedMemoryPercentage >= thresholdPercentage)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            var frm = new Settings();
+            frm.Location = this.Location;
+            frm.StartPosition = FormStartPosition.Manual;
+            frm.FormClosing += delegate { this.Show(); };
+            frm.ShowDialog();
         }
     }
 }
