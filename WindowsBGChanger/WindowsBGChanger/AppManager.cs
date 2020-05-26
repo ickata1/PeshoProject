@@ -394,9 +394,9 @@ namespace WindowsBGChanger
         //Returns the available system memory in percentage
         public static double GetCurrentMemoryUsagePercent()
         {
-            ulong totalMemory = new ComputerInfo().TotalPhysicalMemory;
-            ulong availableMemory = new ComputerInfo().AvailablePhysicalMemory;
-            ulong usedMemory = totalMemory - availableMemory;
+            double totalMemory = new ComputerInfo().TotalPhysicalMemory;
+            double availableMemory = new ComputerInfo().AvailablePhysicalMemory;
+            double usedMemory = totalMemory - availableMemory;
             double memoryUsagePercent = usedMemory / totalMemory * 100;      //Calculates the percentage of memory used
 
             return memoryUsagePercent;
