@@ -26,9 +26,8 @@ namespace WindowsBGChanger
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = @"C:\";
-                //openFileDialog.Filter = "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
                 openFileDialog.Filter = "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|Applications (*.exe)|*.exe|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
+                openFileDialog.FilterIndex = 3;
                 openFileDialog.RestoreDirectory = true;
                 openFileDialog.Multiselect = false;
 
@@ -81,7 +80,7 @@ namespace WindowsBGChanger
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = @"C:\";
-                openFileDialog.Filter = "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";    //Remove the ALL filter
+                openFileDialog.Filter = "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
