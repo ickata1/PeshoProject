@@ -39,6 +39,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.settingsButton = new System.Windows.Forms.Button();
             this.closePanel = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Button();
             this.presetSettingsPanel = new System.Windows.Forms.Panel();
@@ -46,7 +47,7 @@
             this.presetSettingsButton = new System.Windows.Forms.Button();
             this.presetSettingsTimerPreset = new System.Windows.Forms.Timer(this.components);
             this.presetSettingsTimerClose = new System.Windows.Forms.Timer(this.components);
-            this.settingsButton = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainMenuDataGrid)).BeginInit();
             this.panel1.SuspendLayout();
             this.closePanel.SuspendLayout();
@@ -209,6 +210,23 @@
             this.panel1.Size = new System.Drawing.Size(200, 576);
             this.panel1.TabIndex = 10;
             // 
+            // settingsButton
+            // 
+            this.settingsButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.settingsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.settingsButton.Location = new System.Drawing.Point(-3, 178);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.settingsButton.Size = new System.Drawing.Size(200, 50);
+            this.settingsButton.TabIndex = 11;
+            this.settingsButton.Text = "Settings";
+            this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
             // closePanel
             // 
             this.closePanel.Controls.Add(this.closeButton);
@@ -299,22 +317,10 @@
             this.presetSettingsTimerClose.Interval = 10;
             this.presetSettingsTimerClose.Tick += new System.EventHandler(this.presetSettingsTimerClose_Tick);
             // 
-            // settingsButton
+            // timer1
             // 
-            this.settingsButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.settingsButton.FlatAppearance.BorderSize = 0;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.settingsButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.settingsButton.Location = new System.Drawing.Point(-3, 178);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.settingsButton.Size = new System.Drawing.Size(200, 50);
-            this.settingsButton.TabIndex = 11;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            this.timer1.Interval = 4000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainMenu
             // 
@@ -359,6 +365,7 @@
         private System.Windows.Forms.Timer presetSettingsTimerClose;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

@@ -26,25 +26,18 @@ namespace ProgramTest
         private PresetRepository _presetRepository;
         private bool isCollapsedPreset = true;
         private bool isCollapsedClose = true;
-        int border1;
         int border2And3;
         int border4And5;
         int border6;
         int delay1;
         int delay2;
         int delay3;
+        int proba = 0;
         public MainMenu()
         {
             _settingRepository = new SettingRepository(Program.DbContext);
             _presetRepository = new PresetRepository(Program.DbContext);
             InitializeComponent();
-            border1 = _settingRepository.GetSettingByName("Ram Border 1").Value;
-            border2And3 = _settingRepository.GetSettingByName("Ram Border 2").Value;
-            border4And5 = _settingRepository.GetSettingByName("Ram Border 3").Value;
-            border6 = _settingRepository.GetSettingByName("Ram Border 4").Value;
-            delay1 = _settingRepository.GetSettingByName("Delay 1").Value;
-            delay2 = _settingRepository.GetSettingByName("Delay 2").Value;
-            delay3 = _settingRepository.GetSettingByName("Delay 3").Value;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,6 +78,13 @@ namespace ProgramTest
 
         private void runPreset_Click(object sender, EventArgs e)
         {
+            border1 = _settingRepository.GetSettingByName("Ram Border 1").Value;
+            border2And3 = _settingRepository.GetSettingByName("Ram Border 2").Value;
+            border4And5 = _settingRepository.GetSettingByName("Ram Border 3").Value;
+            border6 = _settingRepository.GetSettingByName("Ram Border 4").Value;
+            delay1 = _settingRepository.GetSettingByName("Delay 1").Value;
+            delay2 = _settingRepository.GetSettingByName("Delay 2").Value;
+            delay3 = _settingRepository.GetSettingByName("Delay 3").Value;
             if (MainMenuDataGrid.SelectedRows.Count == 1)
             {
                 Preset preset = GetSelectedPreset();
@@ -110,28 +110,27 @@ namespace ProgramTest
                 filePaths.Add(presetSetting.Value);     
             }
             foreach (var filePath in filePaths)
-            {
-                //TODO... Check if there is space available
-                double availableMemory = AppManager.GetCurrentMemoryUsagePercent();
+            { 
+                    //TODO... Check if there is space available
+                    double availableMemory = AppManager.GetCurrentMemoryUsagePercent();
                 if (availableMemory < border2And3)
-                {
-                    Thread.Sleep(delay1 * 1000);
-                    _startedProcessIds.Add(AppManager.OpenExe(filePath));
+                { 
+                        proba = delay1;
                 }
                 else if (availableMemory >= border2And3 && availableMemory < border4And5)
                 {
-                    Thread.Sleep(delay2 * 1000);
-                    _startedProcessIds.Add(AppManager.OpenExe(filePath));
+                        proba = delay2;
                 }
                 else if (availableMemory >= border4And5 && availableMemory < border6)
                 {
-                    Thread.Sleep(delay3 * 1000);
-                    _startedProcessIds.Add(AppManager.OpenExe(filePath));
+                        proba = delay3;
                 }
                 else if (MemoryExceedsThresholdPercentage(border6))
                 {
                     break;
                 }
+                    Thread.Sleep(proba * 1000);
+                    _startedProcessIds.Add(AppManager.OpenExe(filePath));
             }
 
                 //Links
@@ -356,6 +355,11 @@ namespace ProgramTest
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); };
             frm.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
         }
     }
 }
