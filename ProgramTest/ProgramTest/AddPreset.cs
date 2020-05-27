@@ -51,7 +51,6 @@ namespace ProgramTest
                 presetSetting.PresetSettingType = presetType.Text;
                 presetSetting.PresetId = _currentPreset.Id;
                 presetSetting.Preset = _currentPreset;
-
                 _presetSettingRepository.Add(presetSetting);
                 this.Close();
             }
@@ -60,7 +59,6 @@ namespace ProgramTest
                 FilePathTextBox.Clear();
                 MessageBox.Show("File does not exist.");
             }
-
         }
     }
 }

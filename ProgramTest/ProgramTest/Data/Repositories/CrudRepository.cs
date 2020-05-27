@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
@@ -14,7 +12,6 @@ namespace Data.Repositories
         private readonly DbSet<T> _dbSet;
         public CrudRepository(PresetDbContext dbContext, DbSet<T> dbSet)
         {
-            
             _dbContext = dbContext;
             _dbSet = dbSet;
         }
