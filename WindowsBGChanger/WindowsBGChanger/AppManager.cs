@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
 using Microsoft.VisualBasic.Devices;
 
 namespace WindowsBGChanger
@@ -13,10 +9,7 @@ namespace WindowsBGChanger
     {
         public static List<int> processIds = new List<int>();
         public static List<string> processNames = new List<string>();
-        //ALTERNATIVELY, just store the processes, flawed security?
-        //public static List<Process> openProcesses = new List<Process>();
         
-        //WORKS
         /// <summary>
         /// Opens a file/program in the specified directory in filePath 
         /// </summary>
@@ -35,19 +28,15 @@ namespace WindowsBGChanger
 
                     //Adds process' id to a list to kill *SPECIFIC* process instanses
                     return myProcess.Id;
-
-                    //Saves process in a list
-                    //openProcesses.Add(myProcess);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
+                return -1;
             }
-            return 0;
+
         }
 
-        //WORKS
         /// <summary>
         /// Opens a web link through the machine's default browser. Only links starting with http may be opened due to safety reasons.
         /// </summary>
@@ -81,145 +70,6 @@ namespace WindowsBGChanger
         // Process.Kill() = FORCES the process to close
         // Process.CloseMainWindow() = Will send a termination REQUEST, safer to use than .Kill()
 
-        #region Useless methods    
-        //USELESS, WORKS
-        //alternatively name it CloseExeById
-        public static void CloseProcessById(int processId)
-        {
-            try
-            {
-                Process processToKill = Process.GetProcessById(processId);
-
-                processToKill.CloseMainWindow();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        //USELESS, WORKS
-        //Closes ALL processes with a given name but for Office apps.
-        public static void CloseProcessByName(string processName)
-        {
-            try
-            {
-                Process[] processesToKill = Process.GetProcessesByName(processName);
-
-                foreach (var process in processesToKill)
-                {
-                    process.CloseMainWindow();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        //USELESS, UNTESTED
-        public static void CloseOfficeProcessesByName(string processName)
-        {
-            try
-            {
-                //Commonly used office apps' process names
-                string[] officeProcessesNames = { "WINWORD", "POWERPNT", "EXCEL" };
-
-                if (officeProcessesNames.Contains(processName.ToUpper()))
-                {
-                    Process[] processesToKill = Process.GetProcessesByName(processName);
-
-                    foreach (var process in processesToKill)
-                    {
-                        process.Kill();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        //USELESS, UNTESTED
-        public static void CloseProcessBySubName(string processName, string processSubName)
-        {
-            try
-            {
-                //Gets all processes with the given name, e.g: "WINWORD" (Word, as an .exe)
-                var processes = Process.GetProcessesByName(processName);
-                bool isFound = false;
-
-                foreach (var process in processes)
-                {
-                    //Checks whether the process' main window is called 'subprocessName', e.g. "MyWordDocument"
-                    if (process.MainWindowTitle.Contains(processSubName))
-                    {
-                        //process.Kill();
-                        process.CloseMainWindow();
-
-                        isFound = true;
-                        break;
-                    }
-
-                }
-
-                //Optional
-                if (isFound == false)
-                {
-                    // Pop-up saying process was not found
-                }
-                
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-
-        //USELESS, UNTESTED
-        public static void CloseAllProcessesBySubName(string processName, string processSubName)
-        {
-            try
-            {
-                //Gets all processes with the given name, e.g: "WINWORD" (Word, as an .exe)
-                var processes = Process.GetProcessesByName(processName);
-
-                bool isFound = false;
-                int foundProcesses = 0;
-
-                foreach (var process in processes)
-                {
-                    //Checks whether the process' main window is called 'subprocessName', e.g. "MyWordDocument"
-                    if (process.MainWindowTitle.Contains(processSubName))
-                    {
-                        //process.Kill();
-                        process.CloseMainWindow();
-
-                        isFound = true;
-                        foundProcesses++;
-                    }
-
-                }
-
-                //Optional
-                if (isFound == false)
-                {
-                    // Pop-up saying process was not found
-                }
-                else
-                {
-                    // Pop-up saying how many processes were terminated
-                }
-
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-        }
-        #endregion
 
         //WORKS, closes only one browser instance (last viewed)
         public static void CloseBrowserByName(string browserName)
@@ -254,7 +104,6 @@ namespace WindowsBGChanger
             }
         }
 
-        //SEMI-WORKS - Edge needs some time to register that it is open?
         public static void CloseAllBrowsers()
         {
             List<string> browserNames = new List<string> { "chrome", "MicrosoftEdge", "firefox" };
@@ -323,58 +172,7 @@ namespace WindowsBGChanger
             
         }
 
-        //Remove
-        public static void CloseEverythingOpened()
-        {
-            try
-            {
-                List<Process> processesToKill = new List<Process>();
-
-                //Gets all the activated processes into a list
-                //processNames is the global variable
-                foreach (var processName in processNames)
-                {
-                    processesToKill.AddRange(Process.GetProcessesByName(processName));
-                }
-
-                //Closes all open processes
-                foreach (var process in processesToKill)
-                {
-                    //process.Kill();
-                    process.CloseMainWindow();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-        }
-
-        //Remove
-        public static void ForceCloseEverythingOpened()
-        {
-            try
-            {
-                List<Process> processesToKill = new List<Process>();
-
-                //Gets all the activated processes into a list
-                //processNames is the global variable
-                foreach (var processName in processNames)
-                {
-                    processesToKill.AddRange(Process.GetProcessesByName(processName));
-                }
-
-                //Closes all open processes
-                foreach (var process in processesToKill)
-                {
-                    process.Kill();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.ToString());
-            }
-        }
+        // =========== Memory Usage ============= //
 
         //Returns the amount of memory a process is using in bytes
         public static long GetProcessMemoryUsage(int processId)
@@ -420,67 +218,6 @@ namespace WindowsBGChanger
                 return false;
             }
         }
-
-        #region Debugging Methods
-        //Method to get all running processes at the moment
-        public static void ShowAllRunningProcesses()
-        {
-            Process[] processes = Process.GetProcesses();
-            List<string> names = new List<string>();
-
-            foreach (var process in processes)
-            {
-                names.Add(process.ProcessName);
-            }
-
-            names.Sort();
-            names.ForEach(item => Console.WriteLine(item));
-        }
-
-        //Testing Method
-        public static void CloseTest(int id)
-        {
-            try
-            {
-                #region Commented code
-                //var processesToKill = Process.GetProcesses();
-
-                //Process[] localAll = Process.GetProcessesByName("notepad");
-                //Console.WriteLine(localAll.Count());
-
-                //foreach (var process in localAll)
-                //{
-                //    Console.WriteLine(process.ProcessName);
-                //}
-
-                //foreach (var process in processesToKill)
-                //{
-
-                //    //process.Kill();
-                //    //process.CloseMainWindow();
-                //    //process.Dispose();
-                //}
-
-                //Process processToKill = Process.GetProcessById(id);
-                //processToKill.Kill();
-                #endregion
-
-
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-
-        }
-
-        public static void Test(string processName)
-        {
-            //Code here...
-            
-        }
-        #endregion
 
         #region Ideas
         //https://stackoverflow.com/questions/3345363/kill-some-processes-by-exe-file-name

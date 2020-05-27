@@ -1,17 +1,8 @@
-﻿using Data;
-using Data.Entities;
+﻿using Data.Entities;
 using Data.Repositories;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsBGChanger;
-using System.Drawing.Printing;
 
 namespace ProgramTest
 {
@@ -39,15 +30,6 @@ namespace ProgramTest
             FilePathTextBox.Text = _filePath;
         }
 
-        private void FilePathTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ProgramName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void SavePreset_Click(object sender, EventArgs e)
         {
             if (presetType.Text == "URL")

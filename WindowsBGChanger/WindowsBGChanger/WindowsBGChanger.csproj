@@ -57,13 +57,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationTimer.cs" />
     <Compile Include="AppManager.cs" />
-    <Compile Include="FileAndUrlPathManager.cs" />
     <Compile Include="FileBrowserDialogue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VolumeController.cs" />
     <Compile Include="WindowsWallpaper.cs" />
   </ItemGroup>
   <ItemGroup>

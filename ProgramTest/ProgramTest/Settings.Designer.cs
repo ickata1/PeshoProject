@@ -142,7 +142,6 @@
             this.border1.ReadOnly = true;
             this.border1.Size = new System.Drawing.Size(25, 20);
             this.border1.TabIndex = 0;
-            this.border1.TextChanged += new System.EventHandler(this.border1_TextChanged);
             // 
             // label4
             // 

@@ -84,12 +84,7 @@
     <Compile Include="ImportPreset.designer.cs">
       <DependentUpon>ImportPreset.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
-    </Compile>
+    <Compile Include="JsonConverter.cs" />
     <Compile Include="EditPreset.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +96,12 @@
     </Compile>
     <Compile Include="AddPreset.Designer.cs">
       <DependentUpon>AddPreset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,11 +120,11 @@
     <EmbeddedResource Include="ImportPreset.resx">
       <DependentUpon>ImportPreset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EditPreset.resx">
       <DependentUpon>EditPreset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,15 +1,8 @@
 ﻿using Data.Entities;
 using Data.Repositories;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity.Core.Objects;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsBGChanger;
 
@@ -31,7 +24,7 @@ namespace ProgramTest
             if (MainMenuDataGrid.SelectedRows.Count == 1)
             {
                 Preset preset = GetSelectedPreset();
-                string Json = Program.ConvertToJson(preset);
+                string Json = JsonConverter.ConvertToJson(preset);
                 System.IO.File.WriteAllText(filePathTextBox.Text, Json);
             }
         }
@@ -45,30 +38,41 @@ namespace ProgramTest
 
         private void importButton_Click(object sender, EventArgs e)
         {
-            Preset currentPreset = Program.ConvertFromJson(_filePathImport);
             string message = "";
             string caption = "";
-            string newFilepath;
             MessageBoxButtons buttons = MessageBoxButtons.OK;
-            foreach (PresetSetting presetSetting in currentPreset.PresetSettings)
+            if (filePathImportTextBox.Text!="")
             {
-                if (presetSetting.PresetSettingType == "File" || presetSetting.PresetSettingType == "BG")
+                Preset currentPreset = JsonConverter.ConvertFromJson(_filePathImport);
+                string newFilepath;
+                #region Checks the value of the imported PresetSettings and requests new ones if needed
+                foreach (PresetSetting presetSetting in currentPreset.PresetSettings)
                 {
-                    if (!File.Exists(presetSetting.Value))
+                    if (presetSetting.PresetSettingType == "File" || presetSetting.PresetSettingType == "BG")
                     {
-                        message = "Please select a valid filepath for " + presetSetting.Name +"!";
-                        caption = presetSetting.Name + " does not contain a valid file path!";
-                        DialogResult importRequest = MessageBox.Show(message, caption, buttons);
-                        newFilepath = FileBrowserDialogue.GetFullFilePath();
-                        presetSetting.Value = newFilepath;
+                        if (!File.Exists(presetSetting.Value))
+                        {
+                            message = "Please select a valid file path for " + presetSetting.Name + "!";
+                            caption = presetSetting.Name + " does not contain a valid file path!";
+                            DialogResult importRequest = MessageBox.Show(message, caption, buttons);
+                            newFilepath = FileBrowserDialogue.GetFullFilePath();
+                            presetSetting.Value = newFilepath;
+                        }
                     }
                 }
+                #endregion
+                _presetRepository.Update(currentPreset);
+                message = "Successfully imported " + currentPreset.Name + "!";
+                caption = "Import successful!";
+                DialogResult importSuccessful = MessageBox.Show(message, caption, buttons);
+                UpdateGrid();
             }
-            _presetRepository.Update(currentPreset);
-            message = "Successfully imported " + currentPreset.Name +"!";
-            caption = "Import successful!";
-            DialogResult importSuccessful = MessageBox.Show(message, caption, buttons);
-            UpdateGrid();
+            else
+            {
+                message = "Please sellect a valid file path to import from!";
+                caption = "Invalid import file path!";
+                DialogResult success = MessageBox.Show(message, caption, buttons);
+            }
 
         }
 
@@ -82,9 +86,8 @@ namespace ProgramTest
         public void UpdateGrid()
         {
             MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
-            MainMenuDataGrid.Columns[0].Visible = false;
-            //MainMenuDataGrid.Columns[0].Width = 25;
             MainMenuDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            MainMenuDataGrid.Columns[0].Visible = false;    //Hides presetId column
             MainMenuDataGrid.Columns[3].Visible = false;    //Hides presetValue column
             MainMenuDataGrid.Columns[4].Visible = false;    //Hides isActive column
             MainMenuDataGrid.ReadOnly = true;
@@ -95,9 +98,7 @@ namespace ProgramTest
             DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
             Preset preset = new Preset();
             int idToBeSelected = int.Parse(row.Cells[0].Value.ToString());
-
             preset = _presetRepository.GetOne(item => item.Id == idToBeSelected);
-
             return preset;
         }
 

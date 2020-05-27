@@ -46,7 +46,6 @@
             this.Name.Size = new System.Drawing.Size(64, 25);
             this.Name.TabIndex = 0;
             this.Name.Text = "Name";
-            this.Name.Click += new System.EventHandler(this.label1_Click);
             // 
             // Description
             // 
