@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsBGChanger
@@ -12,9 +8,7 @@ namespace WindowsBGChanger
         private static string folderPath;
         private static string filePath;
         private static string[] filePaths;
-        private static string friendlyFilePath;
 
-        //WORKS
         /// <summary>
         /// Opens the windows explorer file browser dialogue and gets the selected file's path
         /// </summary>
@@ -41,7 +35,6 @@ namespace WindowsBGChanger
             return filePath;
         }
 
-        //WORKS
         /// <summary>
         /// Opens the windows explorer file browser dialogue and gets all the selected files' paths
         /// </summary>
@@ -53,7 +46,7 @@ namespace WindowsBGChanger
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = @"C:\";
-                openFileDialog.Filter = "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
+                openFileDialog.Filter = "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|Applications (*.exe)|*.exe|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
                 openFileDialog.Multiselect = true;
@@ -68,33 +61,10 @@ namespace WindowsBGChanger
             return filePaths;
         }
 
-        //USELESS
         /// <summary>
-        /// Opens the windows explorer file browser dialogue
+        /// Opens the windows explorer file browser dialogue and returns the selected folder path
         /// </summary>
-        /// <returns>
-        /// Returns the file name, without the path
-        /// </returns>
-        public static string GetFriendlyFileName()
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.InitialDirectory = @"C:\";
-                openFileDialog.Filter = "Image Files (*.BMP;*.JPG;*.GIF)|*.BMP;*.JPG;*.GIF|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    //Get the path of specified file
-                    friendlyFilePath = openFileDialog.SafeFileName;
-                }
-            }
-
-            //Removes the extension (.exe, .png, etc.)
-            return friendlyFilePath.Substring(0, friendlyFilePath.IndexOf("."));
-        }
-
+        /// <returns></returns>
         public static string GetFolderPath()
         {
             using (FolderBrowserDialog folderBrowser = new FolderBrowserDialog())
@@ -111,7 +81,6 @@ namespace WindowsBGChanger
 
             return folderPath;
         }
-
     }
 
 

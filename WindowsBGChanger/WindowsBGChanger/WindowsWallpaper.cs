@@ -1,7 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 
@@ -64,74 +63,10 @@ namespace WindowsBGChanger
         }
         #endregion
 
-        #region Not Necessary
-        //TODO...
-        #region Database related methods
-
-        #region Method to GET the default wallpaper style from DB
-        private static bool GetDefaultStyleSettings()
-        {
-            //Attempt to retrieve the value from DB
-            //DefaultStyle = *value from DB*
-            return false;
-        }
-        #endregion
-
-        #region Methods to SET the default wallpaper style in DB
-        public static bool SetCurrentStyleSettingsAsDefault()
-        {
-            DefaultStyle = GetCurrentStyle();
-
-            SaveStyleInDatabase(DefaultStyle);
-
-            return false;
-        }
-
-        public static bool SetCustomDefaultStyleSettings(int style, int tile)
-        {
-            DefaultStyle = ConvertStyleFromIntToString(style, tile);
-
-            SaveStyleInDatabase(DefaultStyle);
-
-            return false;
-        }
-
-        private static void SaveStyleInDatabase(string defaults)
-        {
-            //Save defaults to DB
-
-            //throw new NotImplementedException();
-        }
-        #endregion
-
-        #endregion  
-
-        /// <summary>
-        /// Switch wallpaper style to default
-        /// </summary>
-        /// <returns> 
-        /// True = Changed to defaults;
-        /// False = Did NOT change to defaults
-        /// </returns>
-        //NOT IMPLEMENTED
-        public static bool SwitchToDefaultStyle()
-        {
-            GetDefaultStyleSettings();
-
-            //if ((DefaultStyle == null) || DefaultStyle.Any())
-            //{
-            //    return false;
-            //}
-
-            SetWallpaper(WallpaperPath, DefaultStyle);
-            return true;
-        }
-
         //Get Current Wallpaper Path
         private static void GetWallpaperPath()
         {
             WallpaperPath = regKey.GetValue(@"WallPaper").ToString();
-
         }
 
         //Get Current Wallpaper Style
@@ -144,8 +79,6 @@ namespace WindowsBGChanger
 
             return CurrentWallpaperStyle;
         }
-
-        #endregion
         
         //Sets the windows desktop wallpaper/background
         public static void SetWallpaper(string fullWallpaperPath, string style = null)
@@ -198,7 +131,6 @@ namespace WindowsBGChanger
 
             uint SPI_SETDESKWALLPAPER = 20;
             uint SPIF_UPDATEINIFILE = 0x1;
-            uint SPIF_SENDWININICHANGE = 0x02;
 
 
             WallpaperPath = fullWallpaperPath;
@@ -253,11 +185,6 @@ namespace WindowsBGChanger
         //Tile	    0   AND TileWallpaper = 1
         #endregion
         
-        
-        //TODO: 
-        //Add functionality to save the pic in temp folder so as to have easy access to it;
-        //Database related methods;
-        //SwitchToDefaultStyle() method;
 
     }
 }
