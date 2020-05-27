@@ -2,19 +2,14 @@
 using Data.Repositories;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsBGChanger;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
-using System.Diagnostics;
 using Microsoft.VisualBasic.Devices;
 using ProgramTest.Data.Repositories;
-using ProgramTest.Data.Entities;
 using System.Threading;
 
 namespace ProgramTest
@@ -33,7 +28,7 @@ namespace ProgramTest
         int delay1;
         int delay2;
         int delay3;
-        int proba = 0;
+        int timeToSleep;
         public MainMenu()
         {
             _settingRepository = new SettingRepository(Program.DbContext);
@@ -54,28 +49,19 @@ namespace ProgramTest
             frm.StartPosition = FormStartPosition.Manual;
             frm.FormClosing += delegate { this.Show(); this.UpdateGridMainMenu(); };
             frm.ShowDialog();
-        }        
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             DataGridViewSelectedRowCollection rows = MainMenuDataGrid.SelectedRows;
-            if (rows.Count >= 1)                          
+            if (rows.Count >= 1)
             {
                 List<Preset> presets = GetSelectedPresets();
-                
-                    _presetRepository.RemoveRange(presets);                
+
+                _presetRepository.RemoveRange(presets);
             }
             UpdateGridMainMenu();
         }
 
-        private void displayText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void Presets_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void runPreset_Click(object sender, EventArgs e)
         {
@@ -104,35 +90,34 @@ namespace ProgramTest
                 List<string> bgPaths = new List<string>();
                 #endregion
 
-            #region Preset Settings' execution
-            //Files and exe's
-            foreach (var presetSetting in currentPresetSettingsFile)
-            {
-                filePaths.Add(presetSetting.Value);     
-            }
-            foreach (var filePath in filePaths)
-            { 
-                    //TODO... Check if there is space available
+                #region Preset Settings' execution
+                //Files and exe's
+                foreach (var presetSetting in currentPresetSettingsFile)
+                {
+                    filePaths.Add(presetSetting.Value);
+                }
+                foreach (var filePath in filePaths)
+                {
                     double availableMemory = AppManager.GetCurrentMemoryUsagePercent();
-                if (availableMemory < border2And3)
-                { 
-                        proba = delay1;
-                }
-                else if (availableMemory >= border2And3 && availableMemory < border4And5)
-                {
-                        proba = delay2;
-                }
-                else if (availableMemory >= border4And5 && availableMemory < border6)
-                {
-                        proba = delay3;
-                }
-                else if (MemoryExceedsThresholdPercentage(border6))
-                {
-                    break;
-                }
-                    Thread.Sleep(proba * 1000);
+                    if (availableMemory < border2And3)
+                    {
+                        timeToSleep = delay1;
+                    }
+                    else if (availableMemory >= border2And3 && availableMemory < border4And5)
+                    {
+                        timeToSleep = delay2;
+                    }
+                    else if (availableMemory >= border4And5 && availableMemory < border6)
+                    {
+                        timeToSleep = delay3;
+                    }
+                    else if (MemoryExceedsThresholdPercentage(border6))
+                    {
+                        break;
+                    }
+                    Thread.Sleep(timeToSleep * 1000);
                     _startedProcessIds.Add(AppManager.OpenExe(filePath));
-            }
+                }
 
                 //Links
                 foreach (var presetSetting in currentPresetSettingsURL)
@@ -165,17 +150,11 @@ namespace ProgramTest
         public void UpdateGridMainMenu()
         {
             MainMenuDataGrid.DataSource = _presetRepository.GetAll().ToList();
-            MainMenuDataGrid.Columns[0].Visible = false;
-            //MainMenuDataGrid.Columns[0].Width = 25;
             MainMenuDataGrid.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            MainMenuDataGrid.Columns[0].Visible = false;    //Hides presetId column
             MainMenuDataGrid.Columns[3].Visible = false;    //Hides presetValue column
             MainMenuDataGrid.Columns[4].Visible = false;    //Hides isActive column
             MainMenuDataGrid.ReadOnly = true;
-        }
-
-        private void MainMenuDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void EditPreset_Click(object sender, EventArgs e)
@@ -197,12 +176,11 @@ namespace ProgramTest
         {
             DataGridViewRow row = this.MainMenuDataGrid.SelectedRows[0];
             Preset preset = new Preset();
-            int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());                      
+            int idToBeDeleted = int.Parse(row.Cells[0].Value.ToString());
             preset = _presetRepository.GetById(idToBeDeleted);
-            
             return preset;
         }
-        
+
         private List<Preset> GetSelectedPresets()
         {
             DataGridViewSelectedRowCollection rows = MainMenuDataGrid.SelectedRows;
@@ -216,7 +194,6 @@ namespace ProgramTest
             {
                 presets.Add(_presetRepository.GetById(id));
             }
-            
             return presets;
         }
 
@@ -242,6 +219,7 @@ namespace ProgramTest
 
         private void presetSettingsTimer_Tick(object sender, EventArgs e)
         {
+            #region Moves downwards all buttons, located below Preset Settings
             if (isCollapsedPreset)
             {
                 presetSettingsPanel.Height += 10;
@@ -260,6 +238,8 @@ namespace ProgramTest
                     presetSettingsTimerPreset.Stop();
                 }
             }
+            #endregion
+            #region Moves upwards all buttons, located below Preset Settings
             else
             {
                 presetSettingsPanel.Height -= 10;
@@ -278,7 +258,7 @@ namespace ProgramTest
                     presetSettingsTimerPreset.Stop();
                 }
             }
-
+            #endregion
         }
 
         private void closeButton_Click_1(object sender, EventArgs e)
@@ -289,6 +269,7 @@ namespace ProgramTest
 
         private void presetSettingsTimerClose_Tick(object sender, EventArgs e)
         {
+            #region Moves upwards all buttons, located below Close
             if (isCollapsedClose)
             {
                 presetSettingsTimerClose.Start();
@@ -305,6 +286,8 @@ namespace ProgramTest
                     presetSettingsTimerClose.Stop();
                 }
             }
+            #endregion
+            #region Moves downwards all buttons, located below Close
             else
             {
                 presetSettingsTimerClose.Start();
@@ -321,6 +304,7 @@ namespace ProgramTest
                     presetSettingsTimerClose.Stop();
                 }
             }
+            #endregion
         }
 
         private void importExport_Click(object sender, EventArgs e)
@@ -363,4 +347,4 @@ namespace ProgramTest
             timer1.Stop();
         }
     }
-}
+}  

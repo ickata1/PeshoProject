@@ -50,7 +50,6 @@
             this.label1.Size = new System.Drawing.Size(51, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // PresetName
             // 
@@ -58,7 +57,6 @@
             this.PresetName.Name = "PresetName";
             this.PresetName.Size = new System.Drawing.Size(123, 20);
             this.PresetName.TabIndex = 1;
-            this.PresetName.TextChanged += new System.EventHandler(this.PresetName_TextChanged);
             // 
             // label2
             // 
@@ -69,7 +67,6 @@
             this.label2.Size = new System.Drawing.Size(89, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Description";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // presetDescription
             // 
@@ -120,7 +117,6 @@
             this.presetSettingsGridBox.RowHeadersWidth = 51;
             this.presetSettingsGridBox.Size = new System.Drawing.Size(317, 200);
             this.presetSettingsGridBox.TabIndex = 7;
-            this.presetSettingsGridBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // testButton
             // 

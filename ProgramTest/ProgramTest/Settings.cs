@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Data.Entities;
 using ProgramTest.Data.Entities;
 using ProgramTest.Data.Repositories;
 
@@ -75,11 +67,6 @@ namespace ProgramTest
             {
                 MessageBox.Show("Invalid Valeus!");
             }
-        }
-
-        private void border1_TextChanged(object sender, EventArgs e)
-        {
-            
         }
     }
 }

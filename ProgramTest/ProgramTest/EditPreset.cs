@@ -2,26 +2,20 @@
 using Data.Repositories;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace ProgramTest
 {
     public partial class EditPreset : Form
     {
-        public List<PresetSetting> presetSettings { get; set; }
         private Preset _currentPreset = new Preset();
         private PresetSettingRepository _presetSettingRepository;
         private PresetRepository _presetRepository;
+
         public EditPreset(Preset preset)
         {
-            this._currentPreset = preset;
+            _currentPreset = preset;
             _presetRepository = new PresetRepository(Program.DbContext);
             _presetSettingRepository = new PresetSettingRepository(Program.DbContext);
             InitializeComponent();
@@ -36,16 +30,6 @@ namespace ProgramTest
             presetSettingsGridBox.Columns[5].Visible = false;
             presetSettingsGridBox.Columns[6].Visible = false;
             presetSettingsGridBox.ReadOnly = true;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void AddNewPresetSetting_Click(object sender, EventArgs e)
@@ -78,24 +62,9 @@ namespace ProgramTest
             presetDescription.Text = _currentPreset.Description;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void testButton_Click(object sender, EventArgs e)
         {
             UpdateGrid();
-        }
-
-        private PresetSetting GetSelectedPreset()
-        {
-            DataGridViewRow row = this.presetSettingsGridBox.SelectedRows[0];
-            PresetSetting presetSetting = new PresetSetting();
-            int id = int.Parse(row.Cells[0].Value.ToString());
-            presetSetting = _presetSettingRepository.GetById(id);
-
-            return presetSetting;
         }
 
         private List<PresetSetting> GetSelectedPresets()
@@ -123,11 +92,6 @@ namespace ProgramTest
                 _presetSettingRepository.RemoveRange(presetSettings);
             }
             UpdateGrid();
-        }
-
-        private void PresetName_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

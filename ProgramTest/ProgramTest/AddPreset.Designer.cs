@@ -47,7 +47,6 @@
             this.ProgramName.Name = "ProgramName";
             this.ProgramName.Size = new System.Drawing.Size(100, 20);
             this.ProgramName.TabIndex = 0;
-            this.ProgramName.TextChanged += new System.EventHandler(this.ProgramName_TextChanged);
             // 
             // label1
             // 
@@ -125,7 +124,6 @@
             this.FilePathTextBox.Name = "FilePathTextBox";
             this.FilePathTextBox.Size = new System.Drawing.Size(100, 20);
             this.FilePathTextBox.TabIndex = 10;
-            this.FilePathTextBox.TextChanged += new System.EventHandler(this.FilePathTextBox_TextChanged);
             // 
             // presetType
             // 

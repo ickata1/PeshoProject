@@ -139,7 +139,7 @@
             this.MainMenuDataGrid.RowHeadersWidth = 51;
             this.MainMenuDataGrid.Size = new System.Drawing.Size(472, 262);
             this.MainMenuDataGrid.TabIndex = 5;
-            this.MainMenuDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MainMenuDataGrid_CellContentClick);
+           
             // 
             // UpdateGrid
             // 
