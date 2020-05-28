@@ -44,7 +44,7 @@ namespace WindowsBGChanger
         /// <returns>
         /// 
         /// </returns>
-        public static void OpenLink(string url)
+        public static bool OpenLink(string url)
         {
             //Checks if the connection is secure, can be removed, though not recommended.
             if (url.StartsWith("http"))
@@ -52,10 +52,11 @@ namespace WindowsBGChanger
                 try
                 {
                     Process.Start(url);
+                    return true;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    Console.WriteLine(e.Message);
+                    return false;
                 }
             }
             else
@@ -72,7 +73,7 @@ namespace WindowsBGChanger
 
 
         //WORKS, closes only one browser instance (last viewed)
-        public static void CloseBrowserByName(string browserName)
+        public static bool CloseBrowserByName(string browserName)
         {
             browserName = browserName.ToLower();
 
@@ -97,14 +98,16 @@ namespace WindowsBGChanger
                 {
                     process.CloseMainWindow();
                 }
+
+                return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.ToString());
+                return false;
             }
         }
 
-        public static void CloseAllBrowsers()
+        public static bool CloseAllBrowsers()
         {
             List<string> browserNames = new List<string> { "chrome", "MicrosoftEdge", "firefox" };
 
@@ -114,14 +117,16 @@ namespace WindowsBGChanger
                 {
                     CloseBrowserByName(browserName);
                 }
+
+                return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.ToString());
+                return false;
             }
         }
 
-        public static void CloseEverythingById(List<int> processIdsToClose)
+        public static bool CloseEverythingById(List<int> processIdsToClose)
         {
             try
             {
@@ -137,17 +142,17 @@ namespace WindowsBGChanger
                 {
                     process.CloseMainWindow();
                 }
-            }
-            catch (Exception)
-            {
 
-                
+                return true;
             }
-           
+            catch (ArgumentException)
+            {
+                throw new ArgumentException("Invalid id!");
+            }
 
         }
 
-        public static void ForceCloseEverythingById(List<int> processIdsToClose)
+        public static bool ForceCloseEverythingById(List<int> processIdsToClose)
         {
             try
             {
@@ -163,19 +168,20 @@ namespace WindowsBGChanger
                 {
                     process.Kill();
                 }
-            }
-            catch (Exception)
-            {
 
-                
+                return true;
             }
-            
+            catch (ArgumentException)
+            {
+                throw new ArgumentException("Invalid id!");
+            }
+
         }
 
         // =========== Memory Usage ============= //
 
         //Returns the amount of memory a process is using in bytes
-        public static long GetProcessMemoryUsage(int processId)
+        public static double GetProcessMemoryUsage(int processId)
         {
             try
             {
@@ -184,8 +190,7 @@ namespace WindowsBGChanger
             }
             catch (ArgumentException)
             {
-                //No such process is running
-                return -1;
+                throw new ArgumentException("Invalid id!");
             }
         }
 
