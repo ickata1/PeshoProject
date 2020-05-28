@@ -93,5 +93,28 @@ namespace ProgramTest
             }
             UpdateGrid();
         }
+
+        private void editPresetSettingButton_Click(object sender, EventArgs e)
+        {
+            if (presetSettingsGridBox.SelectedRows.Count == 1)
+            {
+                DataGridViewRow row = this.presetSettingsGridBox.SelectedRows[0];
+                PresetSetting presetSetting = GetSelectedPresetSetting();
+                var frm = new EditPresetSetting(presetSetting);
+                frm.Location = this.Location;
+                frm.StartPosition = FormStartPosition.Manual;
+                frm.FormClosing += delegate { this.UpdateGrid(); };
+                frm.ShowDialog();
+            }
+        }
+
+        private PresetSetting GetSelectedPresetSetting()
+        {
+            DataGridViewRow row = this.presetSettingsGridBox.SelectedRows[0];
+            PresetSetting presetSetting = new PresetSetting();
+            int idToBeEdited = int.Parse(row.Cells[0].Value.ToString());
+            presetSetting = _presetSettingRepository.GetById(idToBeEdited);
+            return presetSetting;
+        }
     }
 }

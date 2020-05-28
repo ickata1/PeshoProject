@@ -38,6 +38,7 @@
             this.presetSettingsGridBox = new System.Windows.Forms.DataGridView();
             this.testButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
+            this.editPresetSettingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.presetSettingsGridBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,7 +105,7 @@
             this.AddNewPresetSetting.Name = "AddNewPresetSetting";
             this.AddNewPresetSetting.Size = new System.Drawing.Size(122, 30);
             this.AddNewPresetSetting.TabIndex = 6;
-            this.AddNewPresetSetting.Text = "AddPresetSetting";
+            this.AddNewPresetSetting.Text = "Add Preset Setting";
             this.AddNewPresetSetting.UseVisualStyleBackColor = true;
             this.AddNewPresetSetting.Click += new System.EventHandler(this.AddNewPresetSetting_Click);
             // 
@@ -121,7 +122,7 @@
             // testButton
             // 
             this.testButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.testButton.Location = new System.Drawing.Point(16, 202);
+            this.testButton.Location = new System.Drawing.Point(16, 218);
             this.testButton.Name = "testButton";
             this.testButton.Size = new System.Drawing.Size(122, 30);
             this.testButton.TabIndex = 8;
@@ -132,13 +133,24 @@
             // DeleteButton
             // 
             this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteButton.Location = new System.Drawing.Point(16, 156);
+            this.DeleteButton.Location = new System.Drawing.Point(16, 183);
             this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(122, 29);
+            this.DeleteButton.Size = new System.Drawing.Size(123, 29);
             this.DeleteButton.TabIndex = 9;
             this.DeleteButton.Text = "Delete Preset Setting";
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // editPresetSettingButton
+            // 
+            this.editPresetSettingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.editPresetSettingButton.Location = new System.Drawing.Point(16, 147);
+            this.editPresetSettingButton.Name = "editPresetSettingButton";
+            this.editPresetSettingButton.Size = new System.Drawing.Size(122, 30);
+            this.editPresetSettingButton.TabIndex = 10;
+            this.editPresetSettingButton.Text = "Edit Preset Setting";
+            this.editPresetSettingButton.UseVisualStyleBackColor = true;
+            this.editPresetSettingButton.Click += new System.EventHandler(this.editPresetSettingButton_Click);
             // 
             // EditPreset
             // 
@@ -146,6 +158,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(481, 294);
+            this.Controls.Add(this.editPresetSettingButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.testButton);
             this.Controls.Add(this.presetSettingsGridBox);
@@ -177,5 +190,6 @@
         private System.Windows.Forms.DataGridView presetSettingsGridBox;
         private System.Windows.Forms.Button testButton;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button editPresetSettingButton;
     }
 }
