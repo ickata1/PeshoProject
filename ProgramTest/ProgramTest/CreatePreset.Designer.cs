@@ -28,95 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Name = new System.Windows.Forms.Label();
-            this.Description = new System.Windows.Forms.Label();
-            this.PresetName = new System.Windows.Forms.TextBox();
-            this.DescriptionBox = new System.Windows.Forms.TextBox();
-            this.Save = new System.Windows.Forms.Button();
-            this.Back = new System.Windows.Forms.Button();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.createPresetButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // Name
+            // nameLabel
             // 
-            this.Name.AutoSize = true;
-            this.Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Name.Location = new System.Drawing.Point(11, 11);
-            this.Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(64, 25);
-            this.Name.TabIndex = 0;
-            this.Name.Text = "Name";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameLabel.Location = new System.Drawing.Point(11, 11);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(51, 20);
+            this.nameLabel.TabIndex = 0;
+            this.nameLabel.Text = "Name";
             // 
-            // Description
+            // descriptionLabel
             // 
-            this.Description.AutoSize = true;
-            this.Description.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Description.Location = new System.Drawing.Point(11, 68);
-            this.Description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(109, 25);
-            this.Description.TabIndex = 1;
-            this.Description.Text = "Description";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.descriptionLabel.Location = new System.Drawing.Point(11, 68);
+            this.descriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(89, 20);
+            this.descriptionLabel.TabIndex = 1;
+            this.descriptionLabel.Text = "Description";
             // 
-            // PresetName
+            // nameTextBox
             // 
-            this.PresetName.Location = new System.Drawing.Point(16, 39);
-            this.PresetName.Margin = new System.Windows.Forms.Padding(4);
-            this.PresetName.MaxLength = 15;
-            this.PresetName.Name = "PresetName";
-            this.PresetName.Size = new System.Drawing.Size(175, 22);
-            this.PresetName.TabIndex = 2;
+            this.nameTextBox.Location = new System.Drawing.Point(16, 39);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.nameTextBox.MaxLength = 15;
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(175, 19);
+            this.nameTextBox.TabIndex = 2;
             // 
-            // DescriptionBox
+            // descriptionTextBox
             // 
-            this.DescriptionBox.Location = new System.Drawing.Point(16, 96);
-            this.DescriptionBox.Margin = new System.Windows.Forms.Padding(4);
-            this.DescriptionBox.MaxLength = 100;
-            this.DescriptionBox.Name = "DescriptionBox";
-            this.DescriptionBox.Size = new System.Drawing.Size(229, 22);
-            this.DescriptionBox.TabIndex = 3;
+            this.descriptionTextBox.Location = new System.Drawing.Point(16, 96);
+            this.descriptionTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.descriptionTextBox.MaxLength = 100;
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(229, 19);
+            this.descriptionTextBox.TabIndex = 3;
             // 
-            // Save
+            // createPresetButton
             // 
-            this.Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Save.Location = new System.Drawing.Point(16, 137);
-            this.Save.Margin = new System.Windows.Forms.Padding(4);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(117, 46);
-            this.Save.TabIndex = 4;
-            this.Save.Text = "Create";
-            this.Save.UseVisualStyleBackColor = true;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
+            this.createPresetButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.createPresetButton.Location = new System.Drawing.Point(16, 137);
+            this.createPresetButton.Margin = new System.Windows.Forms.Padding(4);
+            this.createPresetButton.Name = "createPresetButton";
+            this.createPresetButton.Size = new System.Drawing.Size(117, 46);
+            this.createPresetButton.TabIndex = 4;
+            this.createPresetButton.Text = "Create";
+            this.createPresetButton.UseVisualStyleBackColor = true;
+            this.createPresetButton.Click += new System.EventHandler(this.CreatePresetButton_Click);
             // 
-            // Back
+            // backButton
             // 
-            this.Back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Back.Location = new System.Drawing.Point(141, 137);
-            this.Back.Margin = new System.Windows.Forms.Padding(4);
-            this.Back.Name = "Back";
-            this.Back.Size = new System.Drawing.Size(116, 46);
-            this.Back.TabIndex = 5;
-            this.Back.Text = "Back";
-            this.Back.UseVisualStyleBackColor = true;
-            this.Back.Click += new System.EventHandler(this.button2_Click);
+            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backButton.Location = new System.Drawing.Point(141, 137);
+            this.backButton.Margin = new System.Windows.Forms.Padding(4);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(116, 46);
+            this.backButton.TabIndex = 5;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // CreatePreset
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(417, 208);
-            this.Controls.Add(this.Back);
-            this.Controls.Add(this.Save);
-            this.Controls.Add(this.DescriptionBox);
-            this.Controls.Add(this.PresetName);
-            this.Controls.Add(this.Description);
-            this.Controls.Add(this.Name);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.createPresetButton);
+            this.Controls.Add(this.descriptionTextBox);
+            this.Controls.Add(this.nameTextBox);
+            this.Controls.Add(this.descriptionLabel);
+            this.Controls.Add(this.nameLabel);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.Name = "CreatePreset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreatePreset";
             this.ResumeLayout(false);
@@ -126,11 +127,11 @@
 
         #endregion
 
-        private new System.Windows.Forms.Label Name;
-        private System.Windows.Forms.Label Description;
-        private System.Windows.Forms.TextBox PresetName;
-        private System.Windows.Forms.TextBox DescriptionBox;
-        private System.Windows.Forms.Button Save;
-        private System.Windows.Forms.Button Back;
+        private new System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label descriptionLabel;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.Button createPresetButton;
+        private System.Windows.Forms.Button backButton;
     }
 }

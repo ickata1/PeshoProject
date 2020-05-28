@@ -19,19 +19,19 @@ namespace ProgramTest
         }
 
   
-        private void getFilePathButton_Click(object sender, EventArgs e)
+        private void GetFilePathButton_Click(object sender, EventArgs e)
         {
             _filePath = FileBrowserDialogue.GetFullFilePath();
             valueTextBox.Text = _filePath;
         }
 
-        private void SavePreset_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (presetType.Text == "URL")
+            if (presetTypeComboBox.Text == "URL")
             {
                 _presetSetting.Name = nameTextBox.Text;
                 _presetSetting.Value = valueTextBox.Text;
-                _presetSetting.PresetSettingType = presetType.Text;
+                _presetSetting.PresetSettingType = presetTypeComboBox.Text;
                 _presetSettingRepository.Update(_presetSetting);
                 this.Close();
             }
@@ -39,7 +39,7 @@ namespace ProgramTest
             {
                 _presetSetting.Name = nameTextBox.Text;
                 _presetSetting.Value = valueTextBox.Text;
-                _presetSetting.PresetSettingType = presetType.Text;
+                _presetSetting.PresetSettingType = presetTypeComboBox.Text;
                 _presetSettingRepository.Update(_presetSetting);
                 this.Close();
             }
@@ -54,7 +54,12 @@ namespace ProgramTest
         {
             nameTextBox.Text = _presetSetting.Name;
             valueTextBox.Text = _presetSetting.Value;
-            presetType.SelectedItem = _presetSetting.PresetSettingType;
+            presetTypeComboBox.SelectedItem = _presetSetting.PresetSettingType;
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

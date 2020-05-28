@@ -19,36 +19,36 @@ namespace ProgramTest
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FilePathButton_Click(object sender, EventArgs e)
         {
             _filePath = FileBrowserDialogue.GetFullFilePath();
-            FilePathTextBox.Text = _filePath;
+            valueTextBox.Text = _filePath;
         }
 
-        private void SavePreset_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-            if (presetType.Text == "URL")
+            if (typeComboBox.Text == "URL")
             {
                 PresetSetting presetSetting = new PresetSetting();
-                presetSetting.Name = ProgramName.Text;
-                presetSetting.Value = FilePathTextBox.Text;
-                presetSetting.PresetSettingType = presetType.Text;
+                presetSetting.Name = nameTextBox.Text;
+                presetSetting.Value = valueTextBox.Text;
+                presetSetting.PresetSettingType = typeComboBox.Text;
                 presetSetting.PresetId = _currentPreset.Id;
                 presetSetting.Preset = _currentPreset;
                 _presetSettingRepository.Add(presetSetting);
                 this.Close();
             }
-            else if (System.IO.File.Exists(FilePathTextBox.Text))
+            else if (System.IO.File.Exists(valueTextBox.Text))
             {
                 PresetSetting presetSetting = new PresetSetting();
-                presetSetting.Name = ProgramName.Text;
-                presetSetting.Value = FilePathTextBox.Text;
-                presetSetting.PresetSettingType = presetType.Text;
+                presetSetting.Name = nameTextBox.Text;
+                presetSetting.Value = valueTextBox.Text;
+                presetSetting.PresetSettingType = typeComboBox.Text;
                 presetSetting.PresetId = _currentPreset.Id;
                 presetSetting.Preset = _currentPreset;
                 _presetSettingRepository.Add(presetSetting);
@@ -56,7 +56,7 @@ namespace ProgramTest
             }
             else
             {
-                FilePathTextBox.Clear();
+                valueTextBox.Clear();
                 MessageBox.Show("File does not exist.");
             }
         }

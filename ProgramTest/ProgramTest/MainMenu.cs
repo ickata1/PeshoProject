@@ -63,7 +63,7 @@ namespace ProgramTest
         }
 
 
-        private void runPreset_Click(object sender, EventArgs e)
+        private void RunPreset_Click(object sender, EventArgs e)
         {
             border1 = _settingRepository.GetSettingByName("Ram Border 1").Value;
             border2And3 = _settingRepository.GetSettingByName("Ram Border 2").Value;
@@ -142,7 +142,7 @@ namespace ProgramTest
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
             UpdateGridMainMenu();
         }
@@ -211,13 +211,13 @@ namespace ProgramTest
             _startedProcessIds.Clear();
         }
 
-        private void presetSettingsButton_Click(object sender, EventArgs e)
+        private void PresetSettingsButton_Click(object sender, EventArgs e)
         {
             presetSettingsTimerPreset.Enabled = true;
             presetSettingsTimerPreset.Start();
         }
 
-        private void presetSettingsTimer_Tick(object sender, EventArgs e)
+        private void PresetSettingsTimer_Tick(object sender, EventArgs e)
         {
             #region Moves downwards all buttons, located below Preset Settings
             if (isCollapsedPreset)
@@ -226,9 +226,9 @@ namespace ProgramTest
                 this.closePanel.Location = new Point(
                 this.closePanel.Location.X,
                 this.closePanel.Location.Y + 10);
-                this.UpdateGrid.Location = new Point(
-                this.UpdateGrid.Location.X,
-                this.UpdateGrid.Location.Y + 10);
+                this.refreshButton.Location = new Point(
+                this.refreshButton.Location.X,
+                this.refreshButton.Location.Y + 10);
                 this.settingsButton.Location = new Point(
                 this.settingsButton.Location.X,
                 this.settingsButton.Location.Y + 10);
@@ -246,9 +246,9 @@ namespace ProgramTest
                 this.closePanel.Location = new Point(
                 this.closePanel.Location.X,
                 this.closePanel.Location.Y - 10);
-                this.UpdateGrid.Location = new Point(
-                this.UpdateGrid.Location.X,
-                this.UpdateGrid.Location.Y - 10);
+                this.refreshButton.Location = new Point(
+                this.refreshButton.Location.X,
+                this.refreshButton.Location.Y - 10);
                 this.settingsButton.Location = new Point(
                 this.settingsButton.Location.X,
                 this.settingsButton.Location.Y - 10);
@@ -261,22 +261,22 @@ namespace ProgramTest
             #endregion
         }
 
-        private void closeButton_Click_1(object sender, EventArgs e)
+        private void CloseButton_Click_1(object sender, EventArgs e)
         {
             presetSettingsTimerClose.Enabled = true;
             presetSettingsTimerClose.Start();
         }
 
-        private void presetSettingsTimerClose_Tick(object sender, EventArgs e)
+        private void PresetSettingsTimerClose_Tick(object sender, EventArgs e)
         {
             #region Moves upwards all buttons, located below Close
             if (isCollapsedClose)
             {
                 presetSettingsTimerClose.Start();
                 closePanel.Height += 10;
-                this.UpdateGrid.Location = new Point(
-                this.UpdateGrid.Location.X,
-                this.UpdateGrid.Location.Y + 9);
+                this.refreshButton.Location = new Point(
+                this.refreshButton.Location.X,
+                this.refreshButton.Location.Y + 9);
                 this.settingsButton.Location = new Point(
                 this.settingsButton.Location.X,
                 this.settingsButton.Location.Y + 9);
@@ -292,9 +292,9 @@ namespace ProgramTest
             {
                 presetSettingsTimerClose.Start();
                 closePanel.Height -= 10;
-                this.UpdateGrid.Location = new Point(
-                this.UpdateGrid.Location.X,
-                this.UpdateGrid.Location.Y - 9);
+                this.refreshButton.Location = new Point(
+                this.refreshButton.Location.X,
+                this.refreshButton.Location.Y - 9);
                 this.settingsButton.Location = new Point(
                 this.settingsButton.Location.X,
                 this.settingsButton.Location.Y - 9);
@@ -307,7 +307,7 @@ namespace ProgramTest
             #endregion
         }
 
-        private void importExport_Click(object sender, EventArgs e)
+        private void ImportExport_Click(object sender, EventArgs e)
         {
             var frm = new ImportPreset();
             frm.Location = this.Location;
@@ -333,7 +333,7 @@ namespace ProgramTest
             }
         }
 
-        private void settingsButton_Click(object sender, EventArgs e)
+        private void SettingsButton_Click(object sender, EventArgs e)
         {
             var frm = new Settings();
             frm.Location = this.Location;
@@ -342,7 +342,7 @@ namespace ProgramTest
             frm.ShowDialog();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             timer1.Stop();
         }

@@ -28,86 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.PresetName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.presetDescription = new System.Windows.Forms.TextBox();
-            this.CreatePreset = new System.Windows.Forms.Button();
-            this.Dismiss = new System.Windows.Forms.Button();
-            this.AddNewPresetSetting = new System.Windows.Forms.Button();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.descriptionTextBox = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
+            this.addPresetSettingButton = new System.Windows.Forms.Button();
             this.presetSettingsGridBox = new System.Windows.Forms.DataGridView();
-            this.testButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
+            this.deletePresetSettingButton = new System.Windows.Forms.Button();
             this.editPresetSettingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.presetSettingsGridBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // nameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameLabel.Location = new System.Drawing.Point(12, 9);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(51, 20);
+            this.nameLabel.TabIndex = 0;
+            this.nameLabel.Text = "Name";
             // 
-            // PresetName
+            // nameTextBox
             // 
-            this.PresetName.Location = new System.Drawing.Point(16, 32);
-            this.PresetName.Name = "PresetName";
-            this.PresetName.Size = new System.Drawing.Size(123, 20);
-            this.PresetName.TabIndex = 1;
+            this.nameTextBox.Location = new System.Drawing.Point(16, 32);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(123, 20);
+            this.nameTextBox.TabIndex = 1;
             // 
-            // label2
+            // descriptionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(12, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Description";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.descriptionLabel.Location = new System.Drawing.Point(12, 55);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(89, 20);
+            this.descriptionLabel.TabIndex = 2;
+            this.descriptionLabel.Text = "Description";
             // 
-            // presetDescription
+            // descriptionTextBox
             // 
-            this.presetDescription.Location = new System.Drawing.Point(16, 78);
-            this.presetDescription.Name = "presetDescription";
-            this.presetDescription.Size = new System.Drawing.Size(123, 20);
-            this.presetDescription.TabIndex = 3;
+            this.descriptionTextBox.Location = new System.Drawing.Point(16, 78);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(123, 20);
+            this.descriptionTextBox.TabIndex = 3;
             // 
-            // CreatePreset
+            // saveButton
             // 
-            this.CreatePreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreatePreset.Location = new System.Drawing.Point(230, 254);
-            this.CreatePreset.Name = "CreatePreset";
-            this.CreatePreset.Size = new System.Drawing.Size(114, 30);
-            this.CreatePreset.TabIndex = 4;
-            this.CreatePreset.Text = "Save";
-            this.CreatePreset.UseVisualStyleBackColor = true;
-            this.CreatePreset.Click += new System.EventHandler(this.CreatePreset_Click);
+            this.saveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.saveButton.Location = new System.Drawing.Point(230, 254);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(114, 30);
+            this.saveButton.TabIndex = 4;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // Dismiss
+            // backButton
             // 
-            this.Dismiss.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Dismiss.Location = new System.Drawing.Point(357, 254);
-            this.Dismiss.Name = "Dismiss";
-            this.Dismiss.Size = new System.Drawing.Size(114, 30);
-            this.Dismiss.TabIndex = 5;
-            this.Dismiss.Text = "Back";
-            this.Dismiss.UseVisualStyleBackColor = true;
-            this.Dismiss.Click += new System.EventHandler(this.Dismiss_Click);
+            this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backButton.Location = new System.Drawing.Point(357, 254);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(114, 30);
+            this.backButton.TabIndex = 5;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
-            // AddNewPresetSetting
+            // addPresetSettingButton
             // 
-            this.AddNewPresetSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddNewPresetSetting.Location = new System.Drawing.Point(16, 111);
-            this.AddNewPresetSetting.Name = "AddNewPresetSetting";
-            this.AddNewPresetSetting.Size = new System.Drawing.Size(122, 30);
-            this.AddNewPresetSetting.TabIndex = 6;
-            this.AddNewPresetSetting.Text = "Add Preset Setting";
-            this.AddNewPresetSetting.UseVisualStyleBackColor = true;
-            this.AddNewPresetSetting.Click += new System.EventHandler(this.AddNewPresetSetting_Click);
+            this.addPresetSettingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addPresetSettingButton.Location = new System.Drawing.Point(12, 111);
+            this.addPresetSettingButton.Name = "addPresetSettingButton";
+            this.addPresetSettingButton.Size = new System.Drawing.Size(132, 30);
+            this.addPresetSettingButton.TabIndex = 6;
+            this.addPresetSettingButton.Text = "Add Preset Setting";
+            this.addPresetSettingButton.UseVisualStyleBackColor = true;
+            this.addPresetSettingButton.Click += new System.EventHandler(this.AddNewPresetSetting_Click);
             // 
             // presetSettingsGridBox
             // 
@@ -119,38 +119,38 @@
             this.presetSettingsGridBox.Size = new System.Drawing.Size(317, 200);
             this.presetSettingsGridBox.TabIndex = 7;
             // 
-            // testButton
+            // refreshButton
             // 
-            this.testButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.testButton.Location = new System.Drawing.Point(16, 218);
-            this.testButton.Name = "testButton";
-            this.testButton.Size = new System.Drawing.Size(122, 30);
-            this.testButton.TabIndex = 8;
-            this.testButton.Text = "Refresh";
-            this.testButton.UseVisualStyleBackColor = true;
-            this.testButton.Click += new System.EventHandler(this.testButton_Click);
+            this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.refreshButton.Location = new System.Drawing.Point(12, 218);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(132, 29);
+            this.refreshButton.TabIndex = 8;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.UseVisualStyleBackColor = true;
+            this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
-            // DeleteButton
+            // deletePresetSettingButton
             // 
-            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteButton.Location = new System.Drawing.Point(16, 183);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(123, 29);
-            this.DeleteButton.TabIndex = 9;
-            this.DeleteButton.Text = "Delete Preset Setting";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.deletePresetSettingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deletePresetSettingButton.Location = new System.Drawing.Point(12, 183);
+            this.deletePresetSettingButton.Name = "deletePresetSettingButton";
+            this.deletePresetSettingButton.Size = new System.Drawing.Size(132, 29);
+            this.deletePresetSettingButton.TabIndex = 9;
+            this.deletePresetSettingButton.Text = "Delete Preset Setting";
+            this.deletePresetSettingButton.UseVisualStyleBackColor = true;
+            this.deletePresetSettingButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // editPresetSettingButton
             // 
             this.editPresetSettingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editPresetSettingButton.Location = new System.Drawing.Point(16, 147);
+            this.editPresetSettingButton.Location = new System.Drawing.Point(12, 147);
             this.editPresetSettingButton.Name = "editPresetSettingButton";
-            this.editPresetSettingButton.Size = new System.Drawing.Size(122, 30);
+            this.editPresetSettingButton.Size = new System.Drawing.Size(132, 30);
             this.editPresetSettingButton.TabIndex = 10;
             this.editPresetSettingButton.Text = "Edit Preset Setting";
             this.editPresetSettingButton.UseVisualStyleBackColor = true;
-            this.editPresetSettingButton.Click += new System.EventHandler(this.editPresetSettingButton_Click);
+            this.editPresetSettingButton.Click += new System.EventHandler(this.EditPresetSettingButton_Click);
             // 
             // EditPreset
             // 
@@ -159,16 +159,16 @@
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(481, 294);
             this.Controls.Add(this.editPresetSettingButton);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.testButton);
+            this.Controls.Add(this.deletePresetSettingButton);
+            this.Controls.Add(this.refreshButton);
             this.Controls.Add(this.presetSettingsGridBox);
-            this.Controls.Add(this.AddNewPresetSetting);
-            this.Controls.Add(this.Dismiss);
-            this.Controls.Add(this.CreatePreset);
-            this.Controls.Add(this.presetDescription);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.PresetName);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.addPresetSettingButton);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.descriptionTextBox);
+            this.Controls.Add(this.descriptionLabel);
+            this.Controls.Add(this.nameTextBox);
+            this.Controls.Add(this.nameLabel);
             this.Name = "EditPreset";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.EditPreset_Load);
@@ -180,16 +180,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox PresetName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox presetDescription;
-        private System.Windows.Forms.Button CreatePreset;
-        private System.Windows.Forms.Button Dismiss;
-        private System.Windows.Forms.Button AddNewPresetSetting;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label descriptionLabel;
+        private System.Windows.Forms.TextBox descriptionTextBox;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button addPresetSettingButton;
         private System.Windows.Forms.DataGridView presetSettingsGridBox;
-        private System.Windows.Forms.Button testButton;
-        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Button refreshButton;
+        private System.Windows.Forms.Button deletePresetSettingButton;
         private System.Windows.Forms.Button editPresetSettingButton;
     }
 }

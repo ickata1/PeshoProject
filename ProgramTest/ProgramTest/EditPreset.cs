@@ -42,27 +42,27 @@ namespace ProgramTest
             frm.ShowDialog();
         }
 
-        private void CreatePreset_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
-            _currentPreset.Name = PresetName.Text;
-            _currentPreset.Description = presetDescription.Text;      
+            _currentPreset.Name = nameTextBox.Text;
+            _currentPreset.Description = descriptionTextBox.Text;      
             _presetRepository.Update(_currentPreset);
 
             this.Close();
         }
 
-        private void Dismiss_Click(object sender, EventArgs e)
+        private void BackButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         private void EditPreset_Load(object sender, EventArgs e)
         {
-            PresetName.Text = _currentPreset.Name;
-            presetDescription.Text = _currentPreset.Description;
+            nameTextBox.Text = _currentPreset.Name;
+            descriptionTextBox.Text = _currentPreset.Description;
         }
 
-        private void testButton_Click(object sender, EventArgs e)
+        private void RefreshButton_Click(object sender, EventArgs e)
         {
             UpdateGrid();
         }
@@ -94,7 +94,7 @@ namespace ProgramTest
             UpdateGrid();
         }
 
-        private void editPresetSettingButton_Click(object sender, EventArgs e)
+        private void EditPresetSettingButton_Click(object sender, EventArgs e)
         {
             if (presetSettingsGridBox.SelectedRows.Count == 1)
             {

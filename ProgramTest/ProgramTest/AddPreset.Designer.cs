@@ -28,116 +28,116 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ProgramName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.BackToEdit = new System.Windows.Forms.Button();
-            this.SavePreset = new System.Windows.Forms.Button();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.valueLabel = new System.Windows.Forms.Label();
+            this.typeLabel = new System.Windows.Forms.Label();
+            this.browseLabel = new System.Windows.Forms.Label();
+            this.filePathButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
+            this.saveButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.FilePathTextBox = new System.Windows.Forms.TextBox();
-            this.presetType = new System.Windows.Forms.ComboBox();
+            this.valueTextBox = new System.Windows.Forms.TextBox();
+            this.typeComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // ProgramName
+            // nameTextBox
             // 
-            this.ProgramName.Location = new System.Drawing.Point(9, 32);
-            this.ProgramName.Name = "ProgramName";
-            this.ProgramName.Size = new System.Drawing.Size(100, 20);
-            this.ProgramName.TabIndex = 0;
+            this.nameTextBox.Location = new System.Drawing.Point(9, 32);
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nameTextBox.TabIndex = 0;
             // 
-            // label1
+            // nameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(9, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Name";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameLabel.Location = new System.Drawing.Point(9, 12);
+            this.nameLabel.Name = "nameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(45, 17);
+            this.nameLabel.TabIndex = 3;
+            this.nameLabel.Text = "Name";
             // 
-            // label2
+            // valueLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(9, 53);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Value";
+            this.valueLabel.AutoSize = true;
+            this.valueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.valueLabel.Location = new System.Drawing.Point(10, 56);
+            this.valueLabel.Name = "valueLabel";
+            this.valueLabel.Size = new System.Drawing.Size(44, 17);
+            this.valueLabel.TabIndex = 4;
+            this.valueLabel.Text = "Value";
             // 
-            // label3
+            // typeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(9, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Preset type";
+            this.typeLabel.AutoSize = true;
+            this.typeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.typeLabel.Location = new System.Drawing.Point(9, 98);
+            this.typeLabel.Name = "typeLabel";
+            this.typeLabel.Size = new System.Drawing.Size(80, 17);
+            this.typeLabel.TabIndex = 5;
+            this.typeLabel.Text = "Preset type";
             // 
-            // label4
+            // browseLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(111, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Browse";
+            this.browseLabel.AutoSize = true;
+            this.browseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.browseLabel.Location = new System.Drawing.Point(111, 53);
+            this.browseLabel.Name = "browseLabel";
+            this.browseLabel.Size = new System.Drawing.Size(54, 17);
+            this.browseLabel.TabIndex = 6;
+            this.browseLabel.Text = "Browse";
             // 
-            // button1
+            // filePathButton
             // 
-            this.button1.Location = new System.Drawing.Point(115, 76);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 20);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.filePathButton.Location = new System.Drawing.Point(115, 76);
+            this.filePathButton.Name = "filePathButton";
+            this.filePathButton.Size = new System.Drawing.Size(28, 20);
+            this.filePathButton.TabIndex = 7;
+            this.filePathButton.Text = "...";
+            this.filePathButton.UseVisualStyleBackColor = true;
+            this.filePathButton.Click += new System.EventHandler(this.FilePathButton_Click);
             // 
-            // BackToEdit
+            // backButton
             // 
-            this.BackToEdit.Location = new System.Drawing.Point(48, 154);
-            this.BackToEdit.Name = "BackToEdit";
-            this.BackToEdit.Size = new System.Drawing.Size(75, 23);
-            this.BackToEdit.TabIndex = 8;
-            this.BackToEdit.Text = "Back";
-            this.BackToEdit.UseVisualStyleBackColor = true;
-            this.BackToEdit.Click += new System.EventHandler(this.button2_Click);
+            this.backButton.Location = new System.Drawing.Point(48, 154);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 8;
+            this.backButton.Text = "Back";
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
-            // SavePreset
+            // saveButton
             // 
-            this.SavePreset.Location = new System.Drawing.Point(129, 154);
-            this.SavePreset.Name = "SavePreset";
-            this.SavePreset.Size = new System.Drawing.Size(75, 23);
-            this.SavePreset.TabIndex = 9;
-            this.SavePreset.Text = "Save";
-            this.SavePreset.UseVisualStyleBackColor = true;
-            this.SavePreset.Click += new System.EventHandler(this.SavePreset_Click);
+            this.saveButton.Location = new System.Drawing.Point(129, 154);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(75, 23);
+            this.saveButton.TabIndex = 9;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // FilePathTextBox
+            // valueTextBox
             // 
-            this.FilePathTextBox.Location = new System.Drawing.Point(9, 76);
-            this.FilePathTextBox.Name = "FilePathTextBox";
-            this.FilePathTextBox.Size = new System.Drawing.Size(100, 20);
-            this.FilePathTextBox.TabIndex = 10;
+            this.valueTextBox.Location = new System.Drawing.Point(9, 75);
+            this.valueTextBox.Name = "valueTextBox";
+            this.valueTextBox.Size = new System.Drawing.Size(100, 20);
+            this.valueTextBox.TabIndex = 10;
             // 
-            // presetType
+            // typeComboBox
             // 
-            this.presetType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.presetType.FormattingEnabled = true;
-            this.presetType.Items.AddRange(new object[] {
+            this.typeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.typeComboBox.FormattingEnabled = true;
+            this.typeComboBox.Items.AddRange(new object[] {
             "File",
             "URL",
             "Background"});
-            this.presetType.Location = new System.Drawing.Point(9, 116);
-            this.presetType.Margin = new System.Windows.Forms.Padding(2);
-            this.presetType.Name = "presetType";
-            this.presetType.Size = new System.Drawing.Size(100, 21);
-            this.presetType.TabIndex = 11;
+            this.typeComboBox.Location = new System.Drawing.Point(9, 116);
+            this.typeComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.typeComboBox.Name = "typeComboBox";
+            this.typeComboBox.Size = new System.Drawing.Size(100, 21);
+            this.typeComboBox.TabIndex = 11;
             // 
             // AddPreset
             // 
@@ -145,16 +145,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(214, 187);
-            this.Controls.Add(this.presetType);
-            this.Controls.Add(this.FilePathTextBox);
-            this.Controls.Add(this.SavePreset);
-            this.Controls.Add(this.BackToEdit);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.ProgramName);
+            this.Controls.Add(this.typeComboBox);
+            this.Controls.Add(this.valueTextBox);
+            this.Controls.Add(this.saveButton);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.filePathButton);
+            this.Controls.Add(this.browseLabel);
+            this.Controls.Add(this.typeLabel);
+            this.Controls.Add(this.valueLabel);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.nameTextBox);
             this.Name = "AddPreset";
             this.Text = " ";
             this.ResumeLayout(false);
@@ -164,16 +164,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox ProgramName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button BackToEdit;
-        private System.Windows.Forms.Button SavePreset;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label valueLabel;
+        private System.Windows.Forms.Label typeLabel;
+        private System.Windows.Forms.Label browseLabel;
+        private System.Windows.Forms.Button filePathButton;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button saveButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.TextBox FilePathTextBox;
-        private System.Windows.Forms.ComboBox presetType;
+        private System.Windows.Forms.TextBox valueTextBox;
+        private System.Windows.Forms.ComboBox typeComboBox;
     }
 }

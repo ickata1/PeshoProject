@@ -35,7 +35,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.runPreset = new System.Windows.Forms.Button();
             this.MainMenuDataGrid = new System.Windows.Forms.DataGridView();
-            this.UpdateGrid = new System.Windows.Forms.Button();
+            this.refreshButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -124,7 +124,7 @@
             this.runPreset.Text = "Run Preset";
             this.runPreset.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.runPreset.UseVisualStyleBackColor = false;
-            this.runPreset.Click += new System.EventHandler(this.runPreset_Click);
+            this.runPreset.Click += new System.EventHandler(this.RunPreset_Click);
             // 
             // MainMenuDataGrid
             // 
@@ -139,25 +139,24 @@
             this.MainMenuDataGrid.RowHeadersWidth = 51;
             this.MainMenuDataGrid.Size = new System.Drawing.Size(472, 262);
             this.MainMenuDataGrid.TabIndex = 5;
-           
             // 
-            // UpdateGrid
+            // refreshButton
             // 
-            this.UpdateGrid.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.UpdateGrid.FlatAppearance.BorderSize = 0;
-            this.UpdateGrid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UpdateGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.UpdateGrid.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.UpdateGrid.Location = new System.Drawing.Point(0, 129);
-            this.UpdateGrid.Margin = new System.Windows.Forms.Padding(4);
-            this.UpdateGrid.Name = "UpdateGrid";
-            this.UpdateGrid.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.UpdateGrid.Size = new System.Drawing.Size(200, 50);
-            this.UpdateGrid.TabIndex = 6;
-            this.UpdateGrid.Text = "Refresh";
-            this.UpdateGrid.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.UpdateGrid.UseVisualStyleBackColor = false;
-            this.UpdateGrid.Click += new System.EventHandler(this.button3_Click);
+            this.refreshButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.refreshButton.FlatAppearance.BorderSize = 0;
+            this.refreshButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.refreshButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.refreshButton.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.refreshButton.Location = new System.Drawing.Point(0, 129);
+            this.refreshButton.Margin = new System.Windows.Forms.Padding(4);
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.refreshButton.Size = new System.Drawing.Size(200, 50);
+            this.refreshButton.TabIndex = 6;
+            this.refreshButton.Text = "Refresh";
+            this.refreshButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.refreshButton.UseVisualStyleBackColor = false;
+            this.refreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
             // button4
             // 
@@ -203,7 +202,7 @@
             this.panel1.Controls.Add(this.settingsButton);
             this.panel1.Controls.Add(this.closePanel);
             this.panel1.Controls.Add(this.presetSettingsPanel);
-            this.panel1.Controls.Add(this.UpdateGrid);
+            this.panel1.Controls.Add(this.refreshButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -225,7 +224,7 @@
             this.settingsButton.Text = "Settings";
             this.settingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            this.settingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // closePanel
             // 
@@ -255,7 +254,7 @@
             this.closeButton.Text = "Close";
             this.closeButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click_1);
+            this.closeButton.Click += new System.EventHandler(this.CloseButton_Click_1);
             // 
             // presetSettingsPanel
             // 
@@ -287,7 +286,7 @@
             this.button5.Text = "Import/Export";
             this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.importExport_Click);
+            this.button5.Click += new System.EventHandler(this.ImportExport_Click);
             // 
             // presetSettingsButton
             // 
@@ -305,22 +304,22 @@
             this.presetSettingsButton.Text = "Preset Settings";
             this.presetSettingsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.presetSettingsButton.UseVisualStyleBackColor = false;
-            this.presetSettingsButton.Click += new System.EventHandler(this.presetSettingsButton_Click);
+            this.presetSettingsButton.Click += new System.EventHandler(this.PresetSettingsButton_Click);
             // 
             // presetSettingsTimerPreset
             // 
             this.presetSettingsTimerPreset.Interval = 15;
-            this.presetSettingsTimerPreset.Tick += new System.EventHandler(this.presetSettingsTimer_Tick);
+            this.presetSettingsTimerPreset.Tick += new System.EventHandler(this.PresetSettingsTimer_Tick);
             // 
             // presetSettingsTimerClose
             // 
             this.presetSettingsTimerClose.Interval = 10;
-            this.presetSettingsTimerClose.Tick += new System.EventHandler(this.presetSettingsTimerClose_Tick);
+            this.presetSettingsTimerClose.Tick += new System.EventHandler(this.PresetSettingsTimerClose_Tick);
             // 
             // timer1
             // 
             this.timer1.Interval = 4000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // MainMenu
             // 
@@ -353,7 +352,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button runPreset;
         public System.Windows.Forms.DataGridView MainMenuDataGrid;
-        private System.Windows.Forms.Button UpdateGrid;
+        private System.Windows.Forms.Button refreshButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel1;
