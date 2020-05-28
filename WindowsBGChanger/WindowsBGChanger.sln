@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsBGChanger", "Windows
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgramTest", "..\ProgramTest\ProgramTest\ProgramTest.csproj", "{0FEC6D8F-DEFB-4A96-ABE7-BD69ADB3E3F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresetterTests", "PresetterTests\PresetterTests.csproj", "{B77C198C-0E9A-452B-88D5-9FA9D863F21C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0FEC6D8F-DEFB-4A96-ABE7-BD69ADB3E3F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FEC6D8F-DEFB-4A96-ABE7-BD69ADB3E3F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FEC6D8F-DEFB-4A96-ABE7-BD69ADB3E3F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77C198C-0E9A-452B-88D5-9FA9D863F21C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77C198C-0E9A-452B-88D5-9FA9D863F21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77C198C-0E9A-452B-88D5-9FA9D863F21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77C198C-0E9A-452B-88D5-9FA9D863F21C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
