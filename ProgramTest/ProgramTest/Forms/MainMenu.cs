@@ -149,6 +149,7 @@ namespace ProgramTest
             MainMenuDataGrid.Columns[0].Visible = false;    //Hides presetId column
             MainMenuDataGrid.Columns[3].Visible = false;    //Hides presetValue column
             MainMenuDataGrid.Columns[4].Visible = false;    //Hides isActive column
+            MainMenuDataGrid.Columns[4].Visible = false;    //Hides isActive column
             MainMenuDataGrid.ReadOnly = true;
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
 using Microsoft.VisualBasic.Devices;
 
 namespace WindowsBGChanger
@@ -134,7 +135,14 @@ namespace WindowsBGChanger
 
                 foreach (var processId in processIdsToClose)
                 {
-                    processesToKill.Add(Process.GetProcessById(processId));
+                    try
+                    {
+                        processesToKill.Add(Process.GetProcessById(processId));
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
                 }
 
                 //Closes all open processes
@@ -145,11 +153,12 @@ namespace WindowsBGChanger
 
                 return true;
             }
-            catch (ArgumentException)
+            catch (InvalidOperationException)
             {
-                throw new ArgumentException("Invalid id!");
+                
             }
 
+            return true;
         }
 
         public static bool ForceCloseEverythingById(List<int> processIdsToClose)
@@ -160,7 +169,14 @@ namespace WindowsBGChanger
 
                 foreach (var processId in processIdsToClose)
                 {
-                    processesToKill.Add(Process.GetProcessById(processId));
+                    try
+                    {
+                        processesToKill.Add(Process.GetProcessById(processId));
+                    }
+                    catch (Exception)
+                    {
+                    }
+                    
                 }
 
                 //Closes all open processes
@@ -171,10 +187,11 @@ namespace WindowsBGChanger
 
                 return true;
             }
-            catch (ArgumentException)
-            {
-                throw new ArgumentException("Invalid id!");
+            catch (InvalidOperationException)
+            {                
             }
+
+            return true;
 
         }
 
