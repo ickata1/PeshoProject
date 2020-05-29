@@ -103,9 +103,7 @@ namespace PresetterTests
             testIds.Add(-1);
             testIds.Add(-2);
 
-            //Assert
-            Assert.ThrowsException<ArgumentException>(() => AppManager.CloseEverythingById(testIds),
-                "Invalid id!");
+            AppManager.CloseEverythingById(testIds);
         }
 
         [TestMethod]
@@ -131,9 +129,7 @@ namespace PresetterTests
             testIds.Add(-1);
             testIds.Add(-2);
 
-            //Assert
-            Assert.ThrowsException<ArgumentException>(() => AppManager.ForceCloseEverythingById(testIds),
-                "Invalid id!");
+            AppManager.ForceCloseEverythingById(testIds);
         }
 
         [TestMethod]
