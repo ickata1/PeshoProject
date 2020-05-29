@@ -67,10 +67,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreatePreset.cs">
+    <Compile Include="Forms\CreatePreset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatePreset.Designer.cs">
+    <Compile Include="Forms\CreatePreset.Designer.cs">
       <DependentUpon>CreatePreset.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Entities\Preset.cs" />
@@ -81,61 +81,61 @@
     <Compile Include="Data\Repositories\PresetRepository.cs" />
     <Compile Include="Data\Repositories\PresetSettingRepository.cs" />
     <Compile Include="Data\Repositories\SettingRepository.cs" />
-    <Compile Include="EditPresetSetting.cs">
+    <Compile Include="Forms\EditPresetSetting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditPresetSetting.Designer.cs">
+    <Compile Include="Forms\EditPresetSetting.Designer.cs">
       <DependentUpon>EditPresetSetting.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImportPreset.cs">
+    <Compile Include="Forms\ImportPreset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImportPreset.designer.cs">
+    <Compile Include="Forms\ImportPreset.designer.cs">
       <DependentUpon>ImportPreset.cs</DependentUpon>
     </Compile>
     <Compile Include="JsonConverter.cs" />
-    <Compile Include="EditPreset.cs">
+    <Compile Include="Forms\EditPreset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditPreset.Designer.cs">
+    <Compile Include="Forms\EditPreset.Designer.cs">
       <DependentUpon>EditPreset.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddPreset.cs">
+    <Compile Include="Forms\AddPreset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddPreset.Designer.cs">
+    <Compile Include="Forms\AddPreset.Designer.cs">
       <DependentUpon>AddPreset.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainMenu.cs">
+    <Compile Include="Forms\MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainMenu.Designer.cs">
+    <Compile Include="Forms\MainMenu.Designer.cs">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs">
+    <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
+    <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddPreset.resx">
+    <EmbeddedResource Include="Forms\AddPreset.resx">
       <DependentUpon>AddPreset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatePreset.resx">
+    <EmbeddedResource Include="Forms\CreatePreset.resx">
       <DependentUpon>CreatePreset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditPresetSetting.resx">
+    <EmbeddedResource Include="Forms\EditPresetSetting.resx">
       <DependentUpon>EditPresetSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImportPreset.resx">
+    <EmbeddedResource Include="Forms\ImportPreset.resx">
       <DependentUpon>ImportPreset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditPreset.resx">
+    <EmbeddedResource Include="Forms\EditPreset.resx">
       <DependentUpon>EditPreset.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
+    <EmbeddedResource Include="Forms\MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -147,7 +147,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Settings.resx">
+    <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
