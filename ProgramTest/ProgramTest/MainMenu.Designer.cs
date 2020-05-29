@@ -62,7 +62,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(0, 138);
+            this.button1.Location = new System.Drawing.Point(0, 48);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
@@ -80,7 +80,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(0, 178);
+            this.button2.Location = new System.Drawing.Point(0, 133);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
@@ -114,12 +114,12 @@
             this.runPreset.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.runPreset.FlatAppearance.BorderSize = 0;
             this.runPreset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.runPreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.runPreset.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.runPreset.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.runPreset.Location = new System.Drawing.Point(0, 47);
+            this.runPreset.Location = new System.Drawing.Point(0, 513);
             this.runPreset.Margin = new System.Windows.Forms.Padding(4);
             this.runPreset.Name = "runPreset";
-            this.runPreset.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.runPreset.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.runPreset.Size = new System.Drawing.Size(200, 50);
             this.runPreset.TabIndex = 4;
             this.runPreset.Text = "Run Preset";
@@ -202,8 +202,9 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Controls.Add(this.settingsButton);
             this.panel1.Controls.Add(this.closePanel);
-            this.panel1.Controls.Add(this.presetSettingsPanel);
+            this.panel1.Controls.Add(this.runPreset);
             this.panel1.Controls.Add(this.UpdateGrid);
+            this.panel1.Controls.Add(this.presetSettingsPanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -261,12 +262,11 @@
             // 
             this.presetSettingsPanel.Controls.Add(this.button5);
             this.presetSettingsPanel.Controls.Add(this.presetSettingsButton);
-            this.presetSettingsPanel.Controls.Add(this.runPreset);
             this.presetSettingsPanel.Controls.Add(this.EditPreset);
             this.presetSettingsPanel.Controls.Add(this.button1);
             this.presetSettingsPanel.Controls.Add(this.button2);
-            this.presetSettingsPanel.Location = new System.Drawing.Point(0, 40);
-            this.presetSettingsPanel.MaximumSize = new System.Drawing.Size(200, 275);
+            this.presetSettingsPanel.Location = new System.Drawing.Point(0, 41);
+            this.presetSettingsPanel.MaximumSize = new System.Drawing.Size(200, 225);
             this.presetSettingsPanel.MinimumSize = new System.Drawing.Size(200, 50);
             this.presetSettingsPanel.Name = "presetSettingsPanel";
             this.presetSettingsPanel.Size = new System.Drawing.Size(200, 50);
@@ -279,7 +279,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button5.Location = new System.Drawing.Point(0, 225);
+            this.button5.Location = new System.Drawing.Point(0, 180);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.button5.Size = new System.Drawing.Size(200, 50);
@@ -333,8 +333,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Presetter";
