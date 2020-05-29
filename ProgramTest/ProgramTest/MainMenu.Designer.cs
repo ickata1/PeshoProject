@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainMenu));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.EditPreset = new System.Windows.Forms.Button();
@@ -139,7 +140,6 @@
             this.MainMenuDataGrid.RowHeadersWidth = 51;
             this.MainMenuDataGrid.Size = new System.Drawing.Size(472, 262);
             this.MainMenuDataGrid.TabIndex = 5;
-           
             // 
             // UpdateGrid
             // 
@@ -331,12 +331,13 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MainMenuDataGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainMenu";
+            this.Text = "Presetter";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MainMenuDataGrid)).EndInit();
             this.panel1.ResumeLayout(false);

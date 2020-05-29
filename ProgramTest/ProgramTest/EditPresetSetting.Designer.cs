@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditPresetSetting));
             this.presetType = new System.Windows.Forms.ComboBox();
             this.valueTextBox = new System.Windows.Forms.TextBox();
             this.SavePreset = new System.Windows.Forms.Button();
@@ -153,6 +154,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameTextBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditPresetSetting";
             this.Text = "Edit Preset Setting";
             this.Load += new System.EventHandler(this.EditPresetSetting_Load);

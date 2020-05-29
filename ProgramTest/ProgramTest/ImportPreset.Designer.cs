@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportPreset));
             this.exportButton = new System.Windows.Forms.Button();
             this.filePathButton = new System.Windows.Forms.Button();
             this.filePathTextBox = new System.Windows.Forms.TextBox();
@@ -149,6 +150,7 @@
             this.Controls.Add(this.filePathTextBox);
             this.Controls.Add(this.filePathButton);
             this.Controls.Add(this.exportButton);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ImportPreset";
             this.Text = "Import/Export";
             this.Load += new System.EventHandler(this.ImportPreset_Load);
