@@ -65,7 +65,7 @@ namespace ProgramTest
 
         private void runPreset_Click(object sender, EventArgs e)
         {
-            border1 = _settingRepository.GetSettingByName("Ram Border 1").Value;
+            testBorder1 = _settingRepository.GetSettingByName("Ram Border 1").Value;
             border2And3 = _settingRepository.GetSettingByName("Ram Border 2").Value;
             border4And5 = _settingRepository.GetSettingByName("Ram Border 3").Value;
             border6 = _settingRepository.GetSettingByName("Ram Border 4").Value;
@@ -83,7 +83,7 @@ namespace ProgramTest
                 List<PresetSetting> currentPresetSettingsURL = currentPresetSettings
                     .Where(type => type.PresetSettingType == "URL").ToList();
                 List<PresetSetting> currentPresetSettingsBG = currentPresetSettings
-                    .Where(type => type.PresetSettingType == "BG").ToList();
+                    .Where(type => type.PresetSettingType == "Background").ToList();
 
                 List<string> filePaths = new List<string>();
                 List<string> urlPaths = new List<string>();

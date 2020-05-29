@@ -48,7 +48,7 @@ namespace ProgramTest
                 #region Checks the value of the imported PresetSettings and requests new ones if needed
                 foreach (PresetSetting presetSetting in currentPreset.PresetSettings)
                 {
-                    if (presetSetting.PresetSettingType == "File" || presetSetting.PresetSettingType == "BG")
+                    if (presetSetting.PresetSettingType == "File" || presetSetting.PresetSettingType == "Background")
                     {
                         if (!File.Exists(presetSetting.Value))
                         {
