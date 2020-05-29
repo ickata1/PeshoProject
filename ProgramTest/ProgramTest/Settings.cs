@@ -65,7 +65,7 @@ namespace ProgramTest
             }
             else
             {
-                MessageBox.Show("Invalid Valeus!");
+                MessageBox.Show("Invalid Values!");
             }
         }
     }
