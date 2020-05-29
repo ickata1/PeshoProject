@@ -170,7 +170,7 @@
             this.Controls.Add(this.PresetName);
             this.Controls.Add(this.label1);
             this.Name = "EditPreset";
-            this.Text = "Form2";
+            this.Text = "Edit Preset";
             this.Load += new System.EventHandler(this.EditPreset_Load);
             ((System.ComponentModel.ISupportInitialize)(this.presetSettingsGridBox)).EndInit();
             this.ResumeLayout(false);

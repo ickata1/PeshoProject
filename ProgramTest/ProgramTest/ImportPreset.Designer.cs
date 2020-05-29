@@ -150,7 +150,8 @@
             this.Controls.Add(this.filePathButton);
             this.Controls.Add(this.exportButton);
             this.Name = "ImportPreset";
-            this.Text = "Debug";
+            this.Text = "Import/Export";
+            this.Load += new System.EventHandler(this.ImportPreset_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MainMenuDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -154,7 +154,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nameTextBox);
             this.Name = "EditPresetSetting";
-            this.Text = "EditPresetSetting";
+            this.Text = "Edit Preset Setting";
             this.Load += new System.EventHandler(this.EditPresetSetting_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
