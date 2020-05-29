@@ -28,9 +28,6 @@ namespace PresetterTests
             Assert.AreEqual(-1, result);
         }
 
-        //TODO...
-        //Check if it changes the bg by comparing wallpaper file pahts!
-
 
         [TestMethod]
         public void OpenLink_PassValidUrl_ReturnsTrue()
