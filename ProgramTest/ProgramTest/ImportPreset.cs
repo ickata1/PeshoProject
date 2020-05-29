@@ -106,5 +106,10 @@ namespace ProgramTest
         {
             UpdateGrid();
         }
+
+        private void ImportPreset_Load(object sender, EventArgs e)
+        {
+            UpdateGrid();
+        }
     }
 }

@@ -156,7 +156,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ProgramName);
             this.Name = "AddPreset";
-            this.Text = " ";
+            this.Text = " Add Preset Setting";
             this.ResumeLayout(false);
             this.PerformLayout();
 

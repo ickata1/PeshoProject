@@ -43,7 +43,7 @@
             this.Name.Location = new System.Drawing.Point(11, 11);
             this.Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(64, 25);
+            this.Name.Size = new System.Drawing.Size(51, 20);
             this.Name.TabIndex = 0;
             this.Name.Text = "Name";
             // 
@@ -54,7 +54,7 @@
             this.Description.Location = new System.Drawing.Point(11, 68);
             this.Description.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(109, 25);
+            this.Description.Size = new System.Drawing.Size(89, 20);
             this.Description.TabIndex = 1;
             this.Description.Text = "Description";
             // 
@@ -64,7 +64,7 @@
             this.PresetName.Margin = new System.Windows.Forms.Padding(4);
             this.PresetName.MaxLength = 15;
             this.PresetName.Name = "PresetName";
-            this.PresetName.Size = new System.Drawing.Size(175, 22);
+            this.PresetName.Size = new System.Drawing.Size(175, 19);
             this.PresetName.TabIndex = 2;
             // 
             // DescriptionBox
@@ -73,7 +73,7 @@
             this.DescriptionBox.Margin = new System.Windows.Forms.Padding(4);
             this.DescriptionBox.MaxLength = 100;
             this.DescriptionBox.Name = "DescriptionBox";
-            this.DescriptionBox.Size = new System.Drawing.Size(229, 22);
+            this.DescriptionBox.Size = new System.Drawing.Size(229, 19);
             this.DescriptionBox.TabIndex = 3;
             // 
             // Save
@@ -102,7 +102,7 @@
             // 
             // CreatePreset
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(417, 208);
@@ -118,7 +118,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CreatePreset";
+            this.Text = "Create Preset";
             this.ResumeLayout(false);
             this.PerformLayout();
 
