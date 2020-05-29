@@ -49,12 +49,13 @@ namespace ProgramTest
         {
             if(int.Parse(border6.Text) > int.Parse(border4.Text) && int.Parse(border4.Text) > int.Parse(border2.Text))
             {
+                
                 _ramBorderSettings[1].Value = int.Parse(border2.Text);
                 _ramBorderSettings[2].Value = int.Parse(border4.Text);
                 _ramBorderSettings[3].Value = int.Parse(border6.Text);
-                _delaySettings[0].Value = int.Parse(delay1.Text);
-                _delaySettings[1].Value = int.Parse(delay2.Text);
-                _delaySettings[2].Value = int.Parse(delay3.Text);
+                _delaySettings[0].Value = double.Parse(delay1.Text.Replace('.', ','));
+                _delaySettings[1].Value = double.Parse(delay2.Text.Replace('.', ','));
+                _delaySettings[2].Value = double.Parse(delay3.Text.Replace('.',','));
                 _settingRepository.Update(_ramBorderSettings[1]);
                 _settingRepository.Update(_ramBorderSettings[2]);
                 _settingRepository.Update(_ramBorderSettings[3]);

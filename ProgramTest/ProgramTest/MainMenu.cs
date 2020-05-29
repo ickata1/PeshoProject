@@ -21,14 +21,9 @@ namespace ProgramTest
         private PresetRepository _presetRepository;
         private bool isCollapsedPreset = true;
         private bool isCollapsedClose = true;
-        int border1;
-        int border2And3;
-        int border4And5;
-        int border6;
-        int delay1;
-        int delay2;
-        int delay3;
-        int timeToSleep;
+        private double[] _ramBorder = new double[4];
+        private double[] _delay = new double[3];
+        private double _timeToSleep;
         public MainMenu()
         {
             _settingRepository = new SettingRepository(Program.DbContext);
@@ -65,13 +60,13 @@ namespace ProgramTest
 
         private void runPreset_Click(object sender, EventArgs e)
         {
-            border1 = _settingRepository.GetSettingByName("Ram Border 1").Value;
-            border2And3 = _settingRepository.GetSettingByName("Ram Border 2").Value;
-            border4And5 = _settingRepository.GetSettingByName("Ram Border 3").Value;
-            border6 = _settingRepository.GetSettingByName("Ram Border 4").Value;
-            delay1 = _settingRepository.GetSettingByName("Delay 1").Value;
-            delay2 = _settingRepository.GetSettingByName("Delay 2").Value;
-            delay3 = _settingRepository.GetSettingByName("Delay 3").Value;
+            _ramBorder[0] = _settingRepository.GetSettingByName("Ram Border 1").Value;
+            _ramBorder[1] = _settingRepository.GetSettingByName("Ram Border 2").Value;
+            _ramBorder[2] = _settingRepository.GetSettingByName("Ram Border 3").Value;
+            _ramBorder[3] = _settingRepository.GetSettingByName("Ram Border 4").Value;
+            _delay[0] = _settingRepository.GetSettingByName("Delay 1").Value;
+            _delay[0] = _settingRepository.GetSettingByName("Delay 2").Value;
+            _delay[0] = _settingRepository.GetSettingByName("Delay 3").Value;
             if (MainMenuDataGrid.SelectedRows.Count == 1)
             {
                 Preset preset = GetSelectedPreset();
@@ -99,23 +94,23 @@ namespace ProgramTest
                 foreach (var filePath in filePaths)
                 {
                     double availableMemory = AppManager.GetCurrentMemoryUsagePercent();
-                    if (availableMemory < border2And3)
+                    if (availableMemory < _ramBorder[0])
                     {
-                        timeToSleep = delay1;
+                        _timeToSleep = _delay[0];
                     }
-                    else if (availableMemory >= border2And3 && availableMemory < border4And5)
+                    else if (availableMemory >= _ramBorder[1] && availableMemory < _ramBorder[2])
                     {
-                        timeToSleep = delay2;
+                        _timeToSleep = _delay[0];
                     }
-                    else if (availableMemory >= border4And5 && availableMemory < border6)
+                    else if (availableMemory >= _ramBorder[2] && availableMemory < _ramBorder[3])
                     {
-                        timeToSleep = delay3;
+                        _timeToSleep = _delay[0];
                     }
-                    else if (MemoryExceedsThresholdPercentage(border6))
+                    else if (MemoryExceedsThresholdPercentage(_ramBorder[3]))
                     {
                         break;
                     }
-                    Thread.Sleep(timeToSleep * 1000);
+                    Thread.Sleep((int)_timeToSleep * 1000);
                     _startedProcessIds.Add(AppManager.OpenExe(filePath));
                 }
 
