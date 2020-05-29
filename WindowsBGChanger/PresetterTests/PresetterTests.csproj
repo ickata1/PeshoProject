@@ -51,16 +51,12 @@
   <ItemGroup>
     <Compile Include="AppManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="JsonConverterTests.cs" />
+    <Compile Include="WindowsWallpaperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ProgramTest\ProgramTest\ProgramTest.csproj">
-      <Project>{0fec6d8f-defb-4a96-abe7-bd69adb3e3f0}</Project>
-      <Name>ProgramTest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WindowsBGChanger\WindowsBGChanger.csproj">
       <Project>{8AC42396-27E9-4313-9625-94D02B62EBC9}</Project>
       <Name>WindowsBGChanger</Name>

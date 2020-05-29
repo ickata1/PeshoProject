@@ -131,13 +131,26 @@ namespace WindowsBGChanger
 
             uint SPI_SETDESKWALLPAPER = 20;
             uint SPIF_UPDATEINIFILE = 0x1;
+            uint SPIF_SENDWININICHANGE = 0x2;
 
+            string fileExtension = fullWallpaperPath.Substring(fullWallpaperPath.IndexOf('.'));
+            List<string> acceptableFileExtensions = new List<string>() { ".png", ".jpg", ".jpeg", ".gif", ".bmp" };
+
+            //Checks if the file exists and is in suitable format
+            if (!System.IO.File.Exists(fullWallpaperPath))
+            {
+                throw new ArgumentException("No such file exists!");
+            }
+            else if (!acceptableFileExtensions.Contains(fileExtension))
+            {
+                throw new ArgumentException("Invalid file format!");
+            }
 
             WallpaperPath = fullWallpaperPath;
 
-            //SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, fullWallpaperPath, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);   //Put 0 instead of SPIF_UPDATEINIFILE to not save the changes after a restart/reboot
+            SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, fullWallpaperPath, SPIF_UPDATEINIFILE | SPIF_SENDWININICHANGE);   //Put 0 instead of SPIF_UPDATEINIFILE to not save the changes after a restart/reboot
 
-            SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, fullWallpaperPath, SPIF_UPDATEINIFILE);   //Put 0 instead of SPIF_UPDATEINIFILE to not save the changes after a restart/reboot
+            //SystemParametersInfo(SPI_SETDESKWALLPAPER, 0, fullWallpaperPath, SPIF_UPDATEINIFILE);   //Put 0 instead of SPIF_UPDATEINIFILE to not save the changes after a restart/reboot
 
         }
 
