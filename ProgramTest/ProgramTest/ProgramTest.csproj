@@ -100,10 +100,10 @@
     <Compile Include="EditPreset.Designer.cs">
       <DependentUpon>EditPreset.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\AddPreset.cs">
+    <Compile Include="AddPreset.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ViewModel\AddPreset.Designer.cs">
+    <Compile Include="AddPreset.Designer.cs">
       <DependentUpon>AddPreset.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.cs">
@@ -120,7 +120,7 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ViewModel\AddPreset.resx">
+    <EmbeddedResource Include="AddPreset.resx">
       <DependentUpon>AddPreset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreatePreset.resx">
