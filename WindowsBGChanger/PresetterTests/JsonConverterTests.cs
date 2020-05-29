@@ -6,7 +6,7 @@ using ProgramTest;
 namespace PresetterTests
 {
     [TestClass]
-    public class ProgramTestTests
+    public class JsonConverterTests
     {
         [TestMethod]
         public void ConvertFromJson_PassInvalidFilepath_ThrowsArugmentException()
